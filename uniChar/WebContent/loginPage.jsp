@@ -48,7 +48,7 @@ if(message == null) {
 
 
 <div class="myFs">
-<form method="post" action="connection" name="HandleLogin">
+<form method="post" action="connection?action=login" name="HandleLogin">
 
 <fieldset>
      <legend>Federal Reserve Login</legend>
@@ -70,13 +70,6 @@ if(message == null) {
 <br>
 <br>
 <br>
-
-
-<%= request.getAttribute("products") %>
-
-
-
-
 
 
 

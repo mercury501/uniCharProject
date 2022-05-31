@@ -47,103 +47,67 @@ public class HandleUsers extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
         {
-            String forward = "userLogged.jsp";
-            String loginError = "invalidLogin.html";
-            String adminPage = "admin.jsp";
-            
-            String user = request.getParameter("username");
-            String password = request.getParameter("password");
             
             String result = null;
             
-            
-            userDAO uDs = new userDAO();
-            
             try {
-				userBean uB = uDs.doCheckLogin(new userBean(user, password));
-				 if(uB.getId()!= -1) {
-					 
-					 //recupero la sessione
-		            	HttpSession oldSession = request.getSession(false);
-		            	
-		            	if(oldSession != null) {
-		            		oldSession.invalidate(); //invalido la sessione
-		            	}
-		            	
-		            	HttpSession currentSession = request.getSession(); //creo una nuova connessione
-		            	currentSession.setAttribute("user", user);
-		            	currentSession.setMaxInactiveInterval(5*60); //5 min di inattività massima 
-		            	
-		            	
-		            	if (uB.getRole().equals("admin"))
-		            	{
-		            		response.sendRedirect(adminPage);
-		            	}
-		            	else
-		            	{
-		            		response.sendRedirect(forward);
-		            	}
-		            	
-		            	
-		            }
-				 else {
-					 response.sendRedirect(loginError);
-				 }
+            	String action = (String)request.getParameter("action");
+        		
+        		if (action == null)
+        			action = (String)request.getAttribute("action");
+            	
+			if (action.equals("login")) {
+				response.sendRedirect(loginHandler(request, response));
 				
+				return;
+			}
+	
 				
-				
-				
-				
-				
-				
-				
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
             
-           
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-           /* RequestDispatcher dispatcher = null;
-            try
-            {
-                userDAO uDS = new userDAO();
-                
-                userBean uB = uDS.doCheckLogin(user, password);
-                
-                if (uB.getId() != -1) {
-                	result = uB.getName() + " " + uB.getSurname();
-                	request.setAttribute("result", result);
-                	
-                	if (uB.getRole().equals("admin"))
-                		dispatcher =  getServletContext().getRequestDispatcher(adminPage);
-                	else {
-	                	
-	                	dispatcher = getServletContext().getRequestDispatcher(forward);
-                	}
-                }
-                else {
-                	 dispatcher = getServletContext().getRequestDispatcher(loginError);
-                }
-                	
-            }
-            catch(Exception e)
-            {
-                request.setAttribute("error", e.getLocalizedMessage());
-            }
-            
-            request.setAttribute("username", user);           
-            
-            dispatcher.forward(request, response);    	
-       */ }
+ 
+          }
+    
+	private String loginHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		String forward = "userLogged.jsp";
+		String loginError = "invalidLogin.html";
+		String adminPage = "admin.jsp";
 
+		userDAO uDs = new userDAO();
+		String user = request.getParameter("username");
+		String password = request.getParameter("password");
+
+		try {
+			userBean uB = uDs.doCheckLogin(new userBean(user, password));
+			if (uB.getId() != -1) {
+
+				// recupero la sessione
+				HttpSession oldSession = request.getSession(false);
+
+				if (oldSession != null) {
+					oldSession.invalidate(); // invalido la sessione
+				}
+
+				HttpSession currentSession = request.getSession(); // creo una nuova connessione
+				currentSession.setAttribute("user", user);
+				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattività massima
+
+				if (uB.getRole().equals("admin")) {
+					return adminPage;
+				} else {
+					return forward;
+				}
+
+			}
+
+			return loginError;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
 }
+
+
