@@ -51,7 +51,7 @@ if(message == null) {
 <form method="post" action="connection?action=login" name="HandleLogin">
 
 <fieldset>
-     <legend>Federal Reserve Login</legend>
+     <legend>uniChar Login</legend>
      <label id="lLogin" for="username">Login</label>
      <input id="username" type="text" name="username" placeholder="enter login"> 
      <br>   

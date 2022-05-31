@@ -49,11 +49,11 @@ public class userDAO  {
 		return uB;
 	}
 	
-	public int doAddUser(userBean user) {
+	public int doAddUser(userBean user) throws SQLException{
 		String sql = "INSERT INTO USERS "
-				+ " (NAME, SURNAME, ROLE, USERNAME, PASSWORD) "
+				+ " (NAME, SURNAME, ROLE, USERNAME, PASSWORD, ROLE) "
 				+ " VALUES "
-				+ " (?, ?, ?, ?, ?) ";
+				+ " (?, ?, ?, ?, ?, ?) ";
 		
 		try {
 	        statement = sqlConn.prepareStatement(sql);
@@ -63,11 +63,14 @@ public class userDAO  {
 	        statement.setString(3, user.getRole());
 	        statement.setString(4, user.getUser());
 	        statement.setString(5, user.getPassword());
+	        statement.setString(6, "USER");
 	        
 	        
 	        statement.executeUpdate();
 	        
 	        statement.close();
+	        
+	        sqlConn.commit();
 	        releaseConn();
         } catch (SQLException e) {
         	return 1;
@@ -76,11 +79,11 @@ public class userDAO  {
 		
 	}
 	
-	private void releaseConn() {
+	private void releaseConn() throws SQLException{
 		try {
 			DriverManagerConnectionPool.releaseConnection(sqlConn);
 		}catch (SQLException e) {
-			
+			throw e;
 		}
 	}
 	
@@ -99,6 +102,7 @@ public class userDAO  {
 
 	        statement.executeUpdate();
 	        
+	        sqlConn.commit();
 	        statement.close();
 	        releaseConn();
         } catch (SQLException e) {

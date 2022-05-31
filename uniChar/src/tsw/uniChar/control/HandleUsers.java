@@ -49,6 +49,7 @@ public class HandleUsers extends HttpServlet {
         {
             
             String result = null;
+            RequestDispatcher dispatcher = null;
             
             try {
             	String action = (String)request.getParameter("action");
@@ -58,6 +59,12 @@ public class HandleUsers extends HttpServlet {
             	
 			if (action.equals("login")) {
 				response.sendRedirect(loginHandler(request, response));
+				
+				return;
+			}
+			if (action.equals("register")) {
+				dispatcher = getServletContext().getRequestDispatcher(registerHandler(request, response));
+				dispatcher.forward(request, response);
 				
 				return;
 			}
@@ -106,6 +113,34 @@ public class HandleUsers extends HttpServlet {
 			return loginError;
 		} catch (SQLException e) {
 			throw e;
+		}
+	}
+	
+	private String registerHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		String forward = "/registerUser.jsp";
+
+		userDAO uDs = new userDAO();
+		String user = request.getParameter("username");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String surname = request.getParameter("surname");
+		
+		userBean uB = new userBean();
+		uB.setName(name);
+		uB.setSurname(surname);
+		uB.setUser(user);
+		uB.setPassword(password);
+
+		try {
+			uDs.doAddUser(uB);
+
+			request.setAttribute("registerResult", "success");
+
+
+		} catch (SQLException e) {
+			request.setAttribute("registerResult", "error");
+		} finally {
+			return forward;
 		}
 	}
 }
