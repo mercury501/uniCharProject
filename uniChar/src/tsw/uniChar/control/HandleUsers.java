@@ -68,6 +68,13 @@ public class HandleUsers extends HttpServlet {
 				
 				return;
 			}
+			if (action.equals("changePass")) {
+				dispatcher = getServletContext().getRequestDispatcher(changePassHandler(request, response));
+				dispatcher.forward(request, response);
+				
+				return;
+			}
+			
 	
 				
 			} catch (Exception e) {
@@ -139,6 +146,37 @@ public class HandleUsers extends HttpServlet {
 
 		} catch (SQLException e) {
 			request.setAttribute("registerResult", "error");
+		} finally {
+			return forward;
+		}
+	}
+	
+	private String changePassHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+		String forward = "/changePassword.jsp";
+		
+		userDAO uDs = new userDAO();
+		
+		HttpSession currentSession = request.getSession(); // creo una nuova connessione
+		String user = (String) currentSession.getAttribute("user");
+		
+		
+
+		String oldPassword = request.getParameter("oldpass");
+		String newPassword = request.getParameter("newpass");
+		
+		userBean uB = new userBean();
+		uB.setUser(user);
+		uB.setPassword(oldPassword);
+		uB.setNewPassword(newPassword);
+
+		try {
+			uDs.doChangePassword(uB);
+
+			request.setAttribute("result", "success");
+
+
+		} catch (SQLException e) {
+			request.setAttribute("result", "error");
 		} finally {
 			return forward;
 		}

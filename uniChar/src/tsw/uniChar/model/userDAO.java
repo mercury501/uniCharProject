@@ -87,13 +87,16 @@ public class userDAO  {
 		}
 	}
 	
-	public int doChangePassword(userBean user) {
+	public int doChangePassword(userBean user) throws Exception{
 		String sql = "UPDATE USERS "
 				+ " SET PASSWORD = ? "
 				+ " WHERE "
 				+ " USERNAME = ? AND PASSWORD = ? ";
 		
 		try {
+			if (!doCheckPassword(user))
+				throw new Exception();
+			
 	        statement = sqlConn.prepareStatement(sql);
 	        
 	        statement.setString(1, user.getNewPassword());
@@ -105,8 +108,8 @@ public class userDAO  {
 	        sqlConn.commit();
 	        statement.close();
 	        releaseConn();
-        } catch (SQLException e) {
-        	return 1;
+        } catch (Exception e) {
+        	throw e;
         }
 		return 0;
 		
@@ -125,6 +128,7 @@ public class userDAO  {
 
 	        statement.executeUpdate();
 	        
+	        sqlConn.commit();
 	        statement.close();
 	        releaseConn();
         } catch (SQLException e) {
@@ -134,6 +138,34 @@ public class userDAO  {
 		
 	}
 	
+	private boolean doCheckPassword(userBean user) {
+		String pass = "";
+		String sql = "SELECT PASSWORD"
+				+ " FROM USERS "
+				+ "WHERE USERNAME = ?";
+		
+        try {
+	        statement = sqlConn.prepareStatement(sql);
+	        
+	        statement.setString(1, user.getUser());
+	        
+	        ResultSet rs = statement.executeQuery();
+	        
+	        if (rs.next()) 
+	        	pass = rs.getString(1);
+
+	        statement.close();
+	        rs.close();
+	        releaseConn();
+	        
+	        if (pass.equals(user.getPassword()))
+	        	return true;
+	        return false;
+	        
+        } catch (SQLException e) {
+        	return false;
+        }
+	}
 
 
 }
