@@ -1,4 +1,3 @@
-
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("catalog");
 	if(products == null) {		
@@ -25,7 +24,7 @@
 <body>
 
 		<header>
-		  <a href="index.jsp"><img src="images/navbar/logo.png"alt="Logo"width="180"class="logo"></a>
+		 <a href="index.jsp"><img src="images/navbar/logo.png"alt="Logo"width="180"class="logo"></a>
 		  <nav>
 		    <ul class="menu">
 		      <li><a href="#"> Giochi </a></li>
@@ -35,65 +34,58 @@
 		    </ul>
 		 </nav>
 		 <div class="container_pulsanti">
-		  <button onclick="location.href='loginPage.jsp'">Log In</button>
+		  <button>Log In</button>
 		  <button><img class="carrello" src="images/carrello.png"></button>
 		 </div> 
 		</header>
 		
-		
-		
-		
-		
-	<div class="main-carousel" data-flickity='{ "cellAlign": "center", "contain": true }'>
-	
-	  <div class="carousel-cell"><img src="images/products/1.jpg"></div>
-	  <div class="carousel-cell"><img src="images/products/10.jpg"></div>
-	  <div class="carousel-cell"><img src="images/products/9.jpg"></div>
-	  
-	</div>
-		
-<%
-	if (products != null && products.size() != 0) {
-		Iterator<?> it = products.iterator();
-		while (it.hasNext()) {
-			productBean bean = (productBean) it.next();
-%>
-
-
-<tr>
 			
-	<div class="card">
-		
-			 <img src="images/products/<%= bean.getImageOne() %>" alt=" "  > 
-			  <div class="container">
-			    <h4><b><td><%=bean.getTitolo()%></td></b></h4>
-			    <p><td><%=bean.getDescrizione()%></td></p>
-			    <button>Aggiungi al Carrello</button>
-			  </div>
 			
-			</div>
-
+	<main class="container">
 			
-</tr>
-
-<%
-		}
-	} else {
-%>
-<tr>
-	<td colspan="6">No products available</td>
-</tr>
-<%
-	}
-%>
-
-
-
-
-
-
-	
+		<div>
 		
+		 <h1>Qui ci va l'immagine</h1>
+		</div>
+		
+		
+		<div>
+		<h2>Qui ci va l'altra immagine, ma devo trovare il modo per portarla in primo piano rispetto all'altra</h2>
+		</div>
+		
+		
+		<div>
+		
+		</div>
+		
+		
+		
+			
+			
+   </main>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 	        <footer class="footer">
   <div class="footer__addr">
     <img src="images/navbar/logo.png"></h1>

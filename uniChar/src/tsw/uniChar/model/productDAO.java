@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.xdevapi.Statement;
-
 import tsw.uniChar.Beans.productBean;
+
 
 public class productDAO  {
 	private Connection sqlConn = null;
