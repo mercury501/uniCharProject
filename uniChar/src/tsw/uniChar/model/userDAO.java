@@ -51,18 +51,19 @@ public class userDAO  {
 	
 	public int doAddUser(userBean user) throws SQLException{
 		String sql = "INSERT INTO USERS "
-				+ " (NAME, SURNAME, USERNAME, PASSWORD, ROLE) "
+				+ " (NAME, SURNAME, ROLE, USERNAME, PASSWORD, ROLE) "
 				+ " VALUES "
-				+ " (?, ?, ?, ?, ?) ";
+				+ " (?, ?, ?, ?, ?, ?) ";
 		
 		try {
 	        statement = sqlConn.prepareStatement(sql);
 	        
 	        statement.setString(1, user.getName());
 	        statement.setString(2, user.getSurname());
-	        statement.setString(3, user.getUser());
-	        statement.setString(4, user.getPassword());
-	        statement.setString(5, "USER");
+	        statement.setString(3, user.getRole());
+	        statement.setString(4, user.getUser());
+	        statement.setString(5, user.getPassword());
+	        statement.setString(6, "USER");
 	        
 	        
 	        statement.executeUpdate();
