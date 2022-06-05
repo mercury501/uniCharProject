@@ -34,6 +34,7 @@ div.myFs{
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="styleLogin.css">
 <title>Login form</title>
 </head>
 <body>
@@ -47,24 +48,23 @@ if(message == null) {
 
 
 
-<div class="myFs">
-<form method="post" action="connection?action=login" name="HandleLogin">
+			<form method="post" action="connection?action=login" name="HandleLogin">
+				<div class="body"></div>
+		<div class="grad"></div>
+		<div class="header">
+			<div>United<span>Charity</span></div>
+		</div>
+		<br>
 
-<fieldset>
-     <legend>uniChar Login</legend>
-     <label id="lLogin" for="username">Login</label>
-     <input id="username" type="text" name="username" placeholder="enter login"> 
-     <br>   
-     <label for="password">Password</label>
-     <input id="password" type="password" name="password" placeholder="enter password"> 
-     <br>
-     <input type="submit" value="Login"/>
-     <input type="reset" value="Reset"/>
-</fieldset>
-</form> 
-</div>
+		<div class="login">
+				<input type="text" placeholder="username" name="username"><br>
+				<input type="password" placeholder="password" name="password"><br>
+				<input type="submit" value="Login">
+		</div>
+	
+			</form>
 
-<div id="message" class="message"><%= message %></div>
+
 
 <br>
 <br>
