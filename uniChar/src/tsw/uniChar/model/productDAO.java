@@ -60,12 +60,7 @@ public class productDAO  {
 	}
 		
 	public boolean controllaEsistenza(productBean pB)  {
-		
-		
-		
-		
 		String sql = "SELECT COUNT(*) FROM PRODUCTS WHERE ID = ?";
-
 
 		try {
 			statement = sqlConn.prepareStatement(sql);
@@ -109,12 +104,7 @@ public class productDAO  {
 		}
 	}
 	
-	public boolean updateProduct(productBean pB)
-	{
-		
-		
-	
-		
+	public boolean updateProduct(productBean pB) {
 		String sql = "UPDATE PRODUCTS SET PRICE = ?, DESCR = ?, TITLE = ?, DEVELOPER = ?, IMG_PATH_ONE = ?, IMG_PATH_TWO = ?, IMG_PATH_THREE = ? WHERE ID = ? ";
 		
 		try {
@@ -143,9 +133,7 @@ public class productDAO  {
 		}
 	}
 	
-	public boolean deleteProduct(int id)
-	{
-		
+	public boolean deleteProduct(int id){
 		String sql = "DELETE FROM PRODUCTS  WHERE ID = ?";
 		try {
 			statement = sqlConn.prepareStatement(sql);
@@ -183,7 +171,7 @@ public class productDAO  {
 			
 			ResultSet rs = statement.executeQuery();
 		
-			while(rs.next()==true)
+			while(rs.next())
 			
 			pB = new productBean(rs.getInt(1), rs.getFloat(2), rs.getString(3), rs.getString(4),
 					rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
@@ -194,7 +182,6 @@ public class productDAO  {
 		}finally {
 			return pB;
 		}
-		
 		
 	}
 	
@@ -286,11 +273,29 @@ public class productDAO  {
 		return products;
 		
 	}
-	
-	
-	
-	
-	
+		
+	public int getStock(int id) {;
+		int result = 0;
+		
+		String sql = "SELECT STOCK " 
+				+ " FROM PRODUCTS WHERE ID = ?";
+		
+		try {
+			statement = sqlConn.prepareStatement(sql);
+			statement.setInt(1,id);
+			
+			ResultSet rs = statement.executeQuery();
+		
+			if(rs.next())			
+				result = rs.getInt(1);
+		
+		}catch (SQLException e) {
+			
+		}finally {
+			return result;
+		}
+		
+	}
 	
 	private void releaseConn() {
 		try {
