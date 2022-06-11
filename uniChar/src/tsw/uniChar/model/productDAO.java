@@ -260,10 +260,50 @@ public class productDAO  {
 				products.add(p);
 		
 			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return products;
+		
+	}
+	
+	public List<productBean> searchProducts(String searchTerm)
+	{
+		List<productBean> products  = new ArrayList<>();
+		
+		try {
+			String sql = "SELECT * FROM PRODUCTS"
+					   + " WHERE TITLE LIKE ? ";
 			
+			statement = sqlConn.prepareStatement(sql);
 			
+			statement.setString(1, "%" + searchTerm + "%");
 			
+			ResultSet resultset = statement.executeQuery(sql);
 			
+			while(resultset.next())
+			{
+				productBean p = new productBean(
+				
+				resultset.getInt("ID"),
+				resultset.getFloat("PRICE"),
+				resultset.getString("DESCR"),
+				resultset.getString("TITLE"),
+				resultset.getString("DEVELOPER"),
+				resultset.getString("IMG_PATH_ONE"),
+				resultset.getString("IMG_PATH_TWO"),
+				resultset.getString("IMG_PATH_THREE")
+					
+			);
+				
+				products.add(p);
+		
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
