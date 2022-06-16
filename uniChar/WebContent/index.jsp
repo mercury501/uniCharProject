@@ -104,7 +104,6 @@
 			    <p><%=bean.getDescrizione()%></td></p>
 			    <div class="shop-zone">
 			    <p class="price">Prezzo stimato:<br>&euro;<%=bean.getPrezzo()%></p>
-			 	
 			    <button class="btn_card"><img class="add-cart-button"src="images/navbar/cart-button.png"></button>
 			  </div>
 			</div>
