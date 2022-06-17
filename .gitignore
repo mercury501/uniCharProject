@@ -3,3 +3,7 @@ uniChar/.settings/
 .idea/
 /.metadata/
 Servers/
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
