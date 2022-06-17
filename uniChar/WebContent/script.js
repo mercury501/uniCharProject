@@ -1,22 +1,22 @@
-var searchIcon = document.querySelector('.fa-search');
+/*Dettagli prodotto js*/
+const allHoverImages = document.querySelectorAll('.hover-container div img');
+const imgContainer = document.querySelector('.img-container');
 
-var closeIcon = document.querySelector('.fa-times');
+window.addEventListener('DOMContentLoaded', () => {
+    allHoverImages[0].parentElement.classList.add('active');
+});
 
-var search = document.getElementById('search');
+allHoverImages.forEach((image) => {
+    image.addEventListener('mouseover', () =>{
+        imgContainer.querySelector('img').src = image.src;
+        resetActiveImg();
+        image.parentElement.classList.add('active');
+    });
+});
 
-
-searchIcon.onclick = () =>{
-    search.classList.add('expand');
+function resetActiveImg(){
+    allHoverImages.forEach((img) => {
+        img.parentElement.classList.remove('active');
+    });
 }
-
-closeIcon.onclick = () =>{
-    search.classList.remove('expand');
-}
-
-
-var button = document.querySelector('button');
-var menu = document.querySelector('.menu');
-button.onclick = () =>{
-    menu.classList.toggle('expand-mobile');
-    button.classList.toggle('expand-icon');
-}
+/*Fine Dettagli prodotto js*/

@@ -40,142 +40,56 @@
 		</header>
 		
 			
-			
-	<main class="container">
-			
-		<div>
-		
-		 <h1>Qui ci va l'immagine</h1>
-		</div>
-		
-		
-		<div>
-		<h2>Qui ci va l'altra immagine, ma devo trovare il modo per portarla in primo piano rispetto all'altra</h2>
-		</div>
-		
-		
-		<div>
-		
-		</div>
-		
-		
-		
-			
-			
-   </main>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-	        <footer class="footer">
-  <div class="footer__addr">
-    <img src="images/navbar/logo.png"></h1>
-        
-    <h2>Contact</h2>
-    
-    <address>
-      5534 Somewhere In. The World 22193-10212<br>
-          
-      <a class="footer__btn" href="mailto:example@gmail.com">Email Us</a>
-    </address>
-  </div>
-  
-  <ul class="footer__nav">
-    <li class="nav__item">
-      <h2 class="nav__title">Media</h2>
+            <!--Dettaglio prodotto-->
+      <main>
+        <div class="main-wrapper">
+          <div class="container">
+            <div class="product-div">
+              <div class="product-div-left">
+                <div class="img-container">
+                  <img src="images/products/<%= bean.getImageOne() %>" alt="Mgsolid">
+                </div>
 
-      <ul class="nav__ul">
-        <li>
-          <a href="#">Online</a>
-        </li>
+                <div class="hover-container">
+                  <div>
+                    <img src="images/products/<%= bean.getImageOne() %>">
+                  </div>
 
-        <li>
-          <a href="#">Print</a>
-        </li>
-            
-        <li>
-          <a href="#">Alternative Ads</a>
-        </li>
-      </ul>
-    </li>
-    
-    <li class="nav__item nav__item--extra">
-      <h2 class="nav__title">Technology</h2>
-      
-      <ul class="nav__ul nav__ul--extra">
-        <li>
-          <a href="#">Hardware Design</a>
-        </li>
-        
-        <li>
-          <a href="#">Software Design</a>
-        </li>
-        
-        <li>
-          <a href="#">Digital Signage</a>
-        </li>
-        
-        <li>
-          <a href="#">Automation</a>
-        </li>
-        
-        <li>
-          <a href="#">Artificial Intelligence</a>
-        </li>
-        
-        <li>
-          <a href="#">IoT</a>
-        </li>
-      </ul>
-    </li>
-    
-    <li class="nav__item">
-      <h2 class="nav__title">Legal</h2>
-      
-      <ul class="nav__ul">
-        <li>
-          <a href="#">Privacy Policy</a>
-        </li>
-        
-        <li>
-          <a href="#">Terms of Use</a>
-        </li>
-        
-        <li>
-          <a href="#">Sitemap</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-  
-  <div class="legal">
-    <p>&copy; 2019 Something. All rights reserved.</p>
-    
-    <div class="legal__links">
-      <span>Made with <span class="heart">♥</span>
-    </div>
-  </div>
-</footer>
+                  <div>
+                    <img src="images/products/<%= bean.getImageTwo() %>">
+                  </div>
+
+                  <div>
+                    <img src="images/products/<%= bean.getImageThree() %>">
+                  </div>
 
 
+                </div>
+              </div>
+
+              <div class="product-div-right">
+                  <span class="product-name"><%=bean.getTitolo()%></span>
+                  <span class="product-price"><%=bean.getPrezzo()%></span>
+                  <p class="product-description"><%=bean.getDescrizione()%></p>
+                  <div class="btn-groups">
+                    <button type="button" class="add-cart-btn">
+                    <i class="fas fa-shopping-cart"> Aggiungi al carrello</i>
+                    </button>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+
+        
+			</main>
+
+			<!--Fine Dettaglio prodotto-->
+			
+			
+		<jsp:include page="footer.html" />
+	       
+<script src="script.js"></script>
 </body>
 </html>
