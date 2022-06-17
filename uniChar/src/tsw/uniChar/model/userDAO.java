@@ -35,9 +35,9 @@ public class userDAO  {
 	        statement.setString(2, user.getPassword());
 	        
 	        ResultSet rs = statement.executeQuery();
-	        
+        
 	        if (rs.next()) 
-	        	uB = new userBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), user.getUser(), "");
+	        	uB = new userBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), user.getUser(), "", "");
 	        
 	        statement.close();
 	        rs.close();
@@ -51,7 +51,7 @@ public class userDAO  {
 	
 	public int doAddUser(userBean user) throws SQLException{
 		String sql = "INSERT INTO USERS "
-				+ " (NAME, SURNAME, ROLE, USERNAME, PASSWORD, ROLE) "
+				+ " (NAME, SURNAME, USERNAME, PASSWORD, ROLE, EMAIL) "
 				+ " VALUES "
 				+ " (?, ?, ?, ?, ?, ?) ";
 		
@@ -60,16 +60,14 @@ public class userDAO  {
 	        
 	        statement.setString(1, user.getName());
 	        statement.setString(2, user.getSurname());
-	        statement.setString(3, user.getRole());
-	        statement.setString(4, user.getUser());
-	        statement.setString(5, user.getPassword());
-	        statement.setString(6, "USER");
-	        
-	        
+	        statement.setString(3, user.getUser());
+	        statement.setString(4, user.getPassword());
+	        statement.setString(5, "USER");
+	        statement.setString(6, user.getEmail());
+		        
 	        statement.executeUpdate();
 	        
-	        statement.close();
-	        
+	        statement.close();  
 	        sqlConn.commit();
 	        releaseConn();
         } catch (SQLException e) {
