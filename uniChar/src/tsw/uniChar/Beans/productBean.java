@@ -16,9 +16,10 @@ public class productBean implements Serializable{
 	private String imageOne = "";
 	private String imageTwo = "";
 	private String imageThree = "";
+	private float discountPerc = 0;
 
 
-	public productBean(int id, float prezzo, String descrizione, String titolo, String sviluppatore, String imageOne, String imageTwo, String imageThree) {
+	public productBean(int id, float prezzo, String descrizione, String titolo, String sviluppatore, String imageOne, String imageTwo, String imageThree, float discountPerc) {
 		this.id = id;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
@@ -27,6 +28,7 @@ public class productBean implements Serializable{
 		this.imageOne = imageOne;
 		this.imageTwo = imageTwo;
 		this.imageThree = imageThree;
+		this.discountPerc = discountPerc;
 	}
 
 	public productBean() {
@@ -97,7 +99,13 @@ public class productBean implements Serializable{
 		this.imageThree = imageThree;
 	}
 
-
+	public void setDiscountPerc(float discountPerc) {
+		this.discountPerc = discountPerc;
+	}
+	
+	public float getDiscountPerc() {
+		return this.discountPerc;
+	}
 	
 	
 	
