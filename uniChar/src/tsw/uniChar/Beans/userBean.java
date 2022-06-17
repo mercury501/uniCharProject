@@ -10,7 +10,6 @@ public class userBean implements Serializable {
 	String user = "";
 	String password = "";
 	String newPassword = "";
-	String email = "";
 
 
     public userBean() {
@@ -22,14 +21,13 @@ public class userBean implements Serializable {
     	this.password = password;
     }
     
-    public userBean(int id, String name, String surname, String role, String user, String password, String email) {
+    public userBean(int id, String name, String surname, String role, String user, String password) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.role = role;
         this.user = user;
         this.password = password;
-        this.email = email;
     }
 
 
@@ -87,14 +85,6 @@ public class userBean implements Serializable {
 
     public String getNewPassword() {
     	return this.newPassword;
-    }
-    
-    public String getEmail() {
-    	return this.email;
-    }
-    
-    public void setEmail(String email) {
-    	this.email = email;
     }
     
 }
