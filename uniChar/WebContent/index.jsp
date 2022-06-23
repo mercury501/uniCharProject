@@ -53,6 +53,54 @@
 	</div>
 		
 <%
+<div class="entry">
+  <div class="entry_u">UNITED</div>
+    <div class="entry_c">CHARITY</div>
+    </div>
+    <div class="main">
+        
+     <%@ include file="navbar.html" %>   
+
+        <div class="content reveal">
+            <h1> Game & <br><span>Charity</span> <br> Shop</h1>
+            <p class="par">Acquista dal nostro shop i giochi più amati.<br>
+                Gioca con i tuoi amici, gioca con noi. <br> 
+                Scoprirai che il gioco più bello è aiutare perchè <br>
+
+                <span class="text-important">  UNITI SI FA LA DIFFERENZA </span>
+            </p>
+            
+
+            <button class="cn"><a href="#">SHOP NOW</a></button>
+
+
+
+		<div class="form reveal">
+			<form method="post" action="connection?action=login" name="HandleUsers">
+           		 
+                <h2>Login Here</h2>
+                <input type="text"  name="username"placeholder="Enter Username Here"> 
+                <input type="password" name ="password" placeholder="Enter Password Here"> 
+                <button type="submit" class="btnn">Login</button>
+			</form>
+			
+			
+                <p class="link">Don't have an account<br>
+        		<a href="registerUser.jsp">Sign up  </a> here 
+        		
+        		</p>
+           
+       
+            </div>
+        </div>
+        
+       </div>
+       
+       
+       <div class="card_container">
+        <h1>Sconti in evidenza</h1>
+        <hr>
+            <%
 	if (products != null && products.size() != 0) {
 		Iterator<?> it = products.iterator();
 		while (it.hasNext()) {
@@ -69,6 +117,13 @@
 			    <h4><b><td><%=bean.getTitolo()%></td></b></h4>
 			    <p><td><%=bean.getDescrizione()%></td></p>
 			    <button>Aggiungi al Carrello</button>
+			 <img class="product-image" src="images/products/<%= bean.getImageOne().toLowerCase() %>" alt=" "  > 
+			  <div class="container">
+			    <h4><b><%=bean.getTitolo()%></b></h4>
+			    <p><%=bean.getDescrizione()%></p>
+			    <div class="shop-zone">
+			    <p class="price">Prezzo stimato:<br>&euro;<%=bean.getPrezzo()%></p>
+			    <button class="btn_card"><img class="add-cart-button"src="images/navbar/cart-button.png"></button>
 			  </div>
 			
 			</div>
