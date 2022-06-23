@@ -108,8 +108,10 @@ public class HandleUsers extends HttpServlet {
 				HttpSession currentSession = request.getSession(); // creo una nuova connessione
 				currentSession.setAttribute("user", user);
 				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattività massima
+				
+				System.out.print(uB.getRole());
 
-				if (uB.getRole().equals("admin")) {
+				if (uB.getRole().equals("ADMIN")) {
 					return adminPage;
 				} else {
 					return forward;

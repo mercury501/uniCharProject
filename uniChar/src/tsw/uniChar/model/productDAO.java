@@ -367,6 +367,7 @@ public class productDAO {
 		}
 
 	}
+	
 
 	private void releaseConn() {
 		try {
