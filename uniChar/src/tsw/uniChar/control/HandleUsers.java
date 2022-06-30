@@ -86,7 +86,7 @@ public class HandleUsers extends HttpServlet {
           }
     
 	private String loginHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		String forward = "userLogged.jsp";
+		String forward = "index";
 		String loginError = "invalidLogin.html";
 		String adminPage = "admin.jsp";
 
