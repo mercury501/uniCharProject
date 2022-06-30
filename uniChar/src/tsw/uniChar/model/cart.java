@@ -42,7 +42,6 @@ public class cart {
 			updateQuantity(id, quantity);
 	}
 	
-	
 	private void insertProduct(int id, int quantity) {
 		this.quantity.put(id, quantity);
 		this.products.put(id, pD.getProduct(id));
