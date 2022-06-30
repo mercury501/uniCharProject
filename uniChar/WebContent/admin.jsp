@@ -20,21 +20,13 @@
 <!DOCTYPE html>
 <html>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" import="java.util.*,tsw.uniChar.Beans.productBean"%>
-<head>
-<style>
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style-dashboard.css">
+    <title>Admin Dashboard</title>
  
  
- 
- 
-#message{
-	display: block;
-    text-align: left;
-    padding-top:50px;
-}
- 
-</style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>admin page</title>
 </head>
 <body>
  
@@ -54,80 +46,203 @@ else{
  
  
 %>
- 
-<!-- TODO handle return requests -->
- 
- <h3>Salve ${user}</h3>
-<br>
- 
-<div>
-	<form method="post" action="product?action=search" name="SearchProduct">
-	  <fieldset>
-        <legend>Search by ID</legend>
-		<input type="text" id="SearchID" name="SearchID"  placeholder="Search...">
-		<input type="submit" value="Search"/>
-		<br>	
-	  </fieldset>
- 
-	 </form>
- 
-</div>
- 
- 
-<div class="myInsert">
-    <form method="post" action="product?action=insert" name="InsertProduct">
- 
-    <fieldset>
-         <legend>Insert New Product</legend>
-         <label id="lId" for="id">ID</label>
-         <input id="id" type="text" name="id" placeholder="inserisci ID" readonly="readonly" value="<%=product.getId()%>" > 
-         <br>
-         <label id="lTitle" for="title">Titolo</label>
-         <input id="title" type="text" name="title" placeholder="inserisci titolo" value="<%=product.getTitolo()%>" > 
-         <br>   
-         <label id="lDeveloper" for="developer">Sviluppatore</label>
-         <input id="developer" type="text" name="developer" placeholder="inserisci sviluppatore"value="<%=product.getSviluppatore()%>"> 
-         <br>
-         <label id="lDescription" for="desc">Descrizione</label>
-         <input id="desc" type="text" name="desc" placeholder="inserisci descrizione"value="<%=product.getDescrizione()%>"> 
-         <br>
-         <label id="lPrice" for="price">Prezzo</label>
-         <input id="price" type="text" name="price" placeholder="inserisci prezzo"value="<%=product.getPrezzo()%>"> 
-         <br>
-         <label id="lImgPathOne" for="imgpathone">Percorso Immagine Uno</label>
-         <input id="imgpathone" type="text" name="imgpathone" placeholder="inserisci percorso"value="<%=product.getImageOne()%>"> 
-         <br>
-         <label id="lImgPathTwo" for="imgpathtwo">Percorso Immagine Due</label>
-         <input id="imgpathtwo" type="text" name="imgpathtwo" placeholder="inserisci percorso">
-         <img src="images/<%= product.getImageOne() %>" alt=" " style="width:50px;height:50px;" > 
-         <br>
-         <label id="lImgPathThree" for="imgpaththree">Percorso Immagine Tre</label>
-         <input id="imgpaththree" type="text" name="imgpaththree" placeholder="inserisci percorso"value="<%=product.getImageThree()%>"> 
-         <input type="submit" value="Inserisci"/>
-         <input type="reset" value="Reset"/>
-         <input type="submit" value="Elimina"/>
-         
-    </fieldset>
-    </form> 
-    
-    
-     	
-    	<form method="post" action="product?action=delete" name="DeleteProduct">
-    	<fieldset>
-    	<legend>Do you want to delete a product? </legend>
-    	<input type="submit"  value="Elimina"/>
-    	
-    </fieldset>
-    	</form>
-    	
+
+ <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="laptop-outline"></ion-icon></span>
+                        <span class="title">United Charity</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                        <span class="title">Utenti</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" onClick="logOut()">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Sign out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- main -->
+
+        <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+        
+            <div class="search">
+                <label>
+                    <input type="text" placeholder="Search Here">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+                
+            </div>
+
+            <!-- user Image -->
+            <div class="user">
+                <img src="images/users/user.jpg">
+            </div>
+        </div>
+
+        <!-- order details list -->
+        <div class="details">
+            <div class="recentOrders">
+                <div class="cardHeader">
+                    <h2> Ordini Recenti</h2>
+                    <a href="#" class="btn"> Vedi tutto</a>
+
+                </div>
+
+                <table>
+                   <thead>
+                       <tr>
+                           <td>ID</td>
+                           <td>Nome</td>
+                           <td>Prezzo</td>
+                           <td>Quantità</td>
+                           <td>Data </td>
+                           <td>Stato</td>
+                           
+
+                       </tr>
+
+                   </thead>
+
+                   <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Succhiamelo</td>
+                            <td>50 &euro;</td>
+                            <td>5</td>
+                            <td>10 Agosto </td>
+                            <td><span class="status delivered">Pagato</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Succhiacelo</td>
+                            <td>100 &euro;</td>
+                            <td>90</td>
+                             <td>10 Agosto </td>
+                            <td><span class="status delivered">Pagato</span></td>
+                        </tr>
+
+                   </tbody>
+
+                </table>
+            </div>
+
+            <!-- Clienti-->
+
+            <div class="recentCustomers">
+                <div class="cardHeader">
+                    <h2>Clienti Recenti</h2>
+                </div>  
+
+                <table>
+                    <tr>
+                        <td width="60px">
+
+                            <div class="imgB">
+                               <img src="images/users/gerardo.jpeg" alt="">
+                            </div>
+                        </td>
+
+                        <td>
+                            <h4>Gerardo <br><span>Italia</span></h4>
+                        </td>
+                    </tr>
+                    
+                <tr>
+                     <td width="60px">
+                        <div class="imgB">
+                            <img src="images/users/luca.jpeg" alt="">
+                         </div>
+
+                    </td>
+
+                         <td>
+                            <h4>Luca <br><span>Italia</span></h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        </div>
+
+
     </div>
- 
- 
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+
+<script>
+
+    //Menu Toggle
+    let toggle = document.querySelector('.toggle');
+    let navigation = document.querySelector('.navigation');
+    let main = document.querySelector('.main');
+
+
+    toggle.onclick = function(){
+        navigation.classList.toggle('active');
+        main.classList.toggle('active');
+    }
+
+    //Fine Menu Toggle
+
+    function logOut(){
+       let result = window.confirm("Vuoi effettuare il logout?");
+        
+       if(result)
+        location.href='index.jsp';
+    }
+
+
+    let list = document.querySelectorAll('.navigation li');
+    
+    function activeLink(){
+        list.forEach((item)=>
+        item.classList.remove('hovered'));
+        this.classList.add('hovered')
+    }
+
+    list.forEach((item)=>
+        item.addEventListener('mousehover', activeLink)
+    );
+    
+</script>
+
+
+
 </body>
 </html>
+
+ 

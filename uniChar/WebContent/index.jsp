@@ -1,4 +1,4 @@
-
+ 
 
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("catalog");
@@ -21,7 +21,7 @@
 
 
     <title>United Charity</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 <div class="entry">
@@ -91,7 +91,7 @@
 			    <p><%=bean.getDescrizione()%></p>
 			    <div class="shop-zone">
 			    <p class="price">Prezzo stimato:<br>&euro;<%=bean.getPrezzo()%></p>
-			    <button class="btn_card"><img class="add-cart-button"src="images/navbar/cart-button.png"></button>
+			    <a href="/cart?action=add&id=<%=bean.getId()%>&quantity=1" ><button class="btn_card"><img class="add-cart-button"src="images/navbar/cart-button.png"></button></a>
 			  </div>
 			</div>
 			</div>
@@ -104,8 +104,8 @@
 	} else {
 %>
 
-	<td colspan="6">No products available</td>
-</tr>
+	No products available
+
 <%
 	}
 %>

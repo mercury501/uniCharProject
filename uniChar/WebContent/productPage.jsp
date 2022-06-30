@@ -1,9 +1,12 @@
+
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("catalog");
 	if(products == null) {		
 		response.sendRedirect("./index");	
 		return;
 	}
+	
+	productBean bean = new productBean();
 	
 
 %>
@@ -93,3 +96,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+

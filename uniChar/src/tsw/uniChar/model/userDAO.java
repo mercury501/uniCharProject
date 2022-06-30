@@ -26,7 +26,7 @@ public class userDAO  {
 		userBean uB = new userBean();
 		String sql = "SELECT ID, NAME, SURNAME, ROLE"
 				+ " FROM USERS "
-				+ "WHERE USERNAME = ? AND PASSWORD = ?";
+				+ "WHERE BINARY USERNAME = ? AND BINARY PASSWORD = ?";
 		
         try {
 	        statement = sqlConn.prepareStatement(sql);

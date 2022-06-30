@@ -17,7 +17,7 @@
 
 
 <%
-String isLogged = (String) request.getAttribute("username");
+ String isLogged = (String) request.getAttribute("username");
 if (isLogged == null)
     response.sendRedirect("loginPage.jsp");
 
