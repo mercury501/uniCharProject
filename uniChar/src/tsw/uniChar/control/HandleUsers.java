@@ -107,6 +107,7 @@ public class HandleUsers extends HttpServlet {
 
 				HttpSession currentSession = request.getSession(); // creo una nuova connessione
 				currentSession.setAttribute("user", user);
+				currentSession.setAttribute("userid", uB.getId());
 				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattività massima
 				
 				System.out.print(uB.getRole());
