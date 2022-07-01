@@ -1,20 +1,20 @@
-package tsw.uniChar.model;
+package tsw.uniChar.Beans;
 
 
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import tsw.uniChar.Beans.productBean;
+import tsw.uniChar.model.productDAO;
 
-public class cart {
-
+public class cartBean implements Serializable {
 	private productDAO pD = new productDAO();
 	
 	private Map<Integer, Integer> quantity = new HashMap<>();
 	private Map<Integer, productBean> products = new HashMap<>();
 	
-	public cart() {
+	public cartBean() {
 		
 	}
 	
@@ -57,5 +57,13 @@ public class cart {
 	
 	public int getCartSize() {
 		return products.size();
+	}
+	
+	public Map<Integer, productBean> getProducts(){
+		return this.products;
+	}
+	
+	public Map <Integer, Integer> getQuantities(){
+		return this.quantity;
 	}
 }

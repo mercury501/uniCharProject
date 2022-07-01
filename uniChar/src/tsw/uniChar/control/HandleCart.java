@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tsw.uniChar.model.cart;
+import tsw.uniChar.Beans.cartBean;
+import tsw.uniChar.Beans.orderBean;
+import tsw.uniChar.model.orderDAO;
 import tsw.uniChar.model.productDAO;
 
 /**
@@ -34,11 +36,14 @@ public class HandleCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "/cart.jsp";
 		
+		Integer id, quantity;
+		
+		/*
 		//trappiamo gli utenti non loggati
 		if (request.getSession().getAttribute("user") == null) {
 			response.sendRedirect("/loginPage.jsp");
 			return;
-		}
+		}*/
 			
 		
 		String action = (String)request.getParameter("action");
@@ -46,14 +51,18 @@ public class HandleCart extends HttpServlet {
 		if (action == null)
 			action = (String)request.getAttribute("action");
 		
-		cart carrello = (cart) request.getSession().getAttribute("cart");
+		cartBean carrello = (cartBean) request.getSession().getAttribute("cart");
 		
 		if (carrello == null) 
-			carrello = new cart();
+			carrello = new cartBean();
+		try {
+		id = Integer.parseInt(request.getParameter("id"));
+		quantity = Integer.parseInt(request.getParameter("quantity"));
+		} catch (Exception e) {
+			id = -1;
+			quantity = -1;
+		}
 		
-		Integer id = Integer.parseInt(request.getParameter("id"));
-		Integer quantity = Integer.parseInt(request.getParameter("quantity"));
-
 		try {
 			if (action.equals("remove")) {
 				carrello.remove(id);
@@ -65,9 +74,20 @@ public class HandleCart extends HttpServlet {
 			if (action.equals("modify")) {
 				carrello.setQuantity(id, quantity);
 			}
+			if (action.equals("order")) {
+				orderDAO oD = new orderDAO();
+				orderBean oB = new orderBean();
+				
+				oB.setCart(carrello);
+				//oB.setUserID((int)request.getSession().getAttribute("userid"));
+				oB.setUserID(1); //TODO debug
+				oD.insertOrder(oB);
+				
+				carrello = new cartBean();
+			}
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace(System.out);
 		}
 		
 		request.getSession().removeAttribute("cart");
