@@ -6,6 +6,10 @@
 		response.sendRedirect("./index");
 		return;
 	}
+	
+	
+	Integer userID = (Integer)session.getAttribute("userid");
+	String utente = (String)session.getAttribute("user");
 
 
 %>
@@ -45,7 +49,10 @@
             <button class="cn"><a href="#">SHOP NOW</a></button>
 
 
-
+		<%
+			if(userID == null){
+		
+		%>
 		<div class="form reveal">
 			<form method="post" action="connection?action=login" name="HandleUsers">
 
@@ -67,6 +74,15 @@
 
        </div>
 
+<%
+} 
+			else{
+				%>
+				
+				<h2>Benvenuto <%=utente %></h2>
+			<%
+			}
+%>
 
 			 
 
@@ -91,7 +107,7 @@
 			    <p><%=bean.getDescrizione()%></p>
 			    <div class="shop-zone">
 			    <p class="price">Prezzo stimato:<br>&euro;<%=bean.getPrezzo()%></p>
-			    <a href="/cart?action=add&id=<%=bean.getId()%>&quantity=1" ><button class="btn_card"><img class="add-cart-button"src="images/navbar/cart-button.png"></button></a>
+			    <a href="cart?action=add&id=<%=bean.getId()%>&quantity=1" ><button class="btn_card"><img class="add-cart-button"src="images/navbar/cart-button.png"></button></a>
 			  </div>
 			</div>
 			</div>
