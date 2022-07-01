@@ -112,7 +112,7 @@ public class HandleUsers extends HttpServlet {
 				
 				System.out.print(uB.getRole());
 
-				if (uB.getRole().equals("ADMIN")) {
+				if (uB.getRole().equals("admin")) {
 					return adminPage;
 				} else {
 					return forward;
