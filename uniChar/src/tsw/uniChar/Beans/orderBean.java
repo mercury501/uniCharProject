@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class orderBean implements Serializable{
 	private int userId = 0;
 	private int orderId = 0;
-	private int productIds = 0;
+	private int productId = 0;
 	private String purchaseDate = "";
 	private int quantity = 0;
 	private String orderStatus = "";
