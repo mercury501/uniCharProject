@@ -5,17 +5,11 @@
 
 body{
 
-	background-color: white;
-	z-index: 90;
+	background-color: rgb(48,31,84);
 	animation-name: body_section;
 	animation-duration: 10s;
 }
 
-@keyframes body_section{
-	
-	from{ overflow-y: hidden;}
-	to{ overflow-y: auto;z-index: 1;}
-}
 
 .main{
     width: 100%;
@@ -23,85 +17,13 @@ body{
     background-position: center;
     background-size: cover;
     height: 100vh;
+
 }
 
 .navbar{
     width: 1200px;
     height: 75px;
     margin: auto;
-}
-
-.entry{
-	opacity: 0;
-	color: #ff7200;
-    font-size: 100px;
-    font-family: Garamond;
-    float:left;
-    padding: 20% 0;
-    text-align: center;
-	z-index: 90;
-	background-color: rgba(39,26,58,1);
-	width: 0;
-	height: 0;
-	position: absolute;
-	
-	
-	animation-name: entry_none;
-	animation-duration: 3s;
-	animation-timing-function: linear;
-	
-	
-}
-
-.entry_u, .entry_c{
-	
-	position:absolute;
-
-}
-
-.entry_u{
-
-	left: 20%;
-	animation-name: move_u;
-	animation-duration: 2s;
-	animation-delay: 1.3s;
-	animation-timing-function: ease-in;
-
-}
-
-.entry_c{
-
-	right: 20%;
-	animation-name: move_c;
-	animation-duration: 2s;
-	animation-delay: 1.3s;
-	animation-timing-function: ease-in;
-
-}
-
-.entry_u::first-letter{
-	font-size: 120px;
-}
-.entry_c::first-letter{
-	font-size: 120px;
-}
-
-@keyframes move_u {
-  from {transform: translateX(0); }
-  to {transform: translateX(-1000%); }
-}
-
-@keyframes move_c{
-	from {transform: translateX(0);}
-  to {transform: translateX(+1000%);}
-
-}
-
-@keyframes entry_none{
-	
-	0%{opacity:1; display:block; width: 100vw; height: 100vh; }
-	90%{opacity:1; display:block; width: 100vw; height: 100vh; }
-	100%{opacity:0; display:none;}
 }
 
 
@@ -218,7 +140,7 @@ ul li a:hover{
 
 .content{
     width: 1200px;
-    height: auto;
+    height: 100%;
     margin: auto;
     color: #fff;
     position:relative;
@@ -238,6 +160,7 @@ ul li a:hover{
     padding-left: 20px;
     margin-top: 9%;
     letter-spacing: 2px;
+   
 }
 
 .content .text-important{
@@ -282,8 +205,7 @@ ul li a:hover{
 .form{
     width: 250px;
     height: 380px;
-    background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.8));
-    opacity: 0.8;
+    background: linear-gradient(to top, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
     position: absolute;
     top: 15px;
     left: 870px;
@@ -368,10 +290,11 @@ ul li a:hover{
 
 
 
+
 .card_container > h1{
 	font-weight: normal;
-	margin-top: 40px;
 	text-align: center;
+	color:white;
 }
 
 hr
@@ -388,7 +311,7 @@ hr
   width: 20%;
   display: inline-block;
   padding: 35px 20px;
-  color: black;
+  color: white;
   margin: 35px 5px;
   width: 300px;
   height:320px;
@@ -401,15 +324,12 @@ hr
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
 
-}
-
-
-
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 16px;
 
 }
+
+
+
+
 
 .shop-zone{
 	

@@ -36,7 +36,7 @@ public class HandleCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "/cart.jsp";
 		
-		Integer id, quantity;
+		Integer id=-1, quantity=-1;
 		
 		/*
 		//trappiamo gli utenti non loggati
@@ -59,8 +59,7 @@ public class HandleCart extends HttpServlet {
 		id = Integer.parseInt(request.getParameter("id"));
 		quantity = Integer.parseInt(request.getParameter("quantity"));
 		} catch (Exception e) {
-			id = -1;
-			quantity = -1;
+		
 		}
 		
 		try {

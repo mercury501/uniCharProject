@@ -25,6 +25,7 @@ public class cartBean implements Serializable {
 	public void remove(int id) {
 		quantity.remove(id);
 		products.remove(id);
+		System.out.print(getQuantities());
 	}
 	
 	public productBean getProduct(int id) {

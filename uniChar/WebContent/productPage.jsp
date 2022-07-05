@@ -26,21 +26,6 @@
 </head>
 <body>
 
-		<header>
-		 <a href="index.jsp"><img src="images/navbar/logo.png"alt="Logo"width="180"class="logo"></a>
-		  <nav>
-		    <ul class="menu">
-		      <li><a href="#"> Giochi </a></li>
-		      <li><a href="#"> Novità </a></li>
-		      <li><a href="#"> Supporto </a></li>
-		      <li><a href="#"> La nostra missione </a></li>
-		    </ul>
-		 </nav>
-		 <div class="container_pulsanti">
-		  <button>Log In</button>
-		  <button><img class="carrello" src="images/carrello.png"></button>
-		 </div> 
-		</header>
 		
 			
             <!--Dettaglio prodotto-->
