@@ -223,6 +223,56 @@ public class productDAO {
 		}
 
 	}
+	
+	public List<productBean> getDiscountedProducts(int number, int discount) {
+		List<productBean> pB = null;
+		int count = 0;
+
+		String sql = sqlSelect;
+		
+		sql = sql + " WHERE DISCOUNT_PERC > ? ";
+
+		String sqlCount = "SELECT COUNT (*) FROM (" + sql + ")";
+
+		try {
+			statement = sqlConn.prepareStatement(sql);
+			statement.setInt(1, number);
+			statement.setInt(2, discount);
+
+			countStatement = sqlConn.prepareStatement(sqlCount);
+			countStatement.setInt(1, number);
+			statement.setInt(2, discount);
+
+			ResultSet rsCount = countStatement.executeQuery();
+
+			if (rsCount.getInt(1) == 0)
+				return new ArrayList<productBean>();
+
+			ResultSet rs = statement.executeQuery();
+
+			pB = new ArrayList<productBean>();
+
+			while (rs.next()) {
+				pB.add(newProduct(rs));
+
+				count++;
+
+			}
+
+			statement.close();
+			countStatement.close();
+			
+			rs.close();
+			rsCount.close();
+
+		} catch (SQLException e) {
+
+		} finally {
+			releaseConn();
+			return pB;
+		}
+
+	}
 
 	public List<productBean> getProducts(int number, String ordine) {
 		List<productBean> pB = null;
