@@ -1,4 +1,4 @@
- 
+
 
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("catalog");
@@ -27,11 +27,10 @@
     <title>United Charity</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
+
+
 <body>
-<div class="entry">
-  <div class="entry_u">UNITED</div>
-    <div class="entry_c">CHARITY</div>
-    </div>
+
     <div class="main">
 
      <%@ include file="navbar.html" %>
@@ -56,15 +55,15 @@
 		<div class="form reveal">
 			<form method="post" action="connection?action=login" name="HandleUsers">
 
-                <h2>Login Here</h2>
-                <input type="text"  name="username"placeholder="Enter Username Here">
-                <input type="password" name ="password" placeholder="Enter Password Here">
+                <h2>Login</h2>
+                <input type="text"  name="username"placeholder="Username">
+                <input type="password" name ="password" placeholder="Password">
                 <button type="submit" class="btnn">Login</button>
 			</form>
 
 
-                <p class="link">Don't have an account<br>
-        		<a href="registerUser.jsp">Sign up  </a> here
+                <p class="link">Non hai un account?<br>
+        		<a href="registerUser.jsp">Registrati </a> qui
 
         		</p>
 
@@ -72,17 +71,15 @@
             </div>
         </div>
 
-       </div>
+
 
 <%
 } 
-			else{
+	
+			
 				%>
-				
-				<h2>Benvenuto <%=utente %></h2>
-			<%
-			}
-%>
+			
+       </div>
 
 			 
 
@@ -107,7 +104,7 @@
 			    <p><%=bean.getDescrizione()%></p>
 			    <div class="shop-zone">
 			    <p class="price">Prezzo stimato:<br>&euro;<%=bean.getPrezzo()%></p>
-			    <a href="cart?action=add&id=<%=bean.getId()%>&quantity=1" ><button class="btn_card"><img class="add-cart-button"src="images/navbar/cart-button.png"></button></a>
+			    <a href="cart?action=add&id=<%=bean.getId()%>&quantity=1" ><button class="btn_card"><img class="add-cart-button"src="images/navbar/shopping.png"></button></a>
 			  </div>
 			</div>
 			</div>
@@ -120,10 +117,11 @@
 	} else {
 %>
 
-	No products available
+	<p>No products available</p>
 
 <%
 	}
+	
 %>
 
 
@@ -142,12 +140,13 @@
 
 
 
-
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-    <script>
-
+  
+  <script type="text/javascript">
     ScrollReveal().reveal('.reveal', {distance: '50px', duration: 1500});
 
     </script>
+    
 </body>
 </html>

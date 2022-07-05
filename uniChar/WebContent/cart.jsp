@@ -8,93 +8,90 @@
     <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,tsw.uniChar.Beans.cartBean"%>
     <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,tsw.uniChar.Beans.productBean"%>
     <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,tsw.uniChar.Beans.orderBean"%>
-    <link rel="stylesheet" href="style-cart.css">
+    <link rel="stylesheet" href="styles/style-cart.css">
     <title>Carrello</title>
+
 </head>
 <body>
-
-
-
-
-    <div class="container">
-
-        <div class="title">
-
-            <h2>Carrello</h2>
-        </div>
-
-        <div class="cart-items">
+	 <%@ include file="navbar.html" %>
+  
+    <div class="small-container cart-page">
 
         <table>
-           
-            <thead> 
-                <tr>
-                	<td></td>
-                    <td>Nome</td>
-                    <td>Prezzo</td>
-                    <td>Quantità</td>           
-                </tr>
-            </thead>
-<%
-  cartBean carrello = (cartBean) session.getAttribute("cart");
-for (Map.Entry<Integer, productBean> set : carrello.getProducts().entrySet()) {
-	
-	%>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+            <%
+            cartBean carrello = (cartBean) session.getAttribute("cart");
+            
+            if(carrello != null)
+          for (Map.Entry<Integer, productBean> set : carrello.getProducts().entrySet()) {
+              
+              %>
+                      
 
-            <tbody>
-                <tr>
-                    <td><img class="image"src="images/products/<%=set.getValue().getImageOne()%>"></td>
-                    <td><%=set.getValue().getTitolo()%></td>
-                    <td><%=set.getValue().getPrezzo()%>&euro;</td>
-                    <td>
-                        <select name="quantità" id="quantità">
+            <td>
+                <div class="cart-info">
+                    <img class="image"src="images/products/<%=set.getValue().getImageOne()%>">
+                    <div>
+                        <p><%=set.getValue().getTitolo()%></p>
+                        <small><%=set.getValue().getPrezzo()%>&euro;</small>
+                          <a href="cart?action=remove&id=<%=set.getValue().getId()%>">Rimovi</a>
+                    </div>
+                </div>
+            </td>
+            
+                <td><select name="quantità" id="quantità">
                         
-                        <%
-                        	for(int i=1; i<=10; i++){
-                        		 
-                        		
-                        	if(carrello.getQuantity(set.getKey()) == i){
-                        		
-                        	
-                        %>
-                        
-                        <option value="Quantity" selected ><%= i %></option>
-                           
-                            <%
-                            } 
-                        	else{
-                        		
-                        	
-                        	%>	
-                        	<option value="Quantity"><%= i %></option>
-                        	
-                        	<% 
-                        	}
-                        }
+                    <%
+                        for(int i=1; i<=10; i++){
+                             
                             
-                        %>  
+                        if(carrello.getQuantity(set.getKey()) == i){
+                            
+                        
+                    %>
+                    
+                    <option value="Quantity" selected ><%= i %></option>
+                       
+                        <%
+                        } 
+                        else{
+                            
+                        
+                        %>	
+                        <option value="Quantity"><%= i %></option>
+                        
+                        <% 
+                        }
+                    }
+          
+                        
+                    %>  
 
-                        </select>
-                  
-                </td>
-                    <td><button class="btn"> Elimina </button></td>
-                </tr>
-<%
+                    </select>
+              </td>
+                <td><%=set.getValue().getPrezzo()%> &euro;</td>
+            </tr>
+            <%
 }
 %>
 
+
         </table>
 
-    </div>  
-
-
-
-
+           
     </div>
     
-
-
-
-
+    <button onClick="alert()">Vai al pagamento</button>
+    
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+  
+   
+    
 </body>
 </html>
