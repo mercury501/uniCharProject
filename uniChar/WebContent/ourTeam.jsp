@@ -63,7 +63,7 @@
             <ul class="sci">
                 <!--  --i è la dichiarazione della variabile per le icone per poi fare un effetto in css -->
                 <li style="--i:1"><a href="https://www.linkedin.com/in/luca-pastore-25a680232/"><i class="fa-brands fa-linkedin-in"></i></a></li>
-                <li style="--i:2"><a href="#"><i class="fa-brands fa-github"></i></a></li>
+                <li style="--i:2"><a href="https://github.com/PastoreLuca"><i class="fa-brands fa-github"></i></a></li>
                 <li style="--i:3"><a href="https://www.instagram.com/_aboutluca/"><i class="fa-brands fa-instagram"></i></a></li>
 
             </ul>
