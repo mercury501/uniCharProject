@@ -11,7 +11,7 @@ body{
 .footer{
     margin-top: auto;
     padding: 40px 0;
-    background-color: rgba(45,45,45,255);
+    background-color: #320051;
   }
   
   .footer .social {
@@ -67,5 +67,5 @@ body{
     margin-top: 15px;
     text-align: center;
     font-size: 13px;
-    color: #aaa
+    color: #aaa;
   }
