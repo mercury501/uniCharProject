@@ -10,6 +10,8 @@
     <link rel='stylesheet' type='text/css' media='screen' href='styles/styleTeam.css'>
 </head>
 <body>
+
+<%@ include file="navbar.html" %>
     <section>
         <div class="container">
             <div class="card">

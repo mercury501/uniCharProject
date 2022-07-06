@@ -297,6 +297,12 @@ ul li a:hover{
 	color:white;
 }
 
+.card_container a{
+	
+	text-decoration: none;
+	color: white;
+}
+
 hr
 {
 	width: 60%;
