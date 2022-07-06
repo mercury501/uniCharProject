@@ -59,6 +59,11 @@ public class HandleProducts extends HttpServlet {
 		if (action == null)
 			action = (String)request.getAttribute("action");
 		
+		String returnTo = (String)request.getParameter("returnto");
+		
+		if (returnTo == null)
+			returnTo = (String)request.getAttribute("returnto");
+		
 		if (action != null) {
 			if (action.equalsIgnoreCase("insert")) {
 				pB.setTitolo(request.getParameter("title"));
@@ -71,55 +76,41 @@ public class HandleProducts extends HttpServlet {
 				pB.setImageThree(request.getParameter("imgpaththree"));
 				
 				insertProduct(pB);
-		
 			}
 			else if (action.equalsIgnoreCase("search")) {
 				
 				pB = searchProduct(Integer.parseInt((request.getParameter("SearchID")))); 
 				request.removeAttribute("product");
 				request.setAttribute("product", pB);
-			
 			}
 			else if(action.equalsIgnoreCase("delete")) {
 				
 				pB.setId(Integer.parseInt(request.getParameter("id")));
 				deleteProduct(pB.getId());
-			
 			}
 			else if (action.equalsIgnoreCase("catalog")) {
 				pBList = getCatalog();
 				request.removeAttribute("catalog");
 				request.setAttribute("catalog", pBList);
 				
-				
 			}
-			else if(action.equalsIgnoreCase("discountedproducts")) {
-				int number = 0;
-				int discount = 0;
+			else if (action.equalsIgnoreCase("discountcatalog")) {
+				Integer discount = Integer.parseInt(request.getParameter("discount"));
+				if (discount == null)
+					discount =(Integer)request.getAttribute("discount");
 				
-				number = Integer.parseInt(request.getParameter("number"));
-				discount = Integer.parseInt(request.getParameter("discount"));
+				Integer number = Integer.parseInt(request.getParameter("number"));
+				if (number == null)
+					number =(Integer)request.getAttribute("number");
 				
-				pBList = prodDao.getDiscountedProducts(number, discount);
+				pBList = getDiscountedCatalog(discount, number);
 				
-				request.removeAttribute("discountedproducts");
-				request.setAttribute("discountedproducts", pBList);
+				request.removeAttribute("catalog");
+				request.setAttribute("catalog", pBList);
 				
-			}
-			else if(action.equalsIgnoreCase("product")) {
-				
-				int id = 0;
-				
-				id = Integer.parseInt(request.getParameter("id"));
-				
-				
-				pB = prodDao.getProduct(id);
-				
-				request.removeAttribute("product");
-				request.setAttribute("product", pB);
 			}
 			
-			dispatcher = getServletContext().getRequestDispatcher("/"+returnTo);
+			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
 			dispatcher.forward(request, response);
 		}
 	
@@ -150,4 +141,9 @@ public class HandleProducts extends HttpServlet {
 	private List<productBean> getCatalog() {
 		return prodDao.getProducts();
 	}
+	
+	private List<productBean> getDiscountedCatalog(int disc, int num){
+		return prodDao.getDiscountedProducts(num, disc);
+	}
+	
 }
