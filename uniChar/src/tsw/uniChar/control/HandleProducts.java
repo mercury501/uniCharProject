@@ -51,6 +51,11 @@ public class HandleProducts extends HttpServlet {
 		if (action == null)
 			action = (String)request.getAttribute("action");
 		
+		String returnTo = (String)request.getParameter("returnto");
+		
+		if (returnTo == null)
+			returnTo = (String)request.getAttribute("returnto");
+		
 		if (action != null) {
 			if (action.equalsIgnoreCase("insert")) {
 				pB.setTitolo(request.getParameter("title"));
@@ -63,31 +68,42 @@ public class HandleProducts extends HttpServlet {
 				pB.setImageThree(request.getParameter("imgpaththree"));
 				
 				insertProduct(pB);
-				forward = admin;
 			}
 			else if (action.equalsIgnoreCase("search")) {
 				
 				pB = searchProduct(Integer.parseInt((request.getParameter("SearchID")))); 
 				request.removeAttribute("product");
 				request.setAttribute("product", pB);
-				
-				forward = admin;
+
 			}
 			else if(action.equalsIgnoreCase("delete")) {
 				
 				pB.setId(Integer.parseInt(request.getParameter("id")));
 				deleteProduct(pB.getId());
-				forward = admin;
 			}
 			else if (action.equalsIgnoreCase("catalog")) {
 				pBList = getCatalog();
 				request.removeAttribute("catalog");
 				request.setAttribute("catalog", pBList);
 				
-				forward = home;
+			}
+			else if (action.equalsIgnoreCase("discountcatalog")) {
+				Integer discount = Integer.parseInt(request.getParameter("discount"));
+				if (discount == null)
+					discount =(Integer)request.getAttribute("discount");
+				
+				Integer number = Integer.parseInt(request.getParameter("number"));
+				if (number == null)
+					number =(Integer)request.getAttribute("number");
+				
+				pBList = getDiscountedCatalog(discount, number);
+				
+				request.removeAttribute("catalog");
+				request.setAttribute("catalog", pBList);
+				
 			}
 			
-			dispatcher = getServletContext().getRequestDispatcher(forward);
+			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
 			dispatcher.forward(request, response);
 		}
 	
@@ -118,4 +134,9 @@ public class HandleProducts extends HttpServlet {
 	private List<productBean> getCatalog() {
 		return prodDao.getProducts();
 	}
+	
+	private List<productBean> getDiscountedCatalog(int disc, int num){
+		return prodDao.getDiscountedProducts(num, disc);
+	}
+	
 }
