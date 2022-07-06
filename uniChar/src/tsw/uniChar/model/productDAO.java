@@ -27,7 +27,7 @@ public class productDAO {
 	private productBean newProduct(ResultSet rs) throws SQLException{
 		productBean pB = new productBean();
 		try {
-		
+
 		pB =  new productBean(rs.getInt(1), rs.getFloat(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
 				rs.getString(7), rs.getString(8), rs.getFloat(9));
 		} catch (SQLException e) {
@@ -35,9 +35,9 @@ public class productDAO {
 		} finally {
 			return pB;
 		}
-		
+
 	}
-	
+
 	public boolean insertProduct(productBean pB) {
 		String sql = "INSERT INTO PRODUCTS (PRICE, DESCR, TITLE, DEVELOPER, IMG_PATH_ONE, IMG_PATH_TWO, IMG_PATH_THREE, DISCOUNT_PERC "
 				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
@@ -167,7 +167,7 @@ public class productDAO {
 			while (rs.next())
 
 				pB = newProduct(rs);
-			
+
 			statement.close();
 			rs.close();
 		} catch (SQLException e) {
@@ -211,7 +211,7 @@ public class productDAO {
 
 			statement.close();
 			countStatement.close();
-			
+
 			rs.close();
 			rsCount.close();
 
@@ -223,12 +223,12 @@ public class productDAO {
 		}
 
 	}
-	
+
 	public List<productBean> getDiscountedProducts(int number, int discount) {
 		List<productBean> pB = new ArrayList<>();
 
 		String sql = sqlSelect;
-		
+
 		sql = sql + " WHERE DISCOUNT_PERC > ? LIMIT ? ";
 
 		try {
@@ -246,10 +246,11 @@ public class productDAO {
 
 			statement.close();
 			countStatement.close();
-			
+
 			rs.close();
 
 		} catch (SQLException e) {
+			e.printStackTrace(System.out);
 
 		} finally {
 			releaseConn();
@@ -293,7 +294,7 @@ public class productDAO {
 
 			statement.close();
 			countStatement.close();
-			
+
 			rsCount.close();
 			rs.close();
 
@@ -327,7 +328,7 @@ public class productDAO {
 				products.add(p);
 
 			}
-			
+
 			statement.close();
 			resultset.close();
 
@@ -364,7 +365,7 @@ public class productDAO {
 				products.add(p);
 
 			}
-			
+
 			statement.close();
 			resultset.close();
 
@@ -390,7 +391,7 @@ public class productDAO {
 
 			if (rs.next())
 				result = rs.getInt(1);
-			
+
 			statement.close();
 			rs.close();
 
@@ -401,7 +402,7 @@ public class productDAO {
 		}
 
 	}
-	
+
 
 	private void releaseConn() {
 		try {
