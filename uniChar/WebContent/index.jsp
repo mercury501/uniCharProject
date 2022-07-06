@@ -3,7 +3,7 @@
 <%
 	Collection<?> products = (Collection<?>) request.getAttribute("catalog");
 	if(products == null) {
-		response.sendRedirect("./index");
+		response.sendRedirect("./product?action=catalog&returnto=index.jsp");
 		return;
 	}
 	
@@ -45,7 +45,7 @@
             </p>
 
 
-            <button class="cn"><a href="#">SHOP NOW</a></button>
+            <button class="cn"><a href="Catalog.jsp">SHOP NOW</a></button>
 
 
 		<%
@@ -96,7 +96,7 @@
 
 
 
-	<div class="card">
+	<div class="card"><a href="product?action=product&id=<%=bean.getId()%>&returnto=productPage.jsp">
 
 			 <img class="product-image" src="images/products/<%= bean.getImageOne().toLowerCase() %>" alt=" "  >
 			  <div class="container">
@@ -109,7 +109,7 @@
 			</div>
 			</div>
 
-
+	</a>
 
 
 <%

@@ -40,13 +40,21 @@ public class HandleProducts extends HttpServlet {
 		
 		String home = "/index.jsp";
 		String admin = "/admin.jsp"; 
-		String forward = "";
+	
+	
 		
 		productBean pB = new productBean();
 		List<productBean> pBList = null;
 		RequestDispatcher dispatcher = null;
 		
+		String returnTo = (String)request.getParameter("returnto");
+		
+		if(returnTo == null) {
+			returnTo = (String) request.getAttribute("returnto");
+		}
+		
 		String action = (String)request.getParameter("action");
+		
 		
 		if (action == null)
 			action = (String)request.getAttribute("action");
@@ -63,31 +71,55 @@ public class HandleProducts extends HttpServlet {
 				pB.setImageThree(request.getParameter("imgpaththree"));
 				
 				insertProduct(pB);
-				forward = admin;
+		
 			}
 			else if (action.equalsIgnoreCase("search")) {
 				
 				pB = searchProduct(Integer.parseInt((request.getParameter("SearchID")))); 
 				request.removeAttribute("product");
 				request.setAttribute("product", pB);
-				
-				forward = admin;
+			
 			}
 			else if(action.equalsIgnoreCase("delete")) {
 				
 				pB.setId(Integer.parseInt(request.getParameter("id")));
 				deleteProduct(pB.getId());
-				forward = admin;
+			
 			}
 			else if (action.equalsIgnoreCase("catalog")) {
 				pBList = getCatalog();
 				request.removeAttribute("catalog");
 				request.setAttribute("catalog", pBList);
 				
-				forward = home;
+				
+			}
+			else if(action.equalsIgnoreCase("discountedproducts")) {
+				int number = 0;
+				int discount = 0;
+				
+				number = Integer.parseInt(request.getParameter("number"));
+				discount = Integer.parseInt(request.getParameter("discount"));
+				
+				pBList = prodDao.getDiscountedProducts(number, discount);
+				
+				request.removeAttribute("discountedproducts");
+				request.setAttribute("discountedproducts", pBList);
+				
+			}
+			else if(action.equalsIgnoreCase("product")) {
+				
+				int id = 0;
+				
+				id = Integer.parseInt(request.getParameter("id"));
+				
+				
+				pB = prodDao.getProduct(id);
+				
+				request.removeAttribute("product");
+				request.setAttribute("product", pB);
 			}
 			
-			dispatcher = getServletContext().getRequestDispatcher(forward);
+			dispatcher = getServletContext().getRequestDispatcher("/"+returnTo);
 			dispatcher.forward(request, response);
 		}
 	

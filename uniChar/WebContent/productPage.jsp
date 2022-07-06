@@ -1,13 +1,14 @@
 
 <%
-	Collection<?> products = (Collection<?>) request.getAttribute("catalog");
-	if(products == null) {		
-		response.sendRedirect("./index");	
+
+	productBean bean = new productBean();
+	bean = (productBean)request.getAttribute("product");
+
+	if(bean == null){
+		response.sendRedirect("./index.jsp");
 		return;
 	}
-	
-	productBean bean = new productBean();
-	
+
 
 %>
 <!DOCTYPE html>
@@ -26,8 +27,8 @@
 </head>
 <body>
 
-		
-			
+		<%@ include file="navbar.html" %>
+
             <!--Dettaglio prodotto-->
       <main>
         <div class="main-wrapper">
@@ -41,14 +42,6 @@
                 <div class="hover-container">
                   <div>
                     <img src="images/products/<%= bean.getImageOne() %>">
-                  </div>
-
-                  <div>
-                    <img src="images/products/<%= bean.getImageTwo() %>">
-                  </div>
-
-                  <div>
-                    <img src="images/products/<%= bean.getImageThree() %>">
                   </div>
 
 
@@ -70,15 +63,14 @@
           </div>
         </div>
 
-        
+
 			</main>
 
 			<!--Fine Dettaglio prodotto-->
-			
-			
+
+
 		<jsp:include page="footer.html" />
-	       
+
 <script src="scripts/scriptProdotto.js"></script>
 </body>
 </html>
-
