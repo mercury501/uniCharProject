@@ -59,10 +59,6 @@ public class HandleProducts extends HttpServlet {
 		if (action == null)
 			action = (String)request.getAttribute("action");
 		
-		String returnTo = (String)request.getParameter("returnto");
-		
-		if (returnTo == null)
-			returnTo = (String)request.getAttribute("returnto");
 		
 		if (action != null) {
 			if (action.equalsIgnoreCase("insert")) {
@@ -105,8 +101,8 @@ public class HandleProducts extends HttpServlet {
 				
 				pBList = getDiscountedCatalog(discount, number);
 				
-				request.removeAttribute("catalog");
-				request.setAttribute("catalog", pBList);
+				request.removeAttribute("discountcatalog");
+				request.setAttribute("discountcatalog", pBList);
 				
 			}
 			

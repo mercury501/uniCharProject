@@ -1,6 +1,7 @@
 *{
     margin:0;
     padding:0;
+    font-family: Garamond;
 }
 
 body{
@@ -9,12 +10,29 @@ body{
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: #fff;
+    background-color: rgb(48,31,84);
     
 }
 
 
-.max-text{
-    font-size: 20px;
-    color: #ff5000;
+label{
+	color:white;
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 25px;
+	
+}
+
+.btn{
+    width: 100px;
+    height: 40px;
+    background: #ff7200;
+    border: 2px solid #ff7200;
+    margin-top: 20px;
+    color: #EEEEEE;
+    font-size: 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+    
 }
