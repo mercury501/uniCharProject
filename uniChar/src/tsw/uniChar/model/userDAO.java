@@ -67,7 +67,6 @@ public class userDAO  {
 	        statement.setString(4, user.getPassword());
 	        statement.setString(5, user.getEmail());
 	        statement.setString(6, "user");
-	        statement.setString(7, "");
 		        
 	        statement.execute();
 	        
