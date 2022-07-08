@@ -1,9 +1,10 @@
 
 
 <%
-	Collection<?> products = (Collection<?>) request.getAttribute("discountedproducts");
+
+	Collection<?> products = (Collection<?>) request.getAttribute("discountcatalog");
 	if(products == null) {
-		response.sendRedirect("./product?action=discountedproducts&number=4&discount=3&returnto=index.jsp");
+		response.sendRedirect("./product?action=discountcatalog&number=4&discount=3&returnto=index.jsp");
 		return;
 	}
 	
@@ -129,6 +130,23 @@
 
 
 
+    </div>
+    
+    
+    
+    <div class="container-donation">
+        <div class="icon-donation">
+            <img src="images/index/heart.png" alt="">
+        </div>
+            <div class="info">
+                <h2>“Nessun regalo è troppo piccolo da donare, e nemmeno troppo semplice da ricevere,
+                     <br>se è scelto con giudizio e dato con amore.”</h2>
+        </div>
+
+        <div class="button">
+           
+        <a href="DonateNow.jsp"><button class="btn-donation">Dona ora</button></a>
+    </div>
     </div>
 
 

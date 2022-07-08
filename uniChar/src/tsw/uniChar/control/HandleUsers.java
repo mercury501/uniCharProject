@@ -130,16 +130,19 @@ public class HandleUsers extends HttpServlet {
 		String forward = "/registerUser.jsp";
 
 		userDAO uDs = new userDAO();
-		String user = request.getParameter("username");
-		String password = request.getParameter("password");
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
+		String user = request.getParameter("username");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
 		
 		userBean uB = new userBean();
 		uB.setName(name);
 		uB.setSurname(surname);
 		uB.setUser(user);
 		uB.setPassword(password);
+		uB.setEmail(email);
+		uB.setRole("user");
 
 		try {
 			uDs.doAddUser(uB);

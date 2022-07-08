@@ -1,11 +1,22 @@
 body{
 
-    background-color: #eee;
+    background-color: rgb(48,31,84);
+	
 }
+
+h2{
+	color:white;
+}
+
+#span{
+	color:white;
+}
+
 
 .container{
 
     height: 100vh;
+
 
 }
 

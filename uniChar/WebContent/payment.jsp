@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="payment-style.css">
+    <link rel="stylesheet" href="styles/payment-style.css">
     <title>Pagamento</title>
 </head>
 <body>
-    
+    <%@ include file="navbar.html" %>
     <div class="container mt-5 px-5">
 
         <div class="mb-4">
 
             <h2>Conferma l'ordine e Paga</h2>
-        <span>Fai il pagamento per godere di tutti i benefits</span>
+        <span id="span">Fai il pagamento per godere di tutti i benefits</span>
             
         </div>
 
@@ -29,7 +29,7 @@
 
             <div class="card p-3">
 
-                <h6 class="text-uppercase">Dettagli del Pagamento</h6>
+                <h6 class="text-uppercase white">Dettagli del Pagamento</h6>
                 <div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required"> <span>Nome intestatario</span> </div>
 
 
@@ -87,7 +87,7 @@
                        
 
 
-                        <button onclick="paymentSuccess()" class="btn btn-outline-warning  px-3">Pay $840</button>
+                        <button class="btn btn-outline-warning  px-3">Pay $840</button>
 
 
                         
@@ -104,25 +104,5 @@
   </div>
 
 
-  <script>
-      function paymentSuccess(){
-    	  const Toast = Swal.mixin({
-    		  toast: true,
-    		  position: 'top-end',
-    		  showConfirmButton: false,
-    		  timer: 3000,
-    		  timerProgressBar: true,
-    		  didOpen: (toast) => {
-    		    toast.addEventListener('mouseenter', Swal.stopTimer)
-    		    toast.addEventListener('mouseleave', Swal.resumeTimer)
-    		  }
-    		})
-
-    		Toast.fire({
-    		  icon: 'success',
-    		  title: 'Pagamento effettuato con successo'
-    		})
-      }
-  </script>
 </body>
 </html>

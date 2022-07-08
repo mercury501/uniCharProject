@@ -50,8 +50,11 @@ public class userDAO  {
 	}
 	
 	public int doAddUser(userBean user) throws SQLException{
+		
+		
+		
 		String sql = "INSERT INTO USERS "
-				+ " (NAME, SURNAME, USERNAME, PASSWORD, ROLE, EMAIL) "
+				+ " (NAME, SURNAME, USERNAME, PASSWORD, EMAIL, ROLE) "
 				+ " VALUES "
 				+ " (?, ?, ?, ?, ?, ?) ";
 		
@@ -62,18 +65,25 @@ public class userDAO  {
 	        statement.setString(2, user.getSurname());
 	        statement.setString(3, user.getUser());
 	        statement.setString(4, user.getPassword());
-	        statement.setString(5, "USER");
-	        statement.setString(6, user.getEmail());
+	        statement.setString(5, user.getEmail());
+	        statement.setString(6, "user");
 		        
-	        statement.executeUpdate();
+	        statement.execute();
 	        
-	        statement.close();  
+	         
+	        
 	        sqlConn.commit();
-	        releaseConn();
+	        statement.close();
+
+	      
+
         } catch (SQLException e) {
         	return 1;
+        } finally{
+        	releaseConn();
+        	return 0;
         }
-		return 0;
+		
 		
 	}
 	
@@ -94,7 +104,7 @@ public class userDAO  {
 		try {
 			if (!doCheckPassword(user))
 				throw new Exception();
-			
+		
 	        statement = sqlConn.prepareStatement(sql);
 	        
 	        statement.setString(1, user.getNewPassword());
