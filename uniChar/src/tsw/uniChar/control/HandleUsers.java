@@ -75,6 +75,10 @@ public class HandleUsers extends HttpServlet {
 				return;
 			}
 			
+			if(action.equalsIgnoreCase("logout")) {
+				LogOut(request,response);
+			}
+			
 	
 				
 			} catch (Exception e) {
@@ -86,9 +90,9 @@ public class HandleUsers extends HttpServlet {
           }
     
 	private String loginHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		String forward = "index";
+		String forward = "AreaUtente.jsp";
 		String loginError = "invalidLogin.html";
-		String adminPage = "admin.jsp";
+		String adminPage = "AreaAdmin.jsp";
 
 		userDAO uDs = new userDAO();
 		String user = request.getParameter("username");
@@ -108,6 +112,7 @@ public class HandleUsers extends HttpServlet {
 				HttpSession currentSession = request.getSession(); // creo una nuova connessione
 				currentSession.setAttribute("user", user);
 				currentSession.setAttribute("userid", uB.getId());
+				currentSession.setAttribute("name", uB.getName());
 				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattività massima
 				
 				System.out.print(uB.getRole());
@@ -127,7 +132,7 @@ public class HandleUsers extends HttpServlet {
 	}
 	
 	private String registerHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		String forward = "/registerUser.jsp";
+		String forward = "/index.jsp";
 
 		userDAO uDs = new userDAO();
 		String name = request.getParameter("name");
@@ -155,6 +160,28 @@ public class HandleUsers extends HttpServlet {
 		} finally {
 			return forward;
 		}
+	}
+	
+	public void LogOut(HttpServletRequest request, HttpServletResponse response){
+		
+		
+		String forward = "index.jsp";
+		
+		// recupero la sessione
+		HttpSession oldSession = request.getSession(false);
+
+		if (oldSession != null) {
+			oldSession.invalidate(); // invalido la sessione
+		}
+		
+		try {
+			response.sendRedirect(forward);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	private String changePassHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {

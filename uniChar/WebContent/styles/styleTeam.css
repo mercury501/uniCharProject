@@ -34,7 +34,8 @@ section::before
     top:0;
     left:0;
     background:linear-gradient(#3b0239,#ec03cd);
-    clip-path:circle(20% at 10% 10%);
+    clip-path:circle(20% at 10% 7%);
+    z-index:-1;
 }
 
 .container{
