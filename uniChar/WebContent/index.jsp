@@ -1,9 +1,9 @@
 
 
 <%
-	Collection<?> products = (Collection<?>) request.getAttribute("catalog");
+	Collection<?> products = (Collection<?>) request.getAttribute("discountedproducts");
 	if(products == null) {
-		response.sendRedirect("./product?action=catalog&returnto=index.jsp");
+		response.sendRedirect("./product?action=discountedproducts&number=4&discount=3&returnto=index.jsp");
 		return;
 	}
 	
