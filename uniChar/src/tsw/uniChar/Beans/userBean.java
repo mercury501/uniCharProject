@@ -100,4 +100,10 @@ public class userBean implements Serializable {
     	this.email = email;
     }
     
+    @Override
+    public String toString() {
+    	return "Utente: " + this.getName() + " " + this.getSurname() + 
+    			" Username: " + this.getUser() + ", eMail: " + this.getEmail();
+    }
+    
 }
