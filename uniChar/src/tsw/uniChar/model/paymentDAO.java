@@ -102,7 +102,7 @@ public class paymentDAO {
 	
 	//Permette di elminiare il metodo di pagamento abbinato ad un utente
 	
-	public void DeleteMethodPayment(String numero_carta, String intestatario) {
+	public void DeleteMethodPayment(String numero_carta, String email) {
 		
 		
 		String sql = "DELETE FROM PAYMENT WHERE NUMERO_CARTA = ? AND MAIL_CLIENTE = ?";
@@ -113,7 +113,7 @@ public class paymentDAO {
 			
 			
 			statement.setString(1, numero_carta);
-			statement.setString(2, intestatario);
+			statement.setString(2, email);
 			
 			statement.executeUpdate();
 			
@@ -128,6 +128,33 @@ public class paymentDAO {
 	}
 		
 	
+	
+	//Aggiorna dati di pagamento 
+	public void UpdateMethodPayment(paymentBean pyB) {
+		
+		String sql = "UPDATE PAYMENT SET NUMERO_CARTA = ?, MAIL_CLIENTE = ?, INTESTATARIO = ?, CVV = ?, SCADENZA = ? WHERE (NUMERO_CARTA = ?)";
+		
+		try {
+			statement = sqlConn.prepareStatement(sql);
+			
+			statement.setString(1, pyB.getNumeroCarta() );
+			statement.setString(2, pyB.getMailCliente());
+			statement.setString(3, pyB.getIntestatarioCarta());
+			statement.setString(4, pyB.getCVV());
+			statement.setString(5, pyB.getScadenza()); 
+		
+			statement.executeUpdate();
+			
+			sqlConn.commit();
+			statement.close();
+
+		} catch (SQLException e) {
+	} finally {
+		releaseConn();
+
+	}
+		
+	}
 	
 	
 	
