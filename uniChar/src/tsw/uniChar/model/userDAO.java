@@ -49,6 +49,33 @@ public class userDAO  {
 		return uB;
 	}
 	
+	public userBean doGetUserByID(int id) throws SQLException {
+		userBean uB = new userBean();
+		String sql = "SELECT ID, NAME, SURNAME, ROLE, USERNAME"
+				+ " FROM USERS "
+				
+				+ "WHERE ID = ?";
+		
+        try {
+	        statement = sqlConn.prepareStatement(sql);
+	        
+	        statement.setInt(1, id);
+	        
+	        ResultSet rs = statement.executeQuery();
+        
+	        if (rs.next()) 
+	        	uB = new userBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), "", "");
+	        
+	        statement.close();
+	        rs.close();
+	        releaseConn();
+	        
+        } catch (SQLException e) {
+        	throw e;
+        }
+		return uB;
+	}
+	
 	public int doAddUser(userBean user) throws SQLException{
 		
 		
