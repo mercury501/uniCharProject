@@ -33,10 +33,6 @@
     
     
 }
-
-
-
-
 .menu{
     width: 400px;
     float: left;
@@ -94,7 +90,7 @@ ul li a:hover{
 
 }
 
-.btn{
+.btn-search{
     width: 100px;
     height: 40px;
     background: #ff7200;
@@ -106,12 +102,16 @@ ul li a:hover{
     border-bottom-right-radius: 5px;
 }
 
-.btn:focus{
+.btn-search:focus{
     outline: none;;
 }
 
 .stch:focus{
     outline: none;
+}
+
+input::placeholder{
+	color:white;
 }
 
 .shop{

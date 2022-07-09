@@ -9,8 +9,10 @@
 </head>
 <body>
 
+ 
 
     <div class="panel">
+    <%@ include file="navbar.html" %>
    <table>
 
      <tr>
@@ -23,27 +25,10 @@
      </tr>
   
      
-        <tr>
-            <td>
-                <label for="" required>Title:</label >
-            </td>
-
-            <td>
-                <select name="people" id="people">
-                    <option value=""></option>
-                    <option value="Mr">Mr</option>
-                    <option value="Mrs">Mrs</option>
-                    <option value="Ms">Ms</option>
-                    <option value="Dr">Dr</option>
-                    <option value="Sir">Sir</option>   
-                </select>
-            </td>
-        </tr>
-
 
         <tr>
             <td>
-                <label for="">First Name:</label>
+                <label for="">Nome:</label>
             </td>
 
             <td>
@@ -53,7 +38,7 @@
 
         <tr>
             <td>
-                <label for="">Last Name:</label>
+                <label for="">Cognome:</label>
             </td>
 
             <td>
@@ -65,17 +50,17 @@
 
         <tr>
             <td>
-                <label for="">Country:</label>
+                <label for="">Città:</label>
             </td>
 
             <td>
                 <select name="country" id="country" required>
                     <option value=""></option>
-                    <option value="Italy">Italy</option>
+                    <option value="Italy">Italia</option>
                     <option value="United States">United States</option>
                     <option value="United Kingdom">United Kingdom</option>
-                    <option value="New Zealand">New Zealand</option>
-                    <option value="France">France</option>   
+                    <option value="New Zealand">Nuova Zelanda</option>
+                    <option value="France">Francia</option>   
                 </select>
             </td>
         </tr>
@@ -88,37 +73,6 @@
 
             <td>
                 <input type="text">
-            </td>
-        </tr>
-
-
-        <tr>
-            <td>
-                <label for="">City:</label>
-            </td>
-
-            <td>
-                <input type="text" required>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <label for="">ZIP:</label>
-            </td>
-
-            <td>
-                <input type="text" required>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <label for="">Phone:</label>
-            </td>
-
-            <td>
-                <input type="text" required>
             </td>
         </tr>
 
