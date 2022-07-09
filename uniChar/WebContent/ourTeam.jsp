@@ -11,7 +11,9 @@
 </head>
 <body>
 
-<%@ include file="navbar.html" %>
+
+<%@ include file="navbar.html"%>
+
     <section>
         <div class="container">
             <div class="card">
@@ -72,5 +74,6 @@
             </div>
         </div>
     </section>
+  
 </body>
 </html>
