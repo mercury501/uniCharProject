@@ -46,6 +46,7 @@
 
 
 	<div class="card">
+	<a href="product?action=product&id=<%=bean.getId()%>&returnto=productPage.jsp">
 
 			 <img class="product-image" src="images/products/<%= bean.getImageOne().toLowerCase() %>" alt=" "  >
 			  <div class="container">
@@ -57,7 +58,7 @@
 			  </div>
 			</div>
 			</div>
-
+</a>
 
 
 

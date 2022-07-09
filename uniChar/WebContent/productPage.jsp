@@ -18,7 +18,7 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="styles/styleProduct.css">
+<link rel="stylesheet" href="styles/styleProducts.css">
 <!--Link per font e inconcine-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -36,12 +36,12 @@
             <div class="product-div">
               <div class="product-div-left">
                 <div class="img-container">
-                  <img src="images/products/<%= bean.getImageOne() %>" alt="Mgsolid">
+                  <img class="immagine"src="images/products/<%= bean.getImageOne() %>" alt="Mgsolid">
                 </div>
 
                 <div class="hover-container">
                   <div>
-                    <img src="images/products/<%= bean.getImageOne() %>">
+                    <img class="immagine"src="images/products/<%= bean.getImageOne() %>">
                   </div>
 
 
@@ -50,7 +50,7 @@
 
               <div class="product-div-right">
                   <span class="product-name"><%=bean.getTitolo()%></span>
-                  <span class="product-price"><%=bean.getPrezzo()%></span>
+                  <span class="product-price"><%=bean.getPrezzo()%> &euro;</span>
                   <p class="product-description"><%=bean.getDescrizione()%></p>
                   <div class="btn-groups">
                     <button type="button" class="add-cart-btn">

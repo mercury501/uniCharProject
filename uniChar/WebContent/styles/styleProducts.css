@@ -3,7 +3,7 @@
 main{
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
+   
 }
 
 html, body{
@@ -11,12 +11,12 @@ html, body{
     background: rgba(87,61,122,255);
 }
 
-img{
+.immagine{
     width: 100%;
     display: block;
 }
 .main-wrapper{
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,6 +32,7 @@ img{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     background-color: rgba(126, 124, 124, 0.568);
+    border: 5px solid #ff5700;
     border-radius: 10px;
     column-gap: 10px;
 }
@@ -53,7 +54,7 @@ img{
     margin-top: 12px;
 }
 .hover-container div{
-    border: 2px solid 	rgb(255, 114, 0);					 ;
+    border: 2px solid 	rgb(255, 114, 0);					 
     padding: 1rem;
     border-radius: 3px;
     margin: 0 4px 8px 4px;

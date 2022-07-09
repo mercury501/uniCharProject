@@ -2,14 +2,20 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<script src="sweetalert2.all.min.js">
+function Error(){
+	Swal.fire(
+  'Good job!',
+  'You clicked the button!',
+  'success'
+)
+}
+</script>
 	<title>Login Error</title>
 </head>
 <body>
-    <h2>Invalid user name or password</h2>
-
-    <p>Please enter a user name or password that is authorized to access this 
-    application.</p>
-    <a href="loginPage.jsp">Retry</a>
+    
+    <a onLoad="Error()"href="index.jsp">Retry</a>
 </body>
 </html>
 
