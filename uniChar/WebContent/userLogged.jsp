@@ -11,6 +11,7 @@
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>user Logged</title>
 </head>
 <body>
@@ -19,6 +20,7 @@
 <%
  String isLogged = (String) request.getAttribute("username");
 if (isLogged == null)
+	
     response.sendRedirect("loginPage.jsp");
 
 String message = (String) request.getAttribute("result");

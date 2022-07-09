@@ -106,6 +106,20 @@ public class HandleProducts extends HttpServlet {
 				
 			}
 			
+			
+				else if(action.equalsIgnoreCase("product")) {
+					
+					int id = 0;
+					
+					id = Integer.parseInt(request.getParameter("id"));
+					
+					
+					pB = prodDao.getProduct(id);
+					
+					request.removeAttribute("product");
+					request.setAttribute("product", pB);
+			}
+			
 			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
 			dispatcher.forward(request, response);
 		}
