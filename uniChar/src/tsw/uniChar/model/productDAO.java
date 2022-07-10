@@ -179,6 +179,7 @@ public class productDAO {
 	}
 
 	public List<productBean> getProducts(int number) {
+		
 		List<productBean> pB = null;
 		int count = 0;
 

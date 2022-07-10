@@ -56,7 +56,7 @@ String message = "Benvenuto/a "+nome;
 	</div>
 
 	<div class="cards">
-		<a href="AdminUserControl">
+		<a href="connection?action=users&returnto=gestioneUtenteAdmin.jsp">
 			<div class="card">
 				<ion-icon class="iconFunction" name="people-outline" size="large"></ion-icon><p>Gestione Utenti</p>
 			</div>
