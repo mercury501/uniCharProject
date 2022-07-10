@@ -32,7 +32,13 @@ public class HandlePayment extends HttpServlet {
 		
 		paymentBean pyB = new paymentBean();
 		paymentDAO pagamento = new paymentDAO();
+		
+		
+		
 		String action = request.getParameter("action");
+		
+		if (action == null)
+			action = (String)request.getAttribute("action");
 		
 		if(action != null) {
 			

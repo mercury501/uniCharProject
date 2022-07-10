@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,6 +52,7 @@ public class HandleUsers extends HttpServlet {
             
             String result = null;
             RequestDispatcher dispatcher = null;
+			String returnTo = (String)request.getParameter("returnto");
             
             try {
             	String action = (String)request.getParameter("action");
@@ -79,13 +82,40 @@ public class HandleUsers extends HttpServlet {
 				LogOut(request,response);
 			}
 			
+			
+			if(action.equalsIgnoreCase("users")) {
+				
+				userBean uB = new userBean();
+				
+			
+				System.out.print(uB.getRole());
+				
+					userDAO uD = new userDAO();
+					
+					List<userBean> listaUtenti = new ArrayList<userBean>();
+					
+					listaUtenti = uD.showUsers(uB);
+					
+		
+					
+					
+					request.removeAttribute("users");
+					request.setAttribute("users", listaUtenti);
+					
+			
+			}
+			
+			
+			
 	
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            
+        	dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
+			dispatcher.forward(request, response);
+		
  
           }
     
@@ -111,7 +141,6 @@ public class HandleUsers extends HttpServlet {
 
 				HttpSession currentSession = request.getSession(); // creo una nuova connessione
 				currentSession.setAttribute("user", user);
-				currentSession.setAttribute("userid", uB.getId());
 				currentSession.setAttribute("name", uB.getName());
 				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattività massima
 				
@@ -184,6 +213,7 @@ public class HandleUsers extends HttpServlet {
 		
 	}
 	
+	
 	private String changePassHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		String forward = "/changePassword.jsp";
 		
@@ -214,6 +244,6 @@ public class HandleUsers extends HttpServlet {
 			return forward;
 		}
 	}
+
+
 }
-
-

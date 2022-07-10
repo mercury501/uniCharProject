@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import tsw.uniChar.Beans.productBean;
 import tsw.uniChar.Beans.userBean;
 import tsw.uniChar.control.HandleUsers;;
 
@@ -20,6 +23,22 @@ public class userDAO  {
 			
 		}
 	}
+	
+	
+	private userBean newUsers(ResultSet rs) throws SQLException{
+		userBean uB = new userBean();
+		try {
+
+		uB =  new userBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+				rs.getString(7));
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			return uB;
+		}
+
+	}
+
 	
 
 	public userBean doCheckLogin(userBean user) throws SQLException {
@@ -173,6 +192,44 @@ public class userDAO  {
         } catch (SQLException e) {
         	return false;
         }
+	}
+	
+	
+	public List<userBean> showUsers(userBean users) {
+		
+		List<userBean> uD = null;
+		
+		String sql = "SELECT * FROM USERS";
+		
+		try {
+			statement = sqlConn.prepareStatement(sql);
+
+			ResultSet rs = statement.executeQuery();
+
+			uD = new ArrayList<userBean>();
+
+			while (rs.next()) {
+				
+				uD.add(newUsers(rs));
+				
+
+			}
+
+			statement.close();
+			statement.close();
+			releaseConn();
+			
+
+		} catch (SQLException e) {
+
+		} finally {
+			
+			return uD;
+		}
+		
+		
+		
+		
 	}
 
 
