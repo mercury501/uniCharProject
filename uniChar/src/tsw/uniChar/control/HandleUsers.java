@@ -145,7 +145,7 @@ public class HandleUsers extends HttpServlet {
     
 	private String loginHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		String forward = "AreaUtente.jsp";
-		String loginError = "invalidLogin.html";
+		String loginError = "invalidLogin.jsp";
 		String adminPage = "AreaAdmin.jsp";
 
 		userDAO uDs = new userDAO();
