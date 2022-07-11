@@ -22,7 +22,7 @@ public class userBean implements Serializable {
     	this.password = password;
     }
     
-    public userBean(int id, String name, String surname, String role, String user, String password, String email) {
+    public userBean(int id, String name, String surname, String role, String user, String password,String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;

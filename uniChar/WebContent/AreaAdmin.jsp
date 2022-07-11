@@ -37,7 +37,7 @@ String message = "Benvenuto/a "+nome;
 	
 		<a href="UserInvoiceControl">
 			<div class="card">
-				<ion-icon class="iconFunction" name="document-text-outline" size="large"></ion-icon><p>Ordini</p>
+				<ion-icon class="iconFunction" name="ribbon-outline" size="large"></ion-icon><p>Gestione Donazioni</p>
 			</div>
 		</a>
 		
@@ -48,7 +48,7 @@ String message = "Benvenuto/a "+nome;
 			</div>
 		</a>
 		
-		<a href="admin">
+		<a href="product?action=catalog&returnto=gestioneCatalogoAdmin.jsp">
 			<div class="card">
 				<ion-icon class="iconFunction" name="grid-outline" size="large"></ion-icon><p>Gestione Catalogo</p>
 			</div>
@@ -62,13 +62,13 @@ String message = "Benvenuto/a "+nome;
 			</div>
 		</a>
 		
-		<a href="AccountControl">
+		<a href="connection?action=user&returnto=OpzioniAccount.jsp">
 			<div class="card">
 				<ion-icon class="iconFunction" name="cog-outline" size="large"></ion-icon><p>Impostazioni Account</p>
 			</div>
 		</a>
 		
-		<a href="connection?action=logout">
+		<a href="connection?action=logout&returnto=index.jsp">
 			<div class="cardLogout">
 				<ion-icon class="iconFunction" name="log-out-outline" size="large"></ion-icon><p>Esci</p>
 			</div>

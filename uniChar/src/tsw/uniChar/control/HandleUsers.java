@@ -50,7 +50,7 @@ public class HandleUsers extends HttpServlet {
             throws ServletException, IOException
         {
             
-            String result = null;
+         
             RequestDispatcher dispatcher = null;
 			String returnTo = (String)request.getParameter("returnto");
             
@@ -80,6 +80,8 @@ public class HandleUsers extends HttpServlet {
 			
 			if(action.equalsIgnoreCase("logout")) {
 				LogOut(request,response);
+				
+			
 			}
 			
 			
@@ -87,7 +89,7 @@ public class HandleUsers extends HttpServlet {
 				
 				userBean uB = new userBean();
 				
-			
+				
 				System.out.print(uB.getRole());
 				
 					userDAO uD = new userDAO();
@@ -102,20 +104,42 @@ public class HandleUsers extends HttpServlet {
 					request.removeAttribute("users");
 					request.setAttribute("users", listaUtenti);
 					
+					
+					
 			
 			}
 			
+			if(action.equalsIgnoreCase("user")) {
+				
+				userBean uB = new userBean();
+				userDAO uD = new userDAO();
+				
+				
+				HttpSession session = request.getSession(false);
+				String email = (String) session.getAttribute("email");
+				
+				uB = uD.getUser(email);
+				
+				
+				request.removeAttribute("user");
+				request.setAttribute("user", uB);
+				
+				
+			}
 			
+		       
+            if(!action.equalsIgnoreCase("logout")) {
+    
+        	dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
+    			dispatcher.forward(request, response);
 			
-	
+            }
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-        	dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
-			dispatcher.forward(request, response);
-		
+     
  
           }
     
@@ -141,10 +165,14 @@ public class HandleUsers extends HttpServlet {
 
 				HttpSession currentSession = request.getSession(); // creo una nuova connessione
 				currentSession.setAttribute("user", user);
+				currentSession.setAttribute("userid", uB.getId());
 				currentSession.setAttribute("name", uB.getName());
+				currentSession.setAttribute("email", uB.getEmail());
 				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattività massima
 				
-				System.out.print(uB.getRole());
+				System.out.println(uB.getRole());
+				System.out.println(uB.getEmail());
+				System.out.println(uB.getId());
 
 				if (uB.getRole().equals("admin")) {
 					return adminPage;

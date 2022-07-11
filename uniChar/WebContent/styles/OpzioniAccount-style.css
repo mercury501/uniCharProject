@@ -1,0 +1,54 @@
+
+*{
+	padding:0;
+	margin:0;
+}
+body{
+	background: #390066;
+  	background-position: center;
+  	background-size: cover;
+  	overflow-X: hidden;
+}
+
+
+.TestoTabella{
+	margin-top: 20px;
+	text-align: center;
+	margin-right: 50px;
+	color: #ff7500;
+}
+
+.tabellaOpzioni {
+    margin: 0 auto;
+    width: 40%;
+    max-width: 800px;
+}
+
+.testoTabella {
+    text-align: left;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    color: #ff7500;
+    line-height: 10px;
+}
+
+.testoValoriAccount {
+    padding-right: 10px;
+    font-size: 20px;
+    padding-top: 0px;
+    color: white;
+}
+
+
+.iconaModificaPulsante{
+	color: #ff7500;
+}
+
+.modificaElemento{
+	
+	margin-bottom: 40px;
+}
+
+
+
