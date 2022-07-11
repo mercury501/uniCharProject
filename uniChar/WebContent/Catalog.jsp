@@ -25,6 +25,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style-catalog.css">
     <title>Prodotti</title>
 </head>
 <body>
@@ -45,6 +46,7 @@
 
 
 	<div class="card">
+	<a href="product?action=product&id=<%=bean.getId()%>&returnto=productPage.jsp">
 
 			 <img class="product-image" src="images/products/<%= bean.getImageOne().toLowerCase() %>" alt=" "  >
 			  <div class="container">
@@ -56,7 +58,7 @@
 			  </div>
 			</div>
 			</div>
-
+</a>
 
 
 

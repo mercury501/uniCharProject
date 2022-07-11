@@ -3,18 +3,15 @@ package tsw.uniChar.Beans;
 import java.io.Serializable;
 
 public class userBean implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	int id = -1;
 	String name = "";
 	String surname = "";
+	String role = "";
 	String user = "";
 	String password = "";
 	String newPassword = "";
 	String email = "";
-	String role = "";
+
 
     public userBean() {
     }
@@ -25,14 +22,14 @@ public class userBean implements Serializable {
     	this.password = password;
     }
     
-    public userBean(int id, String name, String surname,String user,String password, String email, String role) {
+    public userBean(int id, String name, String surname, String role, String user, String password,String email) {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.role = role;
         this.user = user;
         this.password = password;
         this.email = email;
-        this.role = role;
     }
 
 

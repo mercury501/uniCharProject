@@ -1,6 +1,8 @@
 
 
-<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/navbar-style.css">
+
+
 
 
 
@@ -13,21 +15,27 @@
                     <li><a href="index.jsp">HOME</a></li>
                     <li><a href="ourTeam.jsp">ABOUT</a></li>
                     <li><a href="Catalog.jsp">PRODUCTS</a></li>
-                    <li><a href="contatti.jsp">CONTACT</a></li>
                 </ul>
             </div>
 
             <div class="search">
-                <input class="srch"type="search" name="">
-                <a href="#"><button class="btn">Search</button></a>
+                <input class="srch"type="search" name="search" placeholder="Cerca prodotti">
+                <a href="#"><button class="btn-search">Search</button></a>
             </div>
 
             <div class="shop">
-                <a href="cart.jsp"><img class="shop_icon" src="images/navbar/shop.png" alt=""></a>
+
+            <ul>
+              	<li><a href="cart.jsp"><img class="shop_icon" src="images/navbar/shop.png" alt=""></a></li>
+                <li><a href="AreaUtente.jsp"><ion-icon name="person-outline" class="icona"></ion-icon></a></li>
+            </ul>
+
+
             </div>
-            
-            
-           
 
 
-        </div>
+
+  </div>
+
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

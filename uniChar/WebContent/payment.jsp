@@ -12,7 +12,7 @@
     <title>Pagamento</title>
 </head>
 <body>
-    <%@ include file="navbar.html" %>
+  
     <div class="container mt-5 px-5">
 
         <div class="mb-4">

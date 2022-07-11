@@ -13,8 +13,9 @@
 
 </head>
 <body>
+  <div class="main">
 	 <%@ include file="navbar.html" %>
-  
+
     <div class="small-container cart-page">
 
         <table>
@@ -85,13 +86,12 @@
            
     </div>
     
-    <button onClick="alert()">Vai al pagamento</button>
+   <a href="payment.jsp"><button>Vai al pagamento</button></a>
     
-    
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
+    </div>
   
-   
+ 
     
 </body>
 </html>

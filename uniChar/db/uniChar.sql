@@ -12,12 +12,12 @@ CREATE TABLE USERS (
     PASSWORD CHAR(20) NOT NULL,
     ROLE CHAR(20) NOT NULL,
     AVATAR CHAR(20) NOT NULL DEFAULT '',
-    EMAIL CHAR(40) NOT NULL DEFAULT ''
+    EMAIL CHAR(40) NOT NULL
 );
 
 
 INSERT INTO USERS VALUES (1,"Dylan","Dog","DD6","groucho", "user", "user.jpg", "");
-INSERT INTO USERS VALUES (2,"Eva","Kant","EK67","walter", "admin", "luca.jpeg", "");
+INSERT INTO USERS VALUES (2,"Eva","Kant","EK67","walter", "admin", "luca.jpeg", "eva@gmail.com");
 INSERT INTO USERS VALUES (3, "Levi", "Ackermann", "LA555", "mikasa", "manager", "gerardo.jpeg", "");
 
 DROP TABLE IF EXISTS PRODUCTS;

@@ -4,16 +4,22 @@
     font-family: Garamond;
 }
 
-body{
-    display: flex;
+.panel{
+   
     height: 100vh;
-    justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: rgb(48,31,84);
-    
+    background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.8)),url(../images/donation.png);
+    background-position: center;
+    background-size: cover;
+      
 }
 
+.panel table{
+	margin-left: 35%;
+	margin-top: 100px;
+	
+}
 
 label{
 	color:white;
@@ -27,12 +33,11 @@ label{
     width: 100px;
     height: 40px;
     background: #ff7200;
-    border: 2px solid #ff7200;
-    margin-top: 20px;
-    color: #EEEEEE;
+    border: 1px solid #ff7200;
+    color: #fff;
     font-size: 15px;
-    border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    
+    border-radius:20px;
+   	margin-left: 35%;
+	margin-top: 30px;
     
 }
