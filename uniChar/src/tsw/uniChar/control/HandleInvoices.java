@@ -51,6 +51,9 @@ public class HandleInvoices extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO gather all order data
 		orderBean order = (orderBean)request.getAttribute("order");
+		if (order == null)
+			return;
+		
 		userBean user = null;
 		
 		try {
