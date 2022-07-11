@@ -36,7 +36,7 @@ public class HandleOrders extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = null;
-		
+		Integer orderID = 0;
 		cartBean cart = (cartBean) request.getSession().getAttribute("cart");
 		
 		String action = (String)request.getParameter("action");
@@ -59,7 +59,7 @@ public class HandleOrders extends HttpServlet {
 			
 			try {
 				
-				oD.insertOrder(order);
+				orderID = oD.insertOrder(order);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -67,7 +67,7 @@ public class HandleOrders extends HttpServlet {
 			
 			request.getSession().removeAttribute("cart");
 			
-			dispatcher = getServletContext().getRequestDispatcher("/index.jsp"); //TODO
+			dispatcher = getServletContext().getRequestDispatcher("/HandleInvoices?id=" + orderID.toString()); 
 			dispatcher.forward(request, response);
 			
 		}

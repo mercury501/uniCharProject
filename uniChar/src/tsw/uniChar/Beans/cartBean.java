@@ -60,6 +60,10 @@ public class cartBean implements Serializable {
 		return products.size();
 	}
 	
+	public void setProductPrice(int id, float price) {
+		this.products.get(id).setPrezzo(price);
+	}
+	
 	public Map<Integer, productBean> getProducts(){
 		return this.products;
 	}
