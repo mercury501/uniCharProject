@@ -22,7 +22,7 @@ public class orderDAO {
 		}
 	}
 	
-	public void insertOrder(orderBean order) throws SQLException {
+	public Integer insertOrder(orderBean order) throws SQLException {
 		int orderID = getNextOrderID();
 
 		String sql = "INSERT INTO ORDERS VALUES(?, ?, ?, CURDATE(), ?, ?, ?)";
@@ -48,6 +48,49 @@ public class orderDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);
+		}
+		return orderID;
+	}
+	
+	public orderBean getOrder(int id) {
+		orderBean oB = new orderBean();
+		cartBean cB = new cartBean();
+
+		String sql = " SELECT " +
+				" USER_ID, " + 
+				" ORDER_ID, " + 
+				" PRODUCT_ID, " + 
+				" PURCH_DATE, " + 
+				" QUANTITY, " + 
+				" ORDER_STATUS ," + 
+				" UNIT_PRICE " +
+				
+				" FROM ORDERS " +
+				" WHERE ORDER_ID = ? ";
+
+		try {
+			statement = sqlConn.prepareStatement(sql);
+			statement.setInt(1, id);
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				oB.setUserID(rs.getInt(1));
+				
+				cB.addProduct(rs.getInt(3), rs.getInt(5));
+				
+				cB.setProductPrice(rs.getInt(3), rs.getFloat(7));
+
+			}
+			
+			oB.setCart(cB);
+			
+			statement.close();
+			rs.close();
+		} catch (SQLException e) {
+			oB = new orderBean();
+		} finally {
+			return oB;
 		}
 
 	}
