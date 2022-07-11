@@ -1,6 +1,7 @@
 package tsw.uniChar.control;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import tsw.uniChar.Beans.cartBean;
 import tsw.uniChar.Beans.orderBean;
+import tsw.uniChar.Beans.productBean;
 import tsw.uniChar.model.orderDAO;
 
 /**
@@ -35,17 +37,22 @@ public class HandleOrders extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher = null;
 		
-		cartBean cart = (cartBean)request.getSession().getAttribute("cart");
+		cartBean cart = (cartBean) request.getSession().getAttribute("cart");
 		
 		String action = (String)request.getParameter("action");
 		
 		if (action == null)
 			action = (String)request.getAttribute("action");
 		
+		if (cart == null)
+			return;
+		
 		if (action.equals("createorder")) {
 			orderBean order = new orderBean();
 			
-			int userID = (int)request.getAttribute("userid");
+			Integer userID = (Integer)request.getSession().getAttribute("userid");
+			if (userID == null)
+				return;
 			
 			order.setCart(cart);
 			order.setUserID(userID);
@@ -62,7 +69,6 @@ public class HandleOrders extends HttpServlet {
 			
 			dispatcher = getServletContext().getRequestDispatcher("/index.jsp"); //TODO
 			dispatcher.forward(request, response);
-			
 			
 		}
 		
