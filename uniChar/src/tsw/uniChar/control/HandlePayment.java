@@ -1,6 +1,8 @@
 package tsw.uniChar.control;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,16 +31,19 @@ public class HandlePayment extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		RequestDispatcher dispatcher = null;
 		paymentBean pyB = new paymentBean();
 		paymentDAO pagamento = new paymentDAO();
 		
 		
 		
 		String action = request.getParameter("action");
-		
 		if (action == null)
 			action = (String)request.getAttribute("action");
+		
+		String returnTo = request.getParameter("returnto");
+		if (returnTo == null)
+			returnTo = (String)request.getAttribute("returnto");
 		
 		if(action != null) {
 			
@@ -94,6 +99,7 @@ public class HandlePayment extends HttpServlet {
 				
 			}
 		}
+		
 		
 	}
 

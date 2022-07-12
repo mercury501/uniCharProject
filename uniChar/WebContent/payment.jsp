@@ -1,3 +1,28 @@
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,tsw.uniChar.Beans.*"%>
+<%
+
+	cartBean cart = (cartBean) session.getAttribute("cart");
+	Integer user = (Integer) session.getAttribute("userid");
+	
+	if(cart == null  || user == null) {
+		response.sendRedirect("./index.jsp");
+		return;
+	}
+	
+	Float totale = 0.f;
+	for (Map.Entry<Integer, productBean> set : cart.getProducts().entrySet()) {
+		
+		totale += set.getValue().getPrezzo() * cart.getQuantity(set.getValue().getId());
+		
+	}
+	
+	
+	int totaleIntero = Integer.valueOf(totale.toString().substring(0, totale.toString().indexOf('.')));
+	Float ftotaleDopoVirgola = totale - totaleIntero;
+	int totaleDopoVirgola = Integer.valueOf(ftotaleDopoVirgola.toString().substring(0, ftotaleDopoVirgola.toString().indexOf('.')));
+	
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +100,7 @@
 
                <span>Devi pagare</span>
                 <div class="d-flex flex-row align-items-end mb-3">
-                    <h1 class="mb-0 yellow">$549</h1> <span>.99 &euro;</span>
+                    <h1 class="mb-0 yellow">€ <%=totaleIntero%></h1> <span><%= totaleDopoVirgola %> &euro;</span>
                 </div>
 
              
@@ -87,7 +112,7 @@
                        
 
 
-                        <button class="btn btn-outline-warning  px-3">Pay $840</button>
+                        <a href="HandleOrders?action=createorder"><button class="btn btn-outline-warning  px-3">Pay € <%=totale%></button></a>
 
 
                         

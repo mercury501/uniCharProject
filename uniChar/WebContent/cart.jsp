@@ -74,7 +74,7 @@
 
                     </select>
               </td>
-                <td><%=set.getValue().getPrezzo()%> &euro;</td>
+                <td><%=set.getValue().getPrezzo() * carrello.getQuantities().get(set.getKey())%> &euro;</td>
             </tr>
             <%
 }

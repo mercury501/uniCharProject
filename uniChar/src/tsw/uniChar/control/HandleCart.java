@@ -61,7 +61,6 @@ public class HandleCart extends HttpServlet {
 		} catch (Exception e) {
 		
 		}
-		
 		try {
 			if (action.equals("remove")) {
 				carrello.remove(id);

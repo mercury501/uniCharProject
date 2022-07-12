@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import tsw.uniChar.Beans.cartBean;
 import tsw.uniChar.Beans.userBean;
 import tsw.uniChar.model.DriverManagerConnectionPool;
 import tsw.uniChar.model.userDAO;
@@ -144,7 +145,7 @@ public class HandleUsers extends HttpServlet {
           }
     
 	private String loginHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-		String forward = "AreaUtente.jsp";
+		String forward = "index.jsp";
 		String loginError = "invalidLogin.jsp";
 		String adminPage = "AreaAdmin.jsp";
 
@@ -158,17 +159,21 @@ public class HandleUsers extends HttpServlet {
 
 				// recupero la sessione
 				HttpSession oldSession = request.getSession(false);
-
+				cartBean cart = (cartBean) request.getSession().getAttribute("cart");
+				
 				if (oldSession != null) {
 					oldSession.invalidate(); // invalido la sessione
 				}
 
 				HttpSession currentSession = request.getSession(); // creo una nuova connessione
+				if (cart != null)
+					currentSession.setAttribute("cart", cart);
 				currentSession.setAttribute("user", user);
 				currentSession.setAttribute("userid", uB.getId());
 				currentSession.setAttribute("name", uB.getName());
 				currentSession.setAttribute("email", uB.getEmail());
-				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattività massima
+				currentSession.setAttribute("role", uB.getRole());
+				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattivita  massima
 				
 				System.out.println(uB.getRole());
 				System.out.println(uB.getEmail());

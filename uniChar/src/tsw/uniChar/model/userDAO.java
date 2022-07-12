@@ -85,7 +85,7 @@ public class userDAO  {
 	
 	public userBean doGetUserByID(int id) throws SQLException {
 		userBean uB = new userBean();
-		String sql = "SELECT ID, NAME, SURNAME, ROLE, USERNAME"
+		String sql = "SELECT ID, NAME, SURNAME, ROLE, USERNAME, EMAIL"
 				+ " FROM USERS "
 				
 				+ "WHERE ID = ?";
@@ -98,7 +98,7 @@ public class userDAO  {
 	        ResultSet rs = statement.executeQuery();
         
 	        if (rs.next()) 
-	        	uB = new userBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), "", "");
+	        	uB = new userBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), "", rs.getString(6));
 	        
 	        statement.close();
 	        rs.close();

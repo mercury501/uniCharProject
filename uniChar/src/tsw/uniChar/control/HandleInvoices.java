@@ -25,6 +25,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import tsw.uniChar.Beans.orderBean;
 import tsw.uniChar.Beans.productBean;
 import tsw.uniChar.Beans.userBean;
+import tsw.uniChar.model.orderDAO;
 import tsw.uniChar.model.userDAO;
 
 /**
@@ -34,6 +35,7 @@ import tsw.uniChar.model.userDAO;
 public class HandleInvoices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private userDAO uD = null;
+	private orderDAO oD = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,6 +44,7 @@ public class HandleInvoices extends HttpServlet {
     	
         super();
         uD = new userDAO();
+        oD = new orderDAO();
         // TODO Auto-generated constructor stub
     }
 
@@ -49,8 +52,36 @@ public class HandleInvoices extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO gather all order data
 		orderBean order = (orderBean)request.getAttribute("order");
+		
+		Integer id = Integer.valueOf(request.getParameter("id"));
+		if (id == null)
+			id = (Integer)request.getAttribute("id");
+		
+		if (id == null)
+			return;
+		
+		order = oD.getOrder(id);
+		
+		if((Integer)request.getSession().getAttribute("userid") == null) {
+			response.sendRedirect("index.jsp");
+			return;
+		}
+		
+		String role = (String)request.getSession().getAttribute("role");
+		
+		if (role == null)
+			return;
+		
+		if (!role.equals("admin"))
+			if (order.getUserID() != (Integer)request.getSession().getAttribute("userid")) {
+				response.sendRedirect("index.jsp");
+				return;
+			}
+		
+		if (order == null)
+			return;
+		
 		userBean user = null;
 		
 		try {
@@ -65,11 +96,12 @@ public class HandleInvoices extends HttpServlet {
 			
 			PdfWriter.getInstance(doc, response.getOutputStream());
 			
+			doc.open();
+			
 			Font font = new Font(Font.FontFamily.TIMES_ROMAN, 20, Font.BOLD);
 			
-			//TODO manca logo
 			Image uniCharLogo = Image.getInstance(getServletContext().getRealPath("/images/logo.png"));
-			uniCharLogo.scalePercent(20);
+			uniCharLogo.scalePercent(100);
 			
 			
 			PdfPTable head = new PdfPTable(2);
@@ -100,11 +132,11 @@ public class HandleInvoices extends HttpServlet {
             prodottiPdfTable.addCell("Articolo");
             prodottiPdfTable.addCell("Quantita'");
             prodottiPdfTable.addCell("IVA");
-            prodottiPdfTable.addCell("Prezzo IVAto totale");
+            prodottiPdfTable.addCell("Totale IVAto");
 			
 			Map <Integer, productBean> prodotti = order.getCart().getProducts();
 			Map <Integer, Integer> quantita = order.getCart().getQuantities();
-			Set prodKeys = prodotti.keySet();
+			Set<Integer> prodKeys = prodotti.keySet();
 			
 			Iterator <Integer> keyIter = prodKeys.iterator();
 			
@@ -121,7 +153,7 @@ public class HandleInvoices extends HttpServlet {
 				
 				prezzoIvatoTotale += prezzoIvatoProd;
 				
-				Image prodImage = Image.getInstance(getServletContext().getRealPath("/images/" + prod.getImageOne()));
+				Image prodImage = Image.getInstance(getServletContext().getRealPath("/images/products/" + prod.getImageOne()));
 				
 				prodottiPdfTable.addCell(prodImage);
 				prodottiPdfTable.addCell(prod.getTitolo());
