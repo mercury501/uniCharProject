@@ -146,7 +146,7 @@ public class HandleUsers extends HttpServlet {
     
 	private String loginHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		String forward = "index.jsp";
-		String loginError = "invalidLogin.html";
+		String loginError = "invalidLogin.jsp";
 		String adminPage = "AreaAdmin.jsp";
 
 		userDAO uDs = new userDAO();
@@ -173,7 +173,7 @@ public class HandleUsers extends HttpServlet {
 				currentSession.setAttribute("name", uB.getName());
 				currentSession.setAttribute("email", uB.getEmail());
 				currentSession.setAttribute("role", uB.getRole());
-				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattivita  massima
+				currentSession.setMaxInactiveInterval(5 * 60); // 5 min di inattivitaÂ  massima
 				
 				System.out.println(uB.getRole());
 				System.out.println(uB.getEmail());

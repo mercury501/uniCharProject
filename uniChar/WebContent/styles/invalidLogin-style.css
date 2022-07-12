@@ -1,0 +1,19 @@
+
+
+body{
+	background-color: rgb(48,31,84);
+}
+
+.titolo{
+	text-align:center;
+	color:white;
+	
+}
+
+.bottone{
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+}
