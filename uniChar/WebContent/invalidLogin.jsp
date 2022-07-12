@@ -7,7 +7,7 @@
 </head>
 <body>
 
-     <%@ include file="navbar.html" %>
+     <%@ include file="navbar.jsp" %>
 	<h1 class="titolo">Username o password errati</h1>
     
     <button><a href="index.jsp" class="bottone">Torna al login</a></button>

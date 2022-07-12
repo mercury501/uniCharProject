@@ -34,7 +34,7 @@
 
     <div class="main">
 
-     <%@ include file="navbar.html" %>
+     <%@ include file="navbar.jsp" %>
 
         <div class="content reveal">
             <h1> Game & <br><span>Charity</span> <br> Shop</h1>
@@ -57,8 +57,8 @@
 			<form method="post" action="connection?action=login" name="HandleUsers">
 
                 <h2>Login</h2>
-                <input type="text"  name="username"placeholder="Username">
-                <input type="password" name ="password" placeholder="Password">
+                <input type="text"  name="username"placeholder="Username" required>
+                <input type="password" name ="password" placeholder="Password" required>
                 <button type="submit" class="btnn">Login</button>
 			</form>
 
@@ -144,12 +144,7 @@
                      <br>se è scelto con giudizio e dato con amore.”</h2>
         </div>
 
-        <div class="button">
-           
-        <a href="DonateNow.jsp"><button class="btn-donation">Dona ora</button></a>
-    </div>
-    </div>
-
+       </div>
 
 
 

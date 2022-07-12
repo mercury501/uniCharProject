@@ -14,7 +14,7 @@
 </head>
 <body>
   <div class="main">
-	 <%@ include file="navbar.html" %>
+	 <%@ include file="navbar.jsp" %>
 
     <div class="small-container cart-page">
 

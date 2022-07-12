@@ -22,7 +22,7 @@
 <body>
 
 
-<%@ include file="navbar.html" %>
+<%@ include file="navbar.jsp" %>
 	
 	<h1 class="TestoTabella">Modifica Account</h1>
 	

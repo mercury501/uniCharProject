@@ -27,7 +27,7 @@
 </head>
 <body>
 
-		<%@ include file="navbar.html" %>
+		<%@ include file="navbar.jsp" %>
 
             <!--Dettaglio prodotto-->
       <main>

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import tsw.uniChar.Beans.productBean;
@@ -397,11 +399,53 @@ public class productDAO {
 			rs.close();
 
 		} catch (SQLException e) {
-
+			e.printStackTrace();
+			
 		} finally {
 			return result;
 		}
 
+	}
+	
+	public synchronized Collection<productBean> doRetrieveSuggest(String StringaParziale) throws SQLException{
+		
+		productBean bean = new productBean();
+		
+		String sql = "SELECT * FROM PRODUCTS WHERE TITLE LIKE ?";
+		
+		Collection<productBean> products = new LinkedList<productBean>();
+		
+		
+		try {
+			
+			statement = sqlConn.prepareStatement(sql);
+			String search = StringaParziale.concat("%");
+			
+			statement.setString(1, search);
+			
+			ResultSet rs = statement.executeQuery();
+			
+			while(rs.next()) {
+				bean = new productBean();
+				bean.setId(rs.getInt("ID"));
+				bean.setTitolo(rs.getString("TITLE"));
+				products.add(bean);
+			}
+			
+			statement.close();
+			rs.close();
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		finally{
+			
+			products.toString();
+			return products;
+			
+		}
+		
+		
 	}
 
 

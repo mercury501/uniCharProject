@@ -3,12 +3,14 @@
 main{
     padding: 0;
     margin: 0;
+    font-family: 'Times New Roman';
    
 }
 
 html, body{
     font-family: 'Roboto', sans-serif;
     background: rgba(87,61,122,255);
+    
 }
 
 .immagine{
@@ -35,6 +37,7 @@ html, body{
     border: 5px solid #ff5700;
     border-radius: 10px;
     column-gap: 10px;
+    
 }
 .product-div-left{
     padding: 20px;

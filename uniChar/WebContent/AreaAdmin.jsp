@@ -28,20 +28,14 @@ String message = "Benvenuto/a "+nome;
 </head>
 <body>
 
-    <%@ include file="navbar.html" %>
+    <%@ include file="navbar.jsp" %>
 
 	<div class="page">
     <h2 class="welcome"><%=message %></h2>
 	<h3 class="operations">Scegli le operazioni che vuoi effettuare</h3>
     <div class="cards">
 	
-		<a href="UserInvoiceControl">
-			<div class="card">
-				<ion-icon class="iconFunction" name="ribbon-outline" size="large"></ion-icon><p>Gestione Donazioni</p>
-			</div>
-		</a>
 		
-	
 		<a href="OrderControl">
 			<div class="card">
 				<ion-icon class="iconFunction" name="documents-outline" size="large"></ion-icon><p>Gestione Ordini</p>
@@ -53,14 +47,16 @@ String message = "Benvenuto/a "+nome;
 				<ion-icon class="iconFunction" name="grid-outline" size="large"></ion-icon><p>Gestione Catalogo</p>
 			</div>
 		</a>
-	</div>
-
-	<div class="cards">
+		
 		<a href="connection?action=users&returnto=gestioneUtenteAdmin.jsp">
 			<div class="card">
 				<ion-icon class="iconFunction" name="people-outline" size="large"></ion-icon><p>Gestione Utenti</p>
 			</div>
 		</a>
+	</div>
+
+	<div class="cards">
+		
 		
 		<a href="connection?action=user&returnto=OpzioniAccount.jsp">
 			<div class="card">
