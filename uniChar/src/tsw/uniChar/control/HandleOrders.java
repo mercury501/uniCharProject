@@ -1,6 +1,7 @@
 package tsw.uniChar.control;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -22,6 +23,7 @@ import tsw.uniChar.model.orderDAO;
 public class HandleOrders extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private orderDAO oD = null;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,15 +41,18 @@ public class HandleOrders extends HttpServlet {
 		Integer orderID = 0;
 		cartBean cart = (cartBean) request.getSession().getAttribute("cart");
 		
+		String returnTo = (String)request.getParameter("returnto");
+		
 		String action = (String)request.getParameter("action");
 		
 		if (action == null)
 			action = (String)request.getAttribute("action");
 		
-		if (cart == null)
-			return;
+	
 		
 		if (action.equals("createorder")) {
+			if (cart == null)
+				return;
 			orderBean order = new orderBean();
 			
 			Integer userID = (Integer)request.getSession().getAttribute("userid");
@@ -70,6 +75,27 @@ public class HandleOrders extends HttpServlet {
 			dispatcher = getServletContext().getRequestDispatcher("/HandleInvoices?id=" + orderID.toString()); 
 			dispatcher.forward(request, response);
 			
+		}
+		
+		
+		if(action.contentEquals("getOrders")) {
+			
+			
+		
+			
+			LinkedList<orderBean> orders = new LinkedList<orderBean>();
+			Integer userID = (Integer)request.getSession().getAttribute("userid");
+			
+			
+			orders = oD.getInvoice(userID);
+			
+			
+			request.getSession().removeAttribute("getOrders");
+			
+			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
+			dispatcher.forward(request, response);
+			
+			 
 		}
 		
 	}
