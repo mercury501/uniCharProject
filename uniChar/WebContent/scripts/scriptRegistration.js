@@ -108,13 +108,13 @@
 			}
 			if( pass1.value === pass2.value ) {
 				console.log('Le password coincidono');
-				document.getElementById("errorPassword2").style.display = 'none';
+				document.getElementById("errorPasswordDifferent").style.display = 'none';
 				document.getElementById("errorMessagePasswordDifferent").style.display = 'none';
 			} else {
 				valid = false;
 				console.log('Le password non coincidono');
-				document.getElementById("errorPassword2").style.display = 'block';
-				document.getElementById("errorMessagePassword2").style.display = 'block';
+				document.getElementById("errorPasswordDifferent").style.display = 'block';
+				document.getElementById("errorMessagePasswordDifferent").style.display = 'block';
 			}
 				
 			
