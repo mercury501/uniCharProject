@@ -8,7 +8,6 @@ import java.util.Map;
 
 import tsw.uniChar.Beans.productBean;
 import tsw.uniChar.Beans.cartBean;
-import tsw.uniChar.Beans.invoiceBean;
 import tsw.uniChar.Beans.orderBean;;
 
 public class orderDAO {
@@ -102,10 +101,9 @@ public class orderDAO {
 
 	}
 	
-	public invoiceBean getInvoice(int id) {
+	public orderBean getInvoice(int id) {
 		orderBean oB = new orderBean();
 		cartBean cB = new cartBean();
-		invoiceBean iB = new invoiceBean();
 
 		String sql = " SELECT " +
 				" USER_ID, " + 
@@ -132,21 +130,20 @@ public class orderDAO {
 				
 				cB.setProductPrice(rs.getInt(3), rs.getFloat(7));
 				
-				iB.setDate(rs.getString(4));
-				iB.setOrderID(rs.getInt(2));
+				oB.setDate(rs.getString(4));
+				oB.setOrderID(rs.getInt(2));
 
 			}
 			
 			oB.setCart(cB);
 			
-			iB.setOrder(oB);
 			
 			statement.close();
 			rs.close();
 		} catch (SQLException e) {
 			
 		} finally {
-			return iB;
+			return oB;
 		}
 
 	}
