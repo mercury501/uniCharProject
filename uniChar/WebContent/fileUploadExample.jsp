@@ -12,23 +12,24 @@
   <script>
   async function uploadFile() {
     let formData = new FormData(); 
+
     formData.append("file", ajaxfile.files[0]);
-    await fetch('uploadFile', {
+    const response = await fetch('uploadFile', {
       method: "POST", 
-      body: formData,
+      body: formData
       
-      success: function(result) {
-    	  alert(result);
-    	  console.log(result);
-      },
-      error: function(result){
-    	  console.log(result);
-      }
     }); 
     
-    alert('The file upload with Ajax and Java was a success!');
-
+    const message = await response.text();
+   	alert(message);
+   	console.log(message);
+    
   }
+  
+
+
+	  
+  
   </script>
 </body> 
 <script src="JavaScript/jquery-3.6.0.min.js" type="text/javascript"></script>
