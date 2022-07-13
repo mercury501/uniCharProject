@@ -18,39 +18,27 @@ if(products == null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gestioneUtentiAdmin-style.css">
+    <link rel="stylesheet" href="styles/styleGestCatalogoAdmin.css">
     <title>Gestione Utenti</title>
 </head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-   background-color: #dddddd;
-}
-
-.product-image{
-	width: 300px;
-	height:200px;
-	border: 7px solid black;
-	
-	
-}
-</style>
 <body>
 
+	<div class="insertProducts">
+		<form action="product?action=insert&returnto=gestioneCatalogoAdmin.jsp" method="POST" name="HandleProducts">
+		<label>INSERISCI UN NUOVO PRODOTTO</label>
+		<input type="text" name="title" placeholder="Inserisci titolo" required>
+		<input type="text" name="desc" placeholder="Inserisci descrizione" required>
+		<input type="text" name="developer" placeholder="Inserisci developer" required>
+		<input type="number" name="price" placeholder="Inserisci prezzo" required>
+		<button type="submit" class="btnn">Inserisci prodotto</button>
+		
+		</form>
+	</div>
+	
+	
     <div class="search-products">
         <input class="srch-products"type="search" name="search" placeholder="Cerca prodotti">
         <a href="#"><button class="btn-search">Search</button></a>
-        <link rel="stylesheet" href="styles/styleGestUtenteAdmin.css">
         
     </div>
 
