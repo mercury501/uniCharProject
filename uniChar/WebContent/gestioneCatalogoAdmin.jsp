@@ -50,11 +50,13 @@ tr:nth-child(even) {
     <div class="search-products">
         <input class="srch-products"type="search" name="search" placeholder="Cerca prodotti">
         <a href="#"><button class="btn-search">Search</button></a>
+        <link rel="stylesheet" href="styles/styleGestUtenteAdmin.css">
+        
     </div>
 
 
    
-   
+   <div class="header_fixed">
     <table>
         <tr>
             <th>Immagine</th>
@@ -90,8 +92,8 @@ tr:nth-child(even) {
 		}
 %>
 
-</table>
-
-
+	</table>
+ </div>
+<%@ include file="footer.html" %>
 </body>
 </html>

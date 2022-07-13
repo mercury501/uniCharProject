@@ -17,26 +17,10 @@ if(users == null) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="gestioneUtentiAdmin-style.css">
+    <link rel="stylesheet" href="styles/styleGestUtenteAdmin.css">
     <title>Gestione Utenti</title>
 </head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
 <body>
     
 
@@ -48,7 +32,7 @@ tr:nth-child(even) {
 
 
    
-   
+ <div class="header_fixed"> 
     <table>
         <tr>
             <th>Nome</th>
@@ -80,8 +64,8 @@ tr:nth-child(even) {
 		}
 %>
 
-</table>
-
+	</table>
+</div>
 
 </body>
 </html>
