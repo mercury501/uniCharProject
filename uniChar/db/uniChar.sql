@@ -18,7 +18,7 @@ CREATE TABLE USERS (
 
 INSERT INTO USERS VALUES (1,"Dylan","Dog","DD6","groucho", "user", "user.jpg", "galeone@yahoo.it");
 INSERT INTO USERS VALUES (2,"Eva","Kant","EK67","walter", "admin", "luca.jpeg", "eva@gmail.com");
-INSERT INTO USERS VALUES (3, "Levi", "Ackermann", "LA555", "mikasa", "manager", "gerardo.jpeg", "wallmaria@biagio.it");
+INSERT INTO USERS VALUES (3, "Levi", "Ackermann", "LA555", "mikasa", "user", "gerardo.jpeg", "wallmaria@biagio.it");
 
 DROP TABLE IF EXISTS PRODUCTS;
 

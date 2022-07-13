@@ -27,7 +27,7 @@ String message = "Benvenuto/a "+nome;
 </head>
 <body>
 
-    <%@ include file="navbar.html" %>
+    <%@ include file="navbar.jsp" %>
     <div class="page">
         <h2 class="welcome"><%= message%></h2>
         <h3 class="operations">Scegli le operazioni che vuoi effettuare</h3>

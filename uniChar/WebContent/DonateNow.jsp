@@ -12,7 +12,7 @@
  
 
     <div class="panel">
-    <%@ include file="navbar.html" %>
+    <%@ include file="navbar.jsp" %>
    <table>
 
      <tr>

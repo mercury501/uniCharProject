@@ -98,6 +98,53 @@ ul li a:hover{
 
 }
 
+.DivRisultati {
+
+	background-color: white;
+	font-size: 16px;
+	z-index: 150;
+	
+	margin-left: -3px;
+	margin-right: -3px;
+	
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+
+	border:#f3ac9499 3px solid;
+	border-top: none;
+	
+	padding-top: 1%;
+	padding-left: 2%;
+}
+
+.DivRisultati > div {
+	padding-top: 10px;
+}
+
+.DivRisultati > div:last-child {
+	padding-bottom: 10px;
+}
+
+.DivRisultati  a:link {
+	color: #494949;
+	text-decoration: none;
+}
+
+.DivRisultati  a:visited{
+	color: #ff5700;
+}
+
+.DivRisultati  a:hover{
+	color: #ff5700;
+ 	outline: none;
+}
+
+
+.DivRisultati  a:active{
+	color: #ff5700;
+}
+
+
 .btn-search{
     width: 100px;
     height: 40px;

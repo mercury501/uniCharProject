@@ -98,10 +98,10 @@ public class HandleInvoices extends HttpServlet {
 			
 			doc.open();
 			
-			Font font = new Font(Font.FontFamily.TIMES_ROMAN, 20, Font.BOLD);
+			Font font = new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD);
 			
-			Image uniCharLogo = Image.getInstance(getServletContext().getRealPath("/images/logo.png"));
-			uniCharLogo.scalePercent(100);
+			Image uniCharLogo = Image.getInstance(getServletContext().getRealPath("/images/logoPDF.png"));
+			uniCharLogo.scalePercent(30);
 			
 			
 			PdfPTable head = new PdfPTable(2);
@@ -159,7 +159,7 @@ public class HandleInvoices extends HttpServlet {
 				prodottiPdfTable.addCell(prod.getTitolo());
 				prodottiPdfTable.addCell(String.valueOf(quant));
 				prodottiPdfTable.addCell(String.valueOf(iva * 100) + "%");
-				prodottiPdfTable.addCell("€ " + formatPrice.format(prezzoIvatoProd));
+				prodottiPdfTable.addCell("ï¿½ " + formatPrice.format(prezzoIvatoProd));
 
 			}
 			
@@ -168,11 +168,10 @@ public class HandleInvoices extends HttpServlet {
 		
 			
 			totaleTable.addCell(new Phrase("Totale: ", font));
-			totaleTable.addCell(new Phrase("€ " + formatPrice.format(prezzoIvatoTotale), font));
+			totaleTable.addCell(new Phrase("ï¿½ " + formatPrice.format(prezzoIvatoTotale), font));
 			
 			doc.add(prodottiPdfTable);
 			doc.add(totaleTable);
-			
 			doc.close();
 			
 		}catch (Exception e) {

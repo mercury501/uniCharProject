@@ -12,7 +12,7 @@
 <body>
 
 
-<%@ include file="navbar.html"%>
+<%@ include file="navbar.jsp"%>
 
     <section>
         <div class="container">

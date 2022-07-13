@@ -30,7 +30,7 @@
 </head>
 <body>
 
-		<%@ include file="navbar.html" %>
+		<%@ include file="navbar.jsp" %>
     
     <div class="card_container">
         <h1>I nostri prodotti</h1>
