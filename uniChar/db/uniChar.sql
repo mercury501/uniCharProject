@@ -18,7 +18,7 @@ CREATE TABLE USERS (
 
 INSERT INTO USERS VALUES (1,"Dylan","Dog","DD6","groucho", "user", "user.jpg", "galeone@yahoo.it");
 INSERT INTO USERS VALUES (2,"Eva","Kant","EK67","walter", "admin", "luca.jpeg", "eva@gmail.com");
-INSERT INTO USERS VALUES (3, "Levi", "Ackermann", "LA555", "mikasa", "user", "gerardo.jpeg", "wallmaria@biagio.it");
+INSERT INTO USERS VALUES (3, "Levi", "Ackermann", "LA555", "mikasa", "manager", "gerardo.jpeg", "wallmaria@biagio.it");
 
 DROP TABLE IF EXISTS PRODUCTS;
 
@@ -46,6 +46,7 @@ INSERT INTO PRODUCTS VALUES (8, 67, "CATCH 'EM ALL!", "POKEMON SWORD", "GAME FRE
 INSERT INTO PRODUCTS VALUES (9, 67, "CATCH 'EM ALL!", "POKEMON SHIELD", "GAME FREAK", "9.jpg", "", "", 12, 10);
 INSERT INTO PRODUCTS VALUES (10, 99, "SURVIVAL HORROR STORY", "SILENT HILL 3", "KONAMI", "10.jpg", "", "", 0, 10);
 INSERT INTO PRODUCTS VALUES (11, 99, "SURVIVAL HORROR STORY", "SILENT HILL 2", "KONAMI", "11.jpg", "", "", 0, 10);
+INSERT INTO PRODUCTS VALUES (12, 99, "SURVIVAL HORROR TEST", "SILENT HILL 65", "KONAMI", "12.jpg", "", "", 90, 10);
 
 CREATE TABLE ORDERS (
     USER_ID INT,
@@ -61,4 +62,6 @@ INSERT INTO ORDERS VALUES(1, 1, 1, '2045-10-16', 15, 1, 45);
 INSERT INTO ORDERS VALUES(1, 1, 5, '2045-10-16', 15, 1, 45);
 INSERT INTO ORDERS VALUES(1, 1, 7, '2045-10-16', 15, 1, 45);
 
-select * from users;
+select * from orders;
+
+select * from products WHERE DISCOUNT_PERC > 3 LIMIT 10;
