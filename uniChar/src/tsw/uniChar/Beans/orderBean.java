@@ -6,7 +6,7 @@ public class orderBean implements Serializable{
 	
 	private cartBean cart = new cartBean();
 	private int userID = 0;
-	
+
 	public cartBean getCart() {
 		return cart;
 	}

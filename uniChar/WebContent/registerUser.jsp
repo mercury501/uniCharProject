@@ -77,7 +77,6 @@
                 <p id="errorMessagePasswordDifferent">Le password non coincidono</p>
 
              </div>
-
              
              <div class="button">
                  <input type="submit" value="Register">
