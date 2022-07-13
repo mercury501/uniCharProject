@@ -53,6 +53,7 @@ public class uploadFile extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         
+
 		ArrayList<String> allowedExtensions = new ArrayList<String>() {
 			{
 				add(".jpg");
@@ -64,13 +65,12 @@ public class uploadFile extends HttpServlet {
 		String fileName = filePart.getSubmittedFileName();
 		String extension = fileName.substring(fileName.indexOf('.'));
 		
-		
 		try {
 			if (!allowedExtensions.contains(extension))
 				throw new Exception("Estensione file invalida.");
 			
 			String role = (String)request.getSession().getAttribute("role");
-			if (!role.equalsIgnoreCase("admin"))
+			if (role == null || !role.equalsIgnoreCase("admin"))
 				throw new Exception("Solo gli admin possono uploadare file.");
 			
 				
