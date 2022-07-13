@@ -30,6 +30,7 @@ if(products == null) {
 		<input type="text" name="desc" placeholder="Inserisci descrizione" required>
 		<input type="text" name="developer" placeholder="Inserisci developer" required>
 		<input type="number" name="price" placeholder="Inserisci prezzo" required>
+		<input type="number" name="stock" placeholder="Inserisci quantità" required>
  		 <input id="ajaxfile" name="image" type="file"/> <br/>
 
  
