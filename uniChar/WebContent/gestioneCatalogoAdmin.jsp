@@ -18,41 +18,28 @@ if(products == null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="gestioneUtentiAdmin-style.css">
+    <link rel="stylesheet" href="styles/styleGestCatalogoAdmin.css">
     <title>Gestione Utenti</title>
 </head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-   background-color: #dddddd;
-}
-
-.product-image{
-	width: 300px;
-	height:200px;
-	border: 7px solid black;
-	
-	
-}
-</style>
 <body>
+ <%@ include file="navbar.jsp" %>
+	<div class="insertProducts">
+		<form action="product?action=insert&returnto=gestioneCatalogoAdmin.jsp" method="POST" name="HandleProducts">
+		<label>INSERISCI UN NUOVO PRODOTTO</label>
+		<input type="text" name="title" placeholder="Inserisci titolo" required>
+		<input type="text" name="desc" placeholder="Inserisci descrizione" required>
+		<input type="text" name="developer" placeholder="Inserisci developer" required>
+		<input type="number" name="price" placeholder="Inserisci prezzo" required>
+ 		 <input id="ajaxfile" name="image" type="file"/> <br/>
 
-    <div class="search-products">
-        <input class="srch-products"type="search" name="search" placeholder="Cerca prodotti">
-        <a href="#"><button class="btn-search">Search</button></a>
-        <link rel="stylesheet" href="styles/styleGestUtenteAdmin.css">
-        
-    </div>
+ 
+		<button type="submit"onclick="uploadFile()" class="btnn">Inserisci prodotto</button>
+		
+		</form>
+	</div>
+	
+	
+
 
 
    
@@ -81,7 +68,7 @@ tr:nth-child(even) {
             <td><%=bean.getPrezzo()%></td>
             <td>
             	<a href="product?action=delete&id=<%=bean.getId()%>&returnto=gestioneCatalogoAdmin.jsp">Rimuovi</a>
-            	<a href="">Modifica</a>
+
             </td>
         </tr>
     
@@ -95,5 +82,26 @@ tr:nth-child(even) {
 	</table>
  </div>
 <%@ include file="footer.html" %>
+
+
+  <!-- Ajax to Java File Upload Logic -->
+  <script>
+  async function uploadFile() {
+    let formData = new FormData(); 
+
+    formData.append("file", ajaxfile.files[0]);
+    const response = await fetch('uploadFile', {
+      method: "POST", 
+      body: formData
+      
+    }); 
+    
+    const message = await response.text();
+   	alert(message);
+   	console.log(message);
+    
+  }
+  
+  </script>
 </body>
 </html>

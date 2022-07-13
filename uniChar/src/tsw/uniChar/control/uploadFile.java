@@ -70,17 +70,18 @@ public class uploadFile extends HttpServlet {
 				throw new Exception("Estensione file invalida.");
 			
 			String role = (String)request.getSession().getAttribute("role");
-			if (role == null || !role.equalsIgnoreCase("admin"))
+			if (role == null || !role.equalsIgnoreCase("admin")) {
 				throw new Exception("Solo gli admin possono uploadare file.");
-			
+			}else {
 				
 			for (Part part : request.getParts()) {
 				part.write(getServletContext().getRealPath("/images/products/" + fileName));
 				System.out.println(getServletContext().getRealPath("/images/products/" + fileName));
 			}
+			
 			out.print("Upload effettuato.");
 			out.flush();
-			
+			}
 		} catch (Exception e) {
 			out.print(e.getMessage());
 			out.flush();

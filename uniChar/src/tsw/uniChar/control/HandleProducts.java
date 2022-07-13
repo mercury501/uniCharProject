@@ -66,11 +66,7 @@ public class HandleProducts extends HttpServlet {
 				pB.setDescrizione(request.getParameter("desc"));
 				pB.setSviluppatore(request.getParameter("developer"));
 				pB.setPrezzo(Float.valueOf(request.getParameter("price")));
-				pB.setId(Integer.parseInt(request.getParameter("id")));
-				pB.setImageOne(request.getParameter("imgpathone"));
-				pB.setImageTwo(request.getParameter("imgpathtwo"));
-				pB.setImageThree(request.getParameter("imgpaththree"));
-				
+				pB.setImageOne(request.getParameter("image"));
 				insertProduct(pB);
 			}
 			else if (action.equalsIgnoreCase("search")) {
