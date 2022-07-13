@@ -24,7 +24,7 @@ public class orderDAO {
 	
 	public Integer insertOrder(orderBean order) throws SQLException {
 		int orderID = getNextOrderID();
-
+		float donation = 0.f;
 		String sql = "INSERT INTO ORDERS VALUES(?, ?, ?, CURDATE(), ?, ?, ?)";
 
 		try {
@@ -37,14 +37,20 @@ public class orderDAO {
 
 				statement.setInt(3, set.getKey());
 				statement.setInt(4, order.getCart().getQuantity(set.getKey()));
-				statement.setFloat(6, set.getValue().getPrezzo());
-
+				statement.setFloat(6, set.getValue().getPrezzo() + set.getValue().getPrezzo() * 0.05f );
+				
+				donation += set.getValue().getPrezzo() * 0.05f;
+				
 				statement.executeUpdate();
 
 			}
 			statement.close();
 			sqlConn.commit();
 			releaseConn();
+			
+			donationDAO dD = new donationDAO();
+			
+			dD.insertDonation(order.getUserID(), donation);
 
 		} catch (SQLException e) {
 			e.printStackTrace(System.out);

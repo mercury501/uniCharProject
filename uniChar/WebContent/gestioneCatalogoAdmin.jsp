@@ -3,7 +3,7 @@
 
 Collection<?> products = (Collection<?>) request.getAttribute("catalog");
 if(products == null) {
-	response.sendRedirect("./product?action=catalog&returnto=AreaAdmin.jsp");
+	response.sendRedirect("./product?action=catalog&returnto=gestioneCatalogoAdmin.jsp");
 	return;
 }
 %>
@@ -26,9 +26,9 @@ if(products == null) {
 	<div class="insertProducts">
 		<form action="product?action=insert&returnto=gestioneCatalogoAdmin.jsp" method="POST" name="HandleProducts">
 		<label>INSERISCI UN NUOVO PRODOTTO</label>
-		<input type="text" name="title" placeholder="Inserisci titolo" required>
-		<input type="text" name="desc" placeholder="Inserisci descrizione" required>
-		<input type="text" name="developer" placeholder="Inserisci developer" required>
+		<input type="text" name="title" placeholder="Inserisci titolo" required maxlength="30">
+		<input type="text" name="desc" placeholder="Inserisci descrizione" required maxlength="255">
+		<input type="text" name="developer" placeholder="Inserisci developer" required maxlength="30">
 		<input type="number" name="price" placeholder="Inserisci prezzo" required>
  		 <input id="ajaxfile" name="image" type="file"/> <br/>
 
