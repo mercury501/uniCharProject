@@ -30,7 +30,7 @@
 
             <ul>
               	<li><a href="cart.jsp"><img class="shop_icon" src="images/navbar/shop.png" alt=""></a></li>
-                <li><a href="AreaUtente.jsp"><ion-icon name="person-outline" class="icona"></ion-icon></a></li>
+                <li><a href="connection?action=areagestione"><ion-icon name="person-outline" class="icona"></ion-icon></a></li>
             </ul>
 
 

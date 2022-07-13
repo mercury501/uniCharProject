@@ -57,7 +57,6 @@ public class HandleUsers extends HttpServlet {
 
             try {
             	String action = (String)request.getParameter("action");
-
         		if (action == null)
         			action = (String)request.getAttribute("action");
 
@@ -81,10 +80,18 @@ public class HandleUsers extends HttpServlet {
 
 			if(action.equalsIgnoreCase("logout")) {
 				LogOut(request,response);
-
-
 			}
 
+			if(action.equalsIgnoreCase("areagestione")) {
+				String role = (String)request.getSession().getAttribute("role");
+
+        		if (role == null)
+        			returnTo = "index.jsp";	
+        		else if (role.equalsIgnoreCase("admin"))
+					returnTo = "AreaAdmin.jsp";
+				else
+					returnTo = "AreaUtente.jsp";
+			}
 
 			if(action.equalsIgnoreCase("users")) {
 
@@ -93,20 +100,14 @@ public class HandleUsers extends HttpServlet {
 
 				System.out.print(uB.getRole());
 
-					userDAO uD = new userDAO();
+				userDAO uD = new userDAO();
 
-					List<userBean> listaUtenti = new ArrayList<userBean>();
+				List<userBean> listaUtenti = new ArrayList<userBean>();
 
-					listaUtenti = uD.showUsers(uB);
+				listaUtenti = uD.showUsers(uB);
 
-
-
-
-					request.removeAttribute("users");
-					request.setAttribute("users", listaUtenti);
-
-
-
+				request.removeAttribute("users");
+				request.setAttribute("users", listaUtenti);
 
 			}
 
@@ -124,7 +125,6 @@ public class HandleUsers extends HttpServlet {
 
 				request.removeAttribute("user");
 				request.setAttribute("user", uB);
-
 
 			}
 
@@ -179,11 +179,9 @@ public class HandleUsers extends HttpServlet {
 				System.out.println(uB.getEmail());
 				System.out.println(uB.getId());
 
-				if (uB.getRole().equals("admin")) {
-					return adminPage;
-				} else {
-					return forward;
-				}
+
+				return forward;
+				
 
 			}
 
