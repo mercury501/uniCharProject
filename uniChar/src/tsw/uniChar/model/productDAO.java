@@ -98,7 +98,7 @@ public class productDAO {
 	}
 	
 	public boolean controllaEsistenzaTitolo(String titolo) {
-		String sql = "SELECT COUNT(*) FROM PRODUCTS WHERE ID = ?";
+		String sql = "SELECT COUNT(*) FROM PRODUCTS WHERE UPPER(TITLE) LIKE ?";
 
 		try {
 			statement = sqlConn.prepareStatement(sql);
