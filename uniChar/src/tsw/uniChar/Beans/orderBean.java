@@ -48,8 +48,8 @@ public class orderBean implements Serializable{
 	
 	public double getTotale() {
 		
-		Map <Integer, productBean> prodotti = order.getCart().getProducts();
-		Map <Integer, Integer> quantita = order.getCart().getQuantities();
+		Map <Integer, productBean> prodotti = this.cart.getProducts();
+		Map <Integer, Integer> quantita = this.cart.getQuantities();
 		Set<Integer> prodKeys = prodotti.keySet();
 		
 		Iterator <Integer> keyIter = prodKeys.iterator();
@@ -70,7 +70,6 @@ public class orderBean implements Serializable{
 		}
 			return prezzoIvatoTotale;
 		
-	
 	}
 	
 }

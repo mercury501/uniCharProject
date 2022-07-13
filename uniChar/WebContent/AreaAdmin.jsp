@@ -36,7 +36,7 @@ String message = "Benvenuto/a "+nome;
     <div class="cards">
 	
 		
-		<a href="HandleOrders?action=getOrders&returnto=gestioneOrdini.jsp">
+		<a href="HandleOrders?action=getOrders&returnto=GestioneOrdini.jsp">
 			<div class="card">
 				<ion-icon class="iconFunction" name="documents-outline" size="large"></ion-icon><p>Gestione Ordini</p>
 			</div>

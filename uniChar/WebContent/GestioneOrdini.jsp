@@ -2,9 +2,9 @@
 <%
 
 
-Collection<?> orders = (Collection<?>) request.getAttribute("getOrders");
+Collection<?> orders = (Collection<?>) request.getAttribute("orders");
 if(orders == null) {
-	response.sendRedirect("./connection?action=users&returnto=AreaAdmin.jsp");
+	response.sendRedirect("./HandleOrders?action=getOrders&returnto=GestioneOrdini.jsp");
 	return;
 }
 
@@ -45,7 +45,7 @@ if(orders == null) {
 	%>	
 			<tr>
 				<td>
-				<a href="/HandleInvoices?id=" + <%=ordine.getUserID() %>"></a><ion-icon name="document-attach-outline"></ion-icon></a>
+				<a href="HandleInvoices?id=" + <%=ordine.getUserID() %>"></a><ion-icon name="document-attach-outline"></ion-icon></a>
 				
 				</td>
 			</tr>
