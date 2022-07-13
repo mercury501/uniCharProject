@@ -4,7 +4,7 @@
 
 	Collection<?> products = (Collection<?>) request.getAttribute("discountcatalog");
 	if(products == null) {
-		response.sendRedirect("./product?action=discountcatalog&number=4&discount=3&returnto=index.jsp");
+		response.sendRedirect("./product?action=discountcatalog&number=10&discount=3&returnto=index.jsp");
 		return;
 	}
 	
