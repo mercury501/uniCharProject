@@ -96,6 +96,32 @@ public class productDAO {
 
 		return false;
 	}
+	
+	public boolean controllaEsistenzaTitolo(String titolo) {
+		String sql = "SELECT COUNT(*) FROM PRODUCTS WHERE ID = ?";
+
+		try {
+			statement = sqlConn.prepareStatement(sql);
+			statement.setString(1, titolo);
+
+			ResultSet rs = statement.executeQuery();
+
+			rs.next();
+
+			if (rs.getInt(1) == 1) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
+	}
 
 	public boolean gestisciSalvataggio(productBean pB) {
 		if (controllaEsistenza(pB) == false) {

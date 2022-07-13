@@ -161,3 +161,33 @@ a{
     text-align: center;
 }
 
+.errors {
+	position: relative;
+    color: white;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #ff0000b7;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    vertical-align:middle;
+    height:1px;
+}
+
+#errorMess {
+    display: none;
+}
+
+#errorMessageMess {
+	font-size: 10pt;
+	color: #ff00009a;
+	display: none;
+    padding-left: 70px;
+    
+    position: relative;
+    top: -20px;
+    
+    font-style: italic;
+}

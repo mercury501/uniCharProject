@@ -26,6 +26,7 @@ if(products == null) {
 	<div class="insertProducts">
 		<form action="product?action=insert&returnto=gestioneCatalogoAdmin.jsp" method="POST" name="HandleProducts">
 		<label>INSERISCI UN NUOVO PRODOTTO</label>
+		<input type="hidden" name="prodid" value="-1">
 		<input type="text" name="title" placeholder="Inserisci titolo" required maxlength="30">
 		<input type="text" name="desc" placeholder="Inserisci descrizione" required maxlength="255">
 		<input type="text" name="developer" placeholder="Inserisci developer" required maxlength="30">
@@ -34,15 +35,10 @@ if(products == null) {
 
  
 		<button type="submit"onclick="uploadFile()" class="btnn">Inserisci prodotto</button>
-		
+		<div id="errorMess" class="errors"><i> <ion-icon name="warning-outline"></ion-icon> </i></div>		
 		</form>
 	</div>
-	
-	
-
-
-
-   
+	 <p id="errorMessageMess">Prodotto con lo stesso titolo gia' esistente.</p>
    <div class="header_fixed">
     <table>
         <tr>
