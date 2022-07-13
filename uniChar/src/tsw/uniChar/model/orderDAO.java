@@ -149,6 +149,56 @@ public class orderDAO {
 
 	}
 	
+	public ArrayList<orderBean> getInvoices() {
+		ArrayList<orderBean> orderlist = new ArrayList<orderBean>();
+		
+
+		String sql = " SELECT " +
+				" USER_ID, " + 
+				" ORDER_ID, " + 
+				" PRODUCT_ID, " + 
+				" PURCH_DATE, " + 
+				" QUANTITY, " + 
+				" ORDER_STATUS ," + 
+				" UNIT_PRICE " +
+				
+				" FROM ORDERS " +
+				" WHERE 1 = 1 ";
+
+		try {
+			statement = sqlConn.prepareStatement(sql);
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				orderBean oB = new orderBean();
+				cartBean cB = new cartBean();
+				
+				oB.setUserID(rs.getInt(1));
+				
+				cB.addProduct(rs.getInt(3), rs.getInt(5));
+				
+				cB.setProductPrice(rs.getInt(3), rs.getFloat(7));
+				
+				oB.setDate(rs.getString(4));
+				oB.setOrderID(rs.getInt(2));
+				
+				oB.setCart(cB);
+				
+				orderlist.add(oB);
+
+			}
+						
+			statement.close();
+			rs.close();
+		} catch (SQLException e) {
+			
+		} finally {
+			return orderlist;
+		}
+
+	}
+	
 	public ArrayList<orderBean> getUserInvoices(int userid) {
 		ArrayList<orderBean> orderlist = new ArrayList<orderBean>();
 		

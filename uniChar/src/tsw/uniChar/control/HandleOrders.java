@@ -80,22 +80,21 @@ public class HandleOrders extends HttpServlet {
 		
 		
 		if(action.contentEquals("getOrders")) {
-			
-			
 		
-			
 			ArrayList<orderBean> orders = new ArrayList<orderBean>();
 			Integer userID = (Integer)request.getSession().getAttribute("userid");
 			
-			
-			orders = oD.getUserInvoices(userID);	
-			
+			String role = (String)request.getSession().getAttribute("role");
+			if (role == null || !role.equalsIgnoreCase("admin")) 
+				orders = oD.getUserInvoices(userID);	
+			else
+				orders = oD.getInvoices(); 
 
 			request.setAttribute("orders", orders);
+			
 			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
 			dispatcher.forward(request, response);
 			
-			 
 		}
 		
 	}
