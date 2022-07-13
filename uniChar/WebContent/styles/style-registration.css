@@ -187,3 +187,31 @@ form .button input:hover {
 #errorNumber {
 	display: none;
 }
+
+
+
+
+#errorMessageMailUsed{
+	display:none;
+}
+
+#errorMessageName{
+	display:none;
+}
+
+#errorMessagesurname{
+	display:none;
+}
+
+#errorMessageMail{
+	display:none;
+}
+
+#errorMessagePassword{
+	display:none;
+}
+
+#errorMessagePasswordDifferent{
+	display:none;
+}
+	
