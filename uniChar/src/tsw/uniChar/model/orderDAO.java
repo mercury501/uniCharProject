@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import tsw.uniChar.Beans.productBean;
@@ -144,6 +145,57 @@ public class orderDAO {
 			
 		} finally {
 			return oB;
+		}
+
+	}
+	
+	public ArrayList<orderBean> getUserInvoices(int userid) {
+		ArrayList<orderBean> orderlist = new ArrayList<orderBean>();
+		
+
+		String sql = " SELECT " +
+				" USER_ID, " + 
+				" ORDER_ID, " + 
+				" PRODUCT_ID, " + 
+				" PURCH_DATE, " + 
+				" QUANTITY, " + 
+				" ORDER_STATUS ," + 
+				" UNIT_PRICE " +
+				
+				" FROM ORDERS " +
+				" WHERE USER_ID = ? ";
+
+		try {
+			statement = sqlConn.prepareStatement(sql);
+			statement.setInt(1, userid);
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				orderBean oB = new orderBean();
+				cartBean cB = new cartBean();
+				
+				oB.setUserID(rs.getInt(1));
+				
+				cB.addProduct(rs.getInt(3), rs.getInt(5));
+				
+				cB.setProductPrice(rs.getInt(3), rs.getFloat(7));
+				
+				oB.setDate(rs.getString(4));
+				oB.setOrderID(rs.getInt(2));
+				
+				oB.setCart(cB);
+				
+				orderlist.add(oB);
+
+			}
+						
+			statement.close();
+			rs.close();
+		} catch (SQLException e) {
+			
+		} finally {
+			return orderlist;
 		}
 
 	}
