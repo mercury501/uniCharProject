@@ -22,7 +22,7 @@ if(products == null) {
     <title>Gestione Utenti</title>
 </head>
 <body>
-
+ <%@ include file="navbar.jsp" %>
 	<div class="insertProducts">
 		<form action="product?action=insert&returnto=gestioneCatalogoAdmin.jsp" method="POST" name="HandleProducts">
 		<label>INSERISCI UN NUOVO PRODOTTO</label>
@@ -30,17 +30,16 @@ if(products == null) {
 		<input type="text" name="desc" placeholder="Inserisci descrizione" required>
 		<input type="text" name="developer" placeholder="Inserisci developer" required>
 		<input type="number" name="price" placeholder="Inserisci prezzo" required>
-		<button type="submit" class="btnn">Inserisci prodotto</button>
+ 		 <input id="ajaxfile" name="image" type="file"/> <br/>
+
+ 
+		<button type="submit"onclick="uploadFile()" class="btnn">Inserisci prodotto</button>
 		
 		</form>
 	</div>
 	
 	
-    <div class="search-products">
-        <input class="srch-products"type="search" name="search" placeholder="Cerca prodotti">
-        <a href="#"><button class="btn-search">Search</button></a>
-        
-    </div>
+
 
 
    
@@ -69,7 +68,7 @@ if(products == null) {
             <td><%=bean.getPrezzo()%></td>
             <td>
             	<a href="product?action=delete&id=<%=bean.getId()%>&returnto=gestioneCatalogoAdmin.jsp">Rimuovi</a>
-            	<a href="">Modifica</a>
+
             </td>
         </tr>
     
@@ -83,5 +82,26 @@ if(products == null) {
 	</table>
  </div>
 <%@ include file="footer.html" %>
+
+
+  <!-- Ajax to Java File Upload Logic -->
+  <script>
+  async function uploadFile() {
+    let formData = new FormData(); 
+
+    formData.append("file", ajaxfile.files[0]);
+    const response = await fetch('uploadFile', {
+      method: "POST", 
+      body: formData
+      
+    }); 
+    
+    const message = await response.text();
+   	alert(message);
+   	console.log(message);
+    
+  }
+  
+  </script>
 </body>
 </html>
