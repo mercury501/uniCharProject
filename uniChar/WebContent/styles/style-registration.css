@@ -54,6 +54,7 @@ form .user-details .input-box {
 	display: block;
 	font-weight: 500;
 	margin-bottom: 5px;
+	padding-left: 70px;
 }
 
 form .user-details .input-box input {
@@ -155,63 +156,112 @@ form .button input:hover {
 .errors {
 	position: relative;
     color: white;
-    padding-top: 20px;
+    padding-top: 15px;
     padding-left: 10px;
     padding-right: 10px;
     background-color: #ff0000b7;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     vertical-align:middle;
+    height:1px;
 }
 
 #errorMail {
-	display: none;
+    display: none;
 }
-
 #errorPassword {
-	display: none;
+    display: none;
 }
-
 #errorPasswordDifferent {
 	display: none;
 }
-
 #errorName {
-	display: none;
+    display: none;
 }
-
 #errorSurname {
-	display: none;
+    display: none;
 }
-
 #errorNumber {
+    display: none;
+}
+
+
+
+
+#errorMessageMail {
+	font-size: 10pt;
+	color: #ff00009a;
 	display: none;
+    padding-left: 70px;
+    
+    position: relative;
+    top: -20px;
+    
+    font-style: italic;
 }
-
-
-
-
-#errorMessageMailUsed{
-	display:none;
+#errorMessageMailUsed {
+	font-size: 10pt;
+	color: #ff00009a;
+	display: none;
+    padding-left: 70px;
+    
+    position: relative;
+    top: -20px;
+    
+    font-style: italic;
 }
-
-#errorMessageName{
-	display:none;
+#errorMessagePassword {
+	font-size: 10pt;
+	color: #ff00009a;
+	display: none;
+    padding-left: 70px;
+    
+    position: relative;
+    top: -20px;
+    
+    font-style: italic;
 }
-
-#errorMessagesurname{
-	display:none;
+#errorMessagePasswordDifferent {
+	font-size: 10pt;
+	color: #ff00009a;
+	display: none;
+    padding-left: 70px;
+    
+    position: relative;
+    top: -20px;
+    
+    font-style: italic;
 }
-
-#errorMessageMail{
-	display:none;
+#errorMessageName {
+    font-size: 10pt;
+    color: #ffffffff;
+    display: none;
+    position: relative;
+    top: 70px;
+    left: -210px;
+    font-style: italic;
 }
-
-#errorMessagePassword{
-	display:none;
+#errorMessageSurname {
+    font-size: 9pt;
+    color: #ffffffff;
+    display: none;
+    /* padding-left: 70px; */
+    position: relative;
+    top: -30px;
+    left: 431px;
+    font-style: italic;
 }
-
-#errorMessagePasswordDifferent{
-	display:none;
+#errorMessageNumber {
+	font-size: 10pt;
+	color: #ff00009a;
+	display: none;
+    padding-left: 70px;
+    
+    position: relative;
+    top: -20px;
+    
+    font-style: italic;
 }
 	

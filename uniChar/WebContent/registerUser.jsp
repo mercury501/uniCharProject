@@ -51,7 +51,7 @@
                     <input type="text" name="surname" id="surname" placeholder="Cognome" required>
                		<div id="errorSurname" class="errors"><i> <ion-icon name="warning-outline"></ion-icon> </i></div>
                 </div>
-                <p id="errorMessagesurname">Il cognome deve contenere solo lettere</p>
+                <p id="errorMessageSurname">Il cognome deve contenere solo lettere</p>
                 <div class="input-box">
                     <span class="details">Username</span>
                     <input type="text" name="username" id="username" placeholder="Username" required>
@@ -87,4 +87,7 @@
 </body>
 
 <script src="scripts/scriptRegistration.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="JavaScript/jquery-3.6.0.min.js" type="text/javascript"></script>
 </html>
