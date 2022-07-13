@@ -51,4 +51,16 @@ body{
 }
 
 
+input[type=text]{
+	width: 150px;
+	height: 20px;
+	font-size: 15px;
+}
+
+
+.ok-button{
+	display: block;
+	margin-top: 20px;
+	width: 40px;
+}
 

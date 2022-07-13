@@ -1,4 +1,5 @@
-<%
+
+    <%
 	userBean utente = (userBean) request.getAttribute("user");
 	
 	if(utente == null) {
@@ -38,7 +39,7 @@
     
     <tr>
         <th class="testoTabella testoValoriAccount">
-            <%= utente.getName() %>
+            <input type="text" value="<%= utente.getName() %>" readonly="readonly">
         </th>
         
    
@@ -64,7 +65,8 @@
 
     <tr>
         <th class="testoTabella testoValoriAccount">
-            <%= utente.getSurname() %>
+            <input type="text" value="<%= utente.getSurname() %>" readonly="readonly">
+            
         </th>
         
         <th>
@@ -89,11 +91,13 @@
 
     <tr>
         <th class="testoTabella testoValoriAccount" style="font-size: 15pt">
-            <%= utente.getEmail() %>
+            <input type="text" value="<%= utente.getEmail() %>" disabled">
+            <button class="ok-button">OK</button>
+            
         </th>
       
        <th>
-    <button class="modificaElemento" id="modificaNome">
+    <button onClick="tastoModifica()" class="modificaElemento" id="modificaNome">
                     <div>
                         <ion-icon class="iconaModificaPulsante" name="create-outline" size="large"></ion-icon>
                     </div>
@@ -115,7 +119,9 @@
 
     <tr>
         <th class="testoTabella testoValoriAccount">
-            ********
+            
+            <input type="text" value="******">
+            
         </th>
         
          <th>
@@ -144,7 +150,13 @@
 	
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+     <script src="JavaScript/jquery-3.6.0.min.js" type="text/javascript"></script>	
     
+    <script>
+    	
+    function tastoModifica(){
+    	 document.getElementById("modificaNome").removeAttribute("readonly");
+    }
     
-    
+    </script>
     
