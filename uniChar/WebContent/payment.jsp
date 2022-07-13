@@ -16,6 +16,7 @@
 		
 	}
 	
+	totale += totale * 0.05f;
 	
 	int totaleIntero = Integer.valueOf(totale.toString().substring(0, totale.toString().indexOf('.')));
 	Float ftotaleDopoVirgola = totale - totaleIntero;
@@ -104,7 +105,7 @@
                 </div>
 
              
-                    <span>Divertiti e goditi il tuo acquisto</span>
+                    <span>Divertiti e goditi il tuo acquisto, è incluso il 5% extra per beneficenza!</span>
     
                 <div class="mt-4 mb-4">
 
