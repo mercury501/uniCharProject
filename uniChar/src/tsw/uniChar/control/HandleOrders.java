@@ -1,6 +1,7 @@
 package tsw.uniChar.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -83,15 +84,14 @@ public class HandleOrders extends HttpServlet {
 			
 		
 			
-			LinkedList<orderBean> orders = new LinkedList<orderBean>();
+			ArrayList<orderBean> orders = new ArrayList<orderBean>();
 			Integer userID = (Integer)request.getSession().getAttribute("userid");
 			
 			
-			orders = oD.getInvoice(userID);
+			orders = oD.getUserInvoices(userID);	
 			
-			
-			request.getSession().removeAttribute("getOrders");
-			
+
+			request.setAttribute("orders", orders);
 			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
 			dispatcher.forward(request, response);
 			
