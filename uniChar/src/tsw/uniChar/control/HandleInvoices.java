@@ -57,7 +57,6 @@ public class HandleInvoices extends HttpServlet {
 		Integer id = Integer.valueOf(request.getParameter("id"));
 		if (id == null)
 			id = (Integer)request.getAttribute("id");
-		
 		if (id == null)
 			return;
 		
@@ -142,6 +141,7 @@ public class HandleInvoices extends HttpServlet {
 			
 			double prezzoIvatoTotale = 0.0;
 			double iva = 0.22;
+			String euro = "\u20ac";
 			
 			while(keyIter.hasNext()) {
 				int key = keyIter.next();
@@ -149,7 +149,6 @@ public class HandleInvoices extends HttpServlet {
 				int quant = quantita.get(key);
 				
 				double prezzoIvatoProd = prod.getPrezzo() + (prod.getPrezzo() * iva);
-				//TODO iva?
 				
 				prezzoIvatoTotale += prezzoIvatoProd;
 				
@@ -159,16 +158,15 @@ public class HandleInvoices extends HttpServlet {
 				prodottiPdfTable.addCell(prod.getTitolo());
 				prodottiPdfTable.addCell(String.valueOf(quant));
 				prodottiPdfTable.addCell(String.valueOf(iva * 100) + "%");
-				prodottiPdfTable.addCell("� " + formatPrice.format(prezzoIvatoProd));
+				prodottiPdfTable.addCell(euro + formatPrice.format(prezzoIvatoProd));
 
 			}
 			
 			PdfPTable totaleTable = new PdfPTable(2);
 			totaleTable.setWidthPercentage(90);
-		
 			
 			totaleTable.addCell(new Phrase("Totale: ", font));
-			totaleTable.addCell(new Phrase("� " + formatPrice.format(prezzoIvatoTotale), font));
+			totaleTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale), font));
 			
 			doc.add(prodottiPdfTable);
 			doc.add(totaleTable);
