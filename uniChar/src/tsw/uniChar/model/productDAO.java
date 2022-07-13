@@ -16,7 +16,7 @@ public class productDAO {
 	private PreparedStatement statement = null;
 	private PreparedStatement countStatement = null;
 
-	String sqlSelect = "SELECT ID, PRICE, DESCR, TITLE, DEVELOPER, IMG_PATH_ONE, IMG_PATH_TWO, IMG_PATH_THREE, DISCOUNT_PERC FROM PRODUCTS ";
+	String sqlSelect = "SELECT ID, PRICE, DESCR, TITLE, DEVELOPER, IMG_PATH_ONE, IMG_PATH_TWO, IMG_PATH_THREE, DISCOUNT_PERC, STOCK FROM PRODUCTS ";
 
 	public productDAO() {
 		try {
@@ -31,7 +31,7 @@ public class productDAO {
 		try {
 
 		pB =  new productBean(rs.getInt(1), rs.getFloat(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-				rs.getString(7), rs.getString(8), rs.getFloat(9));
+				rs.getString(7), rs.getString(8), rs.getFloat(9), rs.getInt(10));
 		} catch (SQLException e) {
 			throw e;
 		} finally {
@@ -41,8 +41,8 @@ public class productDAO {
 	}
 
 	public boolean insertProduct(productBean pB) {
-		String sql = "INSERT INTO PRODUCTS (PRICE, DESCR, TITLE, DEVELOPER, IMG_PATH_ONE, IMG_PATH_TWO, IMG_PATH_THREE, DISCOUNT_PERC "
-				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+		String sql = "INSERT INTO PRODUCTS (PRICE, DESCR, TITLE, DEVELOPER, IMG_PATH_ONE, IMG_PATH_TWO, IMG_PATH_THREE, DISCOUNT_PERC, STOCK "
+				+ ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 
 		try {
 			statement = sqlConn.prepareStatement(sql);
@@ -55,6 +55,7 @@ public class productDAO {
 			statement.setString(6, pB.getImageTwo());
 			statement.setString(7, pB.getImageThree());
 			statement.setFloat(8, pB.getDiscountPerc());
+			statement.setInt(9, pB.getStock());
 
 			statement.execute();
 
@@ -107,7 +108,7 @@ public class productDAO {
 	}
 
 	public boolean updateProduct(productBean pB) {
-		String sql = "UPDATE PRODUCTS SET PRICE = ?, DESCR = ?, TITLE = ?, DEVELOPER = ?, IMG_PATH_ONE = ?, IMG_PATH_TWO = ?, IMG_PATH_THREE = ?, DISCOUNT_PERC = ?  WHERE ID = ? ";
+		String sql = "UPDATE PRODUCTS SET PRICE = ?, DESCR = ?, TITLE = ?, DEVELOPER = ?, IMG_PATH_ONE = ?, IMG_PATH_TWO = ?, IMG_PATH_THREE = ?, DISCOUNT_PERC = ?, STOCK = ?  WHERE ID = ? ";
 
 		try {
 			statement = sqlConn.prepareStatement(sql);
@@ -121,6 +122,7 @@ public class productDAO {
 			statement.setString(7, pB.getImageThree());
 			statement.setInt(8, pB.getId());
 			statement.setFloat(9, pB.getDiscountPerc());
+			statement.setInt(10, pB.getStock());
 
 			statement.execute();
 
@@ -324,7 +326,8 @@ public class productDAO {
 						resultset.getInt("ID"), resultset.getFloat("PRICE"), resultset.getString("DESCR"),
 						resultset.getString("TITLE"), resultset.getString("DEVELOPER"),
 						resultset.getString("IMG_PATH_ONE"), resultset.getString("IMG_PATH_TWO"),
-						resultset.getString("IMG_PATH_THREE"), resultset.getFloat("DISCOUNT_PERC")
+						resultset.getString("IMG_PATH_THREE"), resultset.getFloat("DISCOUNT_PERC"),
+						resultset.getInt("STOCK")
 
 				);
 
@@ -362,7 +365,8 @@ public class productDAO {
 						resultset.getInt("ID"), resultset.getFloat("PRICE"), resultset.getString("DESCR"),
 						resultset.getString("TITLE"), resultset.getString("DEVELOPER"),
 						resultset.getString("IMG_PATH_ONE"), resultset.getString("IMG_PATH_TWO"),
-						resultset.getString("IMG_PATH_THREE"), resultset.getFloat("DISCOUNT_PERC")
+						resultset.getString("IMG_PATH_THREE"), resultset.getFloat("DISCOUNT_PERC"),
+						resultset.getInt("STOCK")
 				);
 
 				products.add(p);
