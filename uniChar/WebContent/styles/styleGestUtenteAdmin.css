@@ -47,6 +47,24 @@ td img{
     border: 5px solid #e6e7e8;
 }
 
+#errorMail {
+    display: none;
+}
+
+#errorMessageMailUsed {
+	font-size: 10pt;
+	color: #ff00009a;
+	display: none;
+    padding-left: 70px;
+    
+    position: relative;
+    top: -20px;
+    
+    font-style: italic;
+}
+
+
+
 tr:nth-child(even){
     background-color: #dddddd;
 }

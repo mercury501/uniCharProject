@@ -67,5 +67,24 @@ if(users == null) {
 	</table>
 </div>
 
+<div class="insertProducts">
+		<form action="product?action=insert&returnto=gestioneCatalogoAdmin.jsp" method="POST" onsubmit="event.preventDefault(); validate(this) name="HandleProducts">
+		<label>Utente</label>
+		<input type="hidden" name="userid" value="-1">
+		<input type="text" name="name" placeholder="Inserisci nome" required maxlength="20">
+		<input type="text" name="surname" placeholder="Inserisci cognome" required maxlength="20">
+		<input type="text" name="username" placeholder="Inserisci username" required maxlength="20">
+		<input type="text" name="email" placeholder="Inserisci email" maxlength="40" required>
+		<input type="text" name="role" placeholder="Inserisci ruolo" required>
+ 
+		<button type="submit" class="btnn">Salva Utente</button>
+		<div id="errorMail" class="errors"><i> <ion-icon name="warning-outline"></ion-icon> </i></div>		
+		</form>
+	</div>
+	<p id="errorMessageMailUsed">Utente presente con questa mail.</p>
+
 </body>
+<script src="scripts/scriptUserManag.js"></script>
+<script src="JavaScript/jquery-3.6.0.min.js" type="text/javascript"></script>
+
 </html>
