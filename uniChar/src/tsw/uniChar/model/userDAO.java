@@ -225,6 +225,28 @@ public class userDAO  {
 		
 	}
 	
+	public int doDeleteUser(int id) {
+		String sql = "DELETE FROM USERS "
+				+ " WHERE "
+				+ " ID = ? ";
+		
+		try {
+	        statement = sqlConn.prepareStatement(sql);
+	        
+	        statement.setInt(1, id);
+
+	        statement.executeUpdate();
+	        
+	        sqlConn.commit();
+	        statement.close();
+	        releaseConn();
+        } catch (SQLException e) {
+        	return 1;
+        }
+		return 0;
+		
+	}
+	
 	public int doDeleteUser(userBean user) {
 		String sql = "DELETE FROM USERS "
 				+ " WHERE "
@@ -233,8 +255,8 @@ public class userDAO  {
 		try {
 	        statement = sqlConn.prepareStatement(sql);
 	        
-	        statement.setString(2, user.getUser());
-	        statement.setString(3, user.getPassword());
+	        statement.setString(1, user.getUser());
+	        statement.setString(2, user.getPassword());
 
 	        statement.executeUpdate();
 	        
