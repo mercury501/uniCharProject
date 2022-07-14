@@ -55,10 +55,8 @@ public class HandleProducts extends HttpServlet {
 		
 		String action = (String)request.getParameter("action");
 		
-		
 		if (action == null)
 			action = (String)request.getAttribute("action");
-		
 		
 		if (action != null) {
 			if (action.equalsIgnoreCase("insert")) {
@@ -116,21 +114,17 @@ public class HandleProducts extends HttpServlet {
 			}
 			
 			else if(action.equalsIgnoreCase("getproduct")) {
-				
-			
+
 				pB = searchProduct((Integer)request.getAttribute("productid")); 
-				
-				
+
 				request.removeAttribute("product");
 				request.setAttribute("product", pB);
-		}
-			
+			}
+
 			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
 			dispatcher.forward(request, response);
 		}
 	
-		
-
 	}
 
 	/**
