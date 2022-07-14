@@ -71,7 +71,6 @@ public class HandleProducts extends HttpServlet {
 				insertProduct(pB);
 			}
 			else if (action.equalsIgnoreCase("search")) {
-				
 				pB = searchProduct(Integer.parseInt((request.getParameter("SearchID")))); 
 				request.removeAttribute("product");
 				request.setAttribute("product", pB);

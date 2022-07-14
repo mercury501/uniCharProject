@@ -168,8 +168,15 @@ public class HandleInvoices extends HttpServlet {
 			totaleTable.addCell(new Phrase("Totale: ", font));
 			totaleTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale), font));
 			
+			PdfPTable donationTable = new PdfPTable(2);
+			donationTable.setWidthPercentage(90);
+			
+			donationTable.addCell(new Phrase("Totale in beneficenza: ", font));
+			donationTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale / 0.05f)));
+			
 			doc.add(prodottiPdfTable);
 			doc.add(totaleTable);
+			doc.add(donationTable);
 			doc.close();
 			
 		}catch (Exception e) {

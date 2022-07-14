@@ -138,7 +138,6 @@ public class orderDAO {
 			
 			oB.setCart(cB);
 			
-			
 			statement.close();
 			rs.close();
 		} catch (SQLException e) {
@@ -154,13 +153,7 @@ public class orderDAO {
 		
 
 		String sql = " SELECT " +
-				" USER_ID, " + 
-				" ORDER_ID, " + 
-				" PRODUCT_ID, " + 
-				" PURCH_DATE, " + 
-				" QUANTITY, " + 
-				" ORDER_STATUS ," + 
-				" UNIT_PRICE " +
+				" DISTINCT ORDER_ID " + 
 				
 				" FROM ORDERS " +
 				" WHERE 1 = 1 ";
@@ -171,21 +164,8 @@ public class orderDAO {
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
-				orderBean oB = new orderBean();
-				cartBean cB = new cartBean();
-				
-				oB.setUserID(rs.getInt(1));
-				
-				cB.addProduct(rs.getInt(3), rs.getInt(5));
-				
-				cB.setProductPrice(rs.getInt(3), rs.getFloat(7));
-				
-				oB.setDate(rs.getString(4));
-				oB.setOrderID(rs.getInt(2));
-				
-				oB.setCart(cB);
-				
-				orderlist.add(oB);
+
+				orderlist.add(getInvoice(rs.getInt(1)));
 
 			}
 						
@@ -201,16 +181,9 @@ public class orderDAO {
 	
 	public ArrayList<orderBean> getUserInvoices(int userid) {
 		ArrayList<orderBean> orderlist = new ArrayList<orderBean>();
-		
 
 		String sql = " SELECT " +
-				" USER_ID, " + 
-				" ORDER_ID, " + 
-				" PRODUCT_ID, " + 
-				" PURCH_DATE, " + 
-				" QUANTITY, " + 
-				" ORDER_STATUS ," + 
-				" UNIT_PRICE " +
+				" DISTINCT ORDER_ID" +
 				
 				" FROM ORDERS " +
 				" WHERE USER_ID = ? ";
@@ -221,22 +194,10 @@ public class orderDAO {
 
 			ResultSet rs = statement.executeQuery();
 
+			
 			while (rs.next()) {
-				orderBean oB = new orderBean();
-				cartBean cB = new cartBean();
 				
-				oB.setUserID(rs.getInt(1));
-				
-				cB.addProduct(rs.getInt(3), rs.getInt(5));
-				
-				cB.setProductPrice(rs.getInt(3), rs.getFloat(7));
-				
-				oB.setDate(rs.getString(4));
-				oB.setOrderID(rs.getInt(2));
-				
-				oB.setCart(cB);
-				
-				orderlist.add(oB);
+				orderlist.add(getInvoice(rs.getInt(1)));
 
 			}
 						
