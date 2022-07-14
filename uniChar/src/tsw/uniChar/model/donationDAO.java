@@ -73,7 +73,7 @@ public class donationDAO {
 	}
 	
 	
-public int insertDonation(int userid, float amount) throws SQLException{
+	public int insertDonation(int userid, float amount) throws SQLException{
 		String sql = "INSERT INTO DONATIONS "
 				+ " (USER_ID, AMOUNT) "
 				+ " VALUES "
