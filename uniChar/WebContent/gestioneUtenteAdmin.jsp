@@ -78,6 +78,7 @@ if(users == null) {
 		<input type="text" name="name" placeholder="Inserisci nome" required maxlength="20">
 		<input type="text" name="surname" placeholder="Inserisci cognome" required maxlength="20">
 		<input type="text" name="username" placeholder="Inserisci username" required maxlength="20">
+		<input type="text" name="password" placeholder="Inserisci password" required maxlength="20">
 		<input type="text" name="email" placeholder="Inserisci email" maxlength="40" required>
 		<input type="text" name="role" placeholder="Inserisci ruolo" required>
  

@@ -94,9 +94,11 @@ public class HandleUsers extends HttpServlet {
 			}
 
 			if(action.equalsIgnoreCase("users")) {
+				String role = (String)request.getSession().getAttribute("role");
 
+        		if (role == null)
+        			returnTo = "index.jsp";	
 				userBean uB = new userBean();
-
 
 				System.out.print(uB.getRole());
 
@@ -128,6 +130,11 @@ public class HandleUsers extends HttpServlet {
 
 			}
 			if(action.equalsIgnoreCase("insert")) {
+				String role = (String)request.getSession().getAttribute("role");
+
+        		if (role == null)
+        			returnTo = "index.jsp";	
+				
 				userDAO uD = new userDAO();
 
 				String name = request.getParameter("name");
@@ -135,6 +142,7 @@ public class HandleUsers extends HttpServlet {
 				String user = request.getParameter("username");
 				String password = request.getParameter("password");
 				String email = request.getParameter("email");
+				String roleUs = request.getParameter("role");
 
 				userBean uB = new userBean();
 				uB.setName(name);
@@ -142,7 +150,7 @@ public class HandleUsers extends HttpServlet {
 				uB.setUser(user);
 				uB.setPassword(password);
 				uB.setEmail(email);
-				uB.setRole("user");
+				uB.setRole(roleUs);
 
 
 				//rimuove users, così la pagina rilegge gli utenti
@@ -152,6 +160,20 @@ public class HandleUsers extends HttpServlet {
 
 			}
 
+			if(action.equalsIgnoreCase("getuser")) {
+				String role = (String)request.getSession().getAttribute("role");
+
+        		if (role == null)
+        			returnTo = "index.jsp";	
+        		
+        		Integer userid = (Integer) request.getAttribute("userid");
+        		
+        		userDAO uD = new userDAO();
+        		userBean uB = uD.doGetUserByID(userid);
+        		
+        		request.setAttribute("userdata", uB);
+				
+			}
 
             if(!action.equalsIgnoreCase("logout")) {
 
