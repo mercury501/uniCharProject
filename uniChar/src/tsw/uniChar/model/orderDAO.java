@@ -83,6 +83,7 @@ public class orderDAO {
 
 			while (rs.next()) {
 				oB.setUserID(rs.getInt(1));
+				oB.setDate(rs.getString(4));
 				
 				cB.addProduct(rs.getInt(3), rs.getInt(5));
 				
@@ -90,6 +91,7 @@ public class orderDAO {
 
 			}
 			
+			oB.setOrderID(id);
 			oB.setCart(cB);
 			
 			statement.close();

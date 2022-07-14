@@ -77,8 +77,8 @@ public class HandleCart extends HttpServlet {
 				orderBean oB = new orderBean();
 				
 				oB.setCart(carrello);
-				//oB.setUserID((int)request.getSession().getAttribute("userid"));
-				oB.setUserID(1); //TODO debug
+
+				oB.setUserID(1); 
 				oD.insertOrder(oB);
 				
 				carrello = new cartBean();

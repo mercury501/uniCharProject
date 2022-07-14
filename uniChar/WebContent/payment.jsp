@@ -4,7 +4,7 @@
 	cartBean cart = (cartBean) session.getAttribute("cart");
 	Integer user = (Integer) session.getAttribute("userid");
 	
-	if(cart == null || cart.isEmpty()|| user == null) {
+	if(cart == null || cart.isEmpty() || user == null) {
 		response.sendRedirect("./index.jsp");
 		return;
 	}

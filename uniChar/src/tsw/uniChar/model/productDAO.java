@@ -123,18 +123,27 @@ public class productDAO {
 		return false;
 	}
 
-	public boolean gestisciSalvataggio(productBean pB) {
-		if (controllaEsistenza(pB) == false) {
-			insertProduct(pB);
-			return true;
-		} else {
+	public void gestisciSalvataggio(productBean pB) {
+		if (controllaEsistenza(pB)) {
 			updateProduct(pB);
-			return false;
-		}
+			return;
+		} 
+		
+		insertProduct(pB);	
 	}
 
 	public boolean updateProduct(productBean pB) {
-		String sql = "UPDATE PRODUCTS SET PRICE = ?, DESCR = ?, TITLE = ?, DEVELOPER = ?, IMG_PATH_ONE = ?, IMG_PATH_TWO = ?, IMG_PATH_THREE = ?, DISCOUNT_PERC = ?, STOCK = ?  WHERE ID = ? ";
+		String sql = "UPDATE PRODUCTS SET "
+				+ "PRICE = ?, "
+				+ "DESCR = ?, "
+				+ "TITLE = ?, "
+				+ "DEVELOPER = ?, "
+				+ "IMG_PATH_ONE = ?, "
+				+ "IMG_PATH_TWO = ?, "
+				+ "IMG_PATH_THREE = ?, "
+				+ "DISCOUNT_PERC = ?, "
+				+ "STOCK = ?  "
+				+ "WHERE ID = ? ";
 
 		try {
 			statement = sqlConn.prepareStatement(sql);
@@ -146,11 +155,12 @@ public class productDAO {
 			statement.setString(5, pB.getImageOne());
 			statement.setString(6, pB.getImageTwo());
 			statement.setString(7, pB.getImageThree());
-			statement.setInt(8, pB.getId());
-			statement.setFloat(9, pB.getDiscountPerc());
-			statement.setInt(10, pB.getStock());
+			statement.setFloat(8, pB.getDiscountPerc());
+			statement.setInt(9, pB.getStock());
+			
+			statement.setInt(10, pB.getId());
 
-			statement.execute();
+			statement.executeUpdate();
 
 			sqlConn.commit();
 			statement.close();

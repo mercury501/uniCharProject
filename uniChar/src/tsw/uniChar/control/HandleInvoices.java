@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Phrase;
@@ -105,7 +106,9 @@ public class HandleInvoices extends HttpServlet {
 			
 			PdfPTable head = new PdfPTable(2);
 			PdfPCell logo = new PdfPCell(uniCharLogo);
-			PdfPCell utente = new PdfPCell(new Phrase(user.toString()));
+			PdfPCell utente = new PdfPCell(new Phrase(user.toString() + "\n" 
+			+ "Data: " + order.getDate() + "\nNumero ordine: " + order.getOrderID()));
+			utente.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			
 			logo.setBorder(Rectangle.NO_BORDER);
 			utente.setBorder(Rectangle.NO_BORDER);
@@ -131,7 +134,7 @@ public class HandleInvoices extends HttpServlet {
             prodottiPdfTable.addCell("Articolo");
             prodottiPdfTable.addCell("Quantita'");
             prodottiPdfTable.addCell("IVA");
-            prodottiPdfTable.addCell("Totale IVAto");
+            prodottiPdfTable.addCell("Totale con iva");
 			
 			Map <Integer, productBean> prodotti = order.getCart().getProducts();
 			Map <Integer, Integer> quantita = order.getCart().getQuantities();
@@ -158,21 +161,31 @@ public class HandleInvoices extends HttpServlet {
 				prodottiPdfTable.addCell(prod.getTitolo());
 				prodottiPdfTable.addCell(String.valueOf(quant));
 				prodottiPdfTable.addCell(String.valueOf(iva * 100) + "%");
-				prodottiPdfTable.addCell(euro + formatPrice.format(prezzoIvatoProd));
+				PdfPCell prezzoIvatoCell = new PdfPCell(new Phrase(euro + formatPrice.format(prezzoIvatoProd)));
+				prezzoIvatoCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+				prodottiPdfTable.addCell(prezzoIvatoCell);
 
 			}
 			
 			PdfPTable totaleTable = new PdfPTable(2);
+			totaleTable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
 			totaleTable.setWidthPercentage(90);
 			
-			totaleTable.addCell(new Phrase("Totale: ", font));
-			totaleTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale), font));
+			totaleTable.addCell(new Phrase("Totale con iva: "));
+			PdfPCell totaleCell = new PdfPCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale), font));
+			totaleCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+			totaleTable.addCell(totaleCell);
+			//totaleTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale), font));
 			
 			PdfPTable donationTable = new PdfPTable(2);
+			donationTable.getDefaultCell().setBorder(Rectangle.NO_BORDER);
 			donationTable.setWidthPercentage(90);
 			
-			donationTable.addCell(new Phrase("Totale in beneficenza: ", font));
-			donationTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale * 0.05f)));
+			donationTable.addCell(new Phrase("Totale in beneficenza: "));
+			PdfPCell donationAmountCell = new PdfPCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale * 0.05f), font));
+			donationAmountCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+			donationTable.addCell(donationAmountCell);
+			//donationTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale * 0.05f)));
 			
 			doc.add(prodottiPdfTable);
 			doc.add(totaleTable);

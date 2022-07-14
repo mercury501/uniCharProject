@@ -12,6 +12,10 @@ if(products == null) {
 	return;
 }
 
+productBean product = (productBean) request.getAttribute("product");
+
+if (product == null)
+	product = new productBean();
 
 %>
 
@@ -33,16 +37,17 @@ if(products == null) {
 	<div class="insertProducts">
 		<form action="product?action=insert&returnto=gestioneCatalogoAdmin.jsp" method="POST" name="HandleProducts">
 		<label>PRODOTTO</label>
-		<input type="hidden" name="prodid" value="-1">
-		<input type="text" name="title" placeholder="Inserisci titolo" required maxlength="30">
-		<input type="text" name="desc" placeholder="Inserisci descrizione" required maxlength="255">
-		<input type="text" name="developer" placeholder="Inserisci developer" required maxlength="30">
-		<input type="number" name="price" placeholder="Inserisci prezzo" required>
-		<input type="number" name="stock" placeholder="Inserisci quantità" required>
- 		 <input id="ajaxfile" name="image" type="file"/> <br/>
-
+		<input type="hidden" name="prodid" value="<%= product.getId() %>">
+		<input type="text" name="title" placeholder="Inserisci titolo" required maxlength="30" value="<%= product.getTitolo() %>">
+		<input type="text" name="desc" placeholder="Inserisci descrizione" required maxlength="255" value="<%= product.getDescrizione() %>">
+		<input type="text" name="developer" placeholder="Inserisci developer" required maxlength="30" value="<%= product.getSviluppatore() %>">
+		<input type="number" name="price" placeholder="Inserisci prezzo" required value="<%= product.getPrezzo() %>">
+		<input type="number" name="stock" placeholder="Inserisci quantità" required value="<%= product.getStock() %>">
+		<input type="text" name="imageone" placeholder="Inserisci nome immagine" required value="<%= product.getImageOne() %>">
+ 		<input id="ajaxfile" name="image" type="file"/> <br/>
  
-		<button type="submit"onclick="uploadFile()" class="btnn">Salva prodotto</button>
+		<button type="submit" onclick="uploadFile(); this.form.submit()" class="btnn">Salva prodotto</button>
+		<button type="reset" class="btnn">Reset</button>
 		<div id="errorMess" class="errors"><i> <ion-icon name="warning-outline"></ion-icon> </i></div>		
 		</form>
 	</div>
@@ -93,6 +98,9 @@ if(products == null) {
   async function uploadFile() {
     let formData = new FormData(); 
 
+    if (ajaxfile.files[0] == null)
+    	return;
+    
     formData.append("file", ajaxfile.files[0]);
     const response = await fetch('uploadFile', {
       method: "POST", 
