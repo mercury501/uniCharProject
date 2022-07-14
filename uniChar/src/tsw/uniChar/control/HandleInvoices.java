@@ -148,7 +148,7 @@ public class HandleInvoices extends HttpServlet {
 				productBean prod = prodotti.get(key);
 				int quant = quantita.get(key);
 				
-				double prezzoIvatoProd = prod.getPrezzo() + (prod.getPrezzo() * iva);
+				double prezzoIvatoProd = prod.getPrezzo() * quant + ((prod.getPrezzo() * quant) * iva);
 				
 				prezzoIvatoTotale += prezzoIvatoProd;
 				

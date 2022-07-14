@@ -36,12 +36,13 @@
             <div class="product-div">
               <div class="product-div-left">
                 <div class="img-container">
-                  <img class="immagine"src="images/products/<%= bean.getImageOne() %>" alt="Mgsolid">
+                  <img class="immagine" id="bigimg" src="images/products/<%= bean.getImageOne() %>" alt="Mgsolid">
                 </div>
 
                 <div class="hover-container">
                   <div>
                     <img class="immagine"src="images/products/<%= bean.getImageOne() %>">
+                    <img class="immagine"src="images/products/<%= bean.getImageTwo() %>">
                   </div>
 
 

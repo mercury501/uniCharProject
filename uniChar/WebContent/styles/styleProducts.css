@@ -125,7 +125,11 @@ html, body{
     color: #2D2D2D;
 }
 
-
+#bigimg{
+	height: 200px;
+	width: auto;
+	max-width: 500px;
+}
 
 
 /*end css product details*/
