@@ -172,7 +172,7 @@ public class HandleInvoices extends HttpServlet {
 			donationTable.setWidthPercentage(90);
 			
 			donationTable.addCell(new Phrase("Totale in beneficenza: ", font));
-			donationTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale / 0.05f)));
+			donationTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale * 0.05f)));
 			
 			doc.add(prodottiPdfTable);
 			doc.add(totaleTable);
