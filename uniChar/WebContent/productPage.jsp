@@ -55,7 +55,7 @@
                   <p class="product-description"><%=bean.getDescrizione()%></p>
                   <div class="btn-groups">
                     <button type="button" class="add-cart-btn">
-                    <i class="fas fa-shopping-cart"> Aggiungi al carrello</i>
+                    <a href="cart?action=add&id=<%=bean.getId()%>&quantity=1"><i class="fas fa-shopping-cart"> Aggiungi al carrello</i></a>
                     </button>
                   </div>
                 </div>

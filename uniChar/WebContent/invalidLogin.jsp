@@ -8,8 +8,14 @@
 <body>
 
      <%@ include file="navbar.jsp" %>
+     
+    <div class="back-login">
 	<h1 class="titolo">Username o password errati</h1>
 
-    <button><a href="index.jsp" class="bottone">Torna al login</a></button>
+    <a href="index.jsp"><button class="bottone">Torna al login</button></a>
+    
+    </div>
+    
+        <%@ include file="footer.html" %>
 </body>
 </html>
