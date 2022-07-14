@@ -55,7 +55,7 @@ public class userDAO  {
 	}
 	
 	public void gestisciInserimento(userBean user) throws Exception{
-		if (controllaEsistenza(user.getId()))
+		if (user.getId() == -1)
 				doAddUser(user);
 		else
 			doUpdateUser(user);				
