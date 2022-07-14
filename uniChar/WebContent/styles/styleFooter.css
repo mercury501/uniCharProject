@@ -11,16 +11,16 @@ body{
 .footer{
     margin-top: auto;
     padding: 40px 0;
-    background-color: #320051;
+    background-color: #301f54;
   }
   
-  .footer .social {
+.footer .social {
     text-align: center;
     padding-bottom: 25px;
     color: #fff;
   }
   
-  .footer .social a{
+.footer .social a{
     font-size: 24px;
     color: inherit;
     border: 1px solid #ccc;

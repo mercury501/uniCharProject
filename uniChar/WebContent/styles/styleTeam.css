@@ -8,7 +8,6 @@
 body{
     display:flex;
     justify-content:center;
-    align-items:center;
     flex-wrap:wrap;
     background-color:#161623;
     min-height:100vh;
@@ -26,7 +25,7 @@ section::before
     clip-path:circle(25% at right 60%);
 }
 
-   section::after{
+section::after{
     content:'';
     position:absolute;
     width:100%;
@@ -121,7 +120,7 @@ section::before
 }
 
 
-   .container .card .content .imgBx{
+.container .card .content .imgBx{
     position:relative;
     width:150px;
     height:150px;
