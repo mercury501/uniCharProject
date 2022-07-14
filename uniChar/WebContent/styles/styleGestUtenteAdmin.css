@@ -18,7 +18,7 @@ table{
 
 .header_fixed{
     height: 650px;
-    overflow-Y: hidden; 
+    overflow: auto; 
     margin-top: 50px;
     margin-right: 50px;
     width: 50%;
@@ -85,7 +85,7 @@ td img{
 }
 
 .insertUser input{
-    width: 240px;
+    width: 200px;
     height: 20px;
     background: transparent;
     border-bottom: 1px solid #ff7200;

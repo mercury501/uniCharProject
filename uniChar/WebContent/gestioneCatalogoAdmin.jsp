@@ -11,6 +11,8 @@ if(products == null) {
 	response.sendRedirect("./product?action=catalog&returnto=gestioneCatalogoAdmin.jsp");
 	return;
 }
+
+
 %>
 
 
@@ -70,7 +72,7 @@ if(products == null) {
             <td><%=bean.getPrezzo()%></td>
             <td>
             	<a href="product?action=delete&id=<%=bean.getId()%>&returnto=gestioneCatalogoAdmin.jsp">Rimuovi</a>
-
+				<a href="product?action=getproduct&productid=<%=bean.getId()%>&returnto=gestioneCatalogoAdmin.jsp">Modifica</a>
             </td>
         </tr>
     

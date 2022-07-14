@@ -24,10 +24,17 @@ if(orders == null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+         <link rel="stylesheet" href="styles/style-gestioneordini.css">
+         
     <title>Gestione Ordini</title>
 </head>
 <body>
+    <%@ include file="navbar.jsp" %>
 
+
+	<div class="object-container">
+
+	
 		<table>
 			<tr>
 				<th>Fattura</th>
@@ -61,6 +68,8 @@ if(orders == null) {
 	%>		
 		
 		</table>
+</div>
 
+    <%@ include file="footer.html" %>
 </body>
 </html>

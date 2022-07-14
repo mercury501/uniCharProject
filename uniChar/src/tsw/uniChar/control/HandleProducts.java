@@ -114,8 +114,9 @@ public class HandleProducts extends HttpServlet {
 			}
 			
 			else if(action.equalsIgnoreCase("getproduct")) {
+
 				pB = searchProduct((Integer)request.getAttribute("productid")); 
-				
+
 				request.removeAttribute("product");
 				request.setAttribute("product", pB);
 			}
