@@ -1,37 +1,52 @@
 
 <link rel="stylesheet" href="styles/navbar-style.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
 
-    <header class="nav">
-        <input type ="checkbox" name ="" id ="chk1">
-        <div class="logo"><h1>UC</h1></div>
-            <div class="search-box">
-                <form>
-<input type ="text" name ="search" id ="srch" placeholder="Search">
-<button type ="submit"><i class="fa fa-search"></i></button>
-                </form>
+
+<div class="navbar">
+            <div class="icon">
+                <a href="index.jsp"><h2 class="logo">UC</h2></a>
             </div>
-            <ul>
-                <li><a href="index.jsp">Home</a></li>
-                <li><a href="ourTeam.jsp">About</a></li>
-                <li><a href="Catalog.jsp">Products</a></li>
-                <li>
-<a href="cart.jsp"><i class="fa fa-shopping-cart"></i></a>
-<a href="#"><i class="fa fa-user"></i></a>
-  
-                </li>
-            </ul>
             <div class="menu">
-                <label for="chk1">
-<i class="fa fa-bars"></i>
-                </label>
+                <ul>
+                    <li><a href="index.jsp">HOME</a></li>
+                    <li><a href="ourTeam.jsp">ABOUT</a></li>
+                    <li><a href="Catalog.jsp">PRODUCTS</a></li>
+                </ul>
             </div>
-    </header>
+
+            <div class="search">
+                <input class="srch"type="search"id="queryRicerca" onkeyup="funzioneRicerca()" placeholder="Cerca prodotti">
+                <button class="btn-search" id="pulsanteRicercaResponsive">Search</button>
+                <div id="risultati">
+                </div>
+            </div>
+            
+
+            <div class="shop">
+
+            <ul>
+              	<li><a href="cart.jsp"><img class="shop_icon" src="images/navbar/shop.png" alt=""></a></li>
+                <li><a href="connection?action=areagestione"><ion-icon name="person-outline" class="icona"></ion-icon></a></li>
+            </ul>
+
+
+            </div>
+
+
+
+  </div>
+
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="JavaScript/jquery-3.6.0.min.js" type="text/javascript"></script>	
+    
+    
+    <script>
   
-	<script>
+	
     
 	function funzioneRicerca() {
 		

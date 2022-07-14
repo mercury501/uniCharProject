@@ -23,17 +23,16 @@ if(users == null) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styleGestUtenteAdmin.css">
+     
     <title>Gestione Utenti</title>
 </head>
 
 <body>
+ <%@ include file="navbar.jsp" %>
+ 
+ 
+ 
 <div id="verticalStack">
-
-    <div class="search">
-
-        <input class="srch"type="search" name="search" placeholder="Cerca utenti">
-        <a href="#"><button class="btn-search">Search</button></a>
-    </div>
    
  <div class="header_fixed"> 
     <table>
@@ -73,7 +72,7 @@ if(users == null) {
 
 <div class="insertUser">
 		<form action="connection?action=insert&returnto=gestioneUtenteAdmin.jsp" method="POST" onsubmit="event.preventDefault(); validate(this)" name="HandleUsers">
-		<label>Utente</label>
+		<label>Gestione utenti</label>
 		<input type="hidden" name="userid" value="-1">
 		<input type="text" name="name" placeholder="Inserisci nome" required maxlength="20">
 		<input type="text" name="surname" placeholder="Inserisci cognome" required maxlength="20">

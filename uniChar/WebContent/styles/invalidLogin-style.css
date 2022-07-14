@@ -1,19 +1,39 @@
 
-
 body{
 	background-color: rgb(48,31,84);
+
+}
+
+
+.back-login{
+	width: 100%;
+	height: 100vh;
+	
+	
 }
 
 .titolo{
 	text-align:center;
 	color:white;
+	margin-top:10%;
+	font-size: 30px;
+	margin-right: 20px;
 	
 }
 
 .bottone{
     width: 100px;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 30px;
+    color: #ff7500;
+    margin-left: 650px;
+    margin-top: 20px;
+  	
+   	
+    
 }
+
+a{
+	text-decoration:none;
 }
+
+

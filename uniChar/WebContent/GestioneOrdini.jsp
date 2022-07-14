@@ -10,6 +10,7 @@ if(orders == null) {
 
 
 
+
 %>
 
 
@@ -44,17 +45,16 @@ if(orders == null) {
 	%>	
 			<tr>
 				<td>
-				<a href="HandleInvoices?id=" + <%=ordine.getUserID() %>"></a><ion-icon name="document-attach-outline"></ion-icon></a>
+				<a href="HandleInvoices?id=<%=ordine.getUserID()%>"><ion-icon name="document-attach-outline"></ion-icon></a>
 				
 				</td>
-			</tr>
+			<td><%=ordine.getOrderID()%></td>
+		
 			
-			<tr>
-				<td><%=ordine.getOrderID()%></td>
-			</tr>
+			<td><%=ordine.getDate() %></td>
+			<td><%=ordine.getTotale() %></td>
 			
-			<tr><%=ordine.getDate() %></tr>
-			<tr><%=ordine.getTotale() %></tr>
+			</tr>
 	<%
 		}
 	}

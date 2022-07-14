@@ -8,8 +8,6 @@
 
 body{
     width: 100%;
-    display: flex;
-    justify-content: center;
     font-family: 'Roboto', sans-serif;
     background-color: rgb(99, 47, 211);
 }
@@ -20,13 +18,13 @@ table{
 
 .header_fixed{
     height: 650px;
-    overflow: auto; 
-    margin-top: 30px;
-    border: 1px solid #dddddd;
+    overflow-Y: hidden; 
+    margin-top: 50px;
+    margin-right: 50px;
+    width: 50%;
 }
 
 .header_fixed thead th{
-    position: sticky;
     top: 0;
     background-color: rgb(48, 31, 84);
     color: #ff5700;
@@ -79,11 +77,11 @@ td img{
     height: 600px;
     background: linear-gradient(to top, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
     position: absolute;
-    top: 30px;
-    left: 970px;
+    top: 120px;
+    left: 900px;
     border-radius: 10px;
     padding: 70px 20px;
-
+    margin-left: 120px;
 }
 
 .insertUser input{
@@ -107,11 +105,11 @@ td img{
     font-family: sans-serif;
     text-align: center;
     color: #ff7200;
-    font-size: 15px;
+    font-size: 25px;
     background-color: white;
     border-radius: 10px;
     margin:2px;
-    margin-left: 75px;
+    margin-left: 120px;
     padding: 8px;
 }
 

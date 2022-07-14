@@ -153,7 +153,8 @@ public class HandleUsers extends HttpServlet {
 				uB.setRole(roleUs);
 
 
-				//rimuove users, così la pagina rilegge gli utenti
+
+				//rimuove users, cosï¿½ la pagina rilegge gli utenti
 				request.removeAttribute("users");
 				
 				uD.gestisciInserimento(uB);
