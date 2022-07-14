@@ -53,8 +53,13 @@ public class userDAO  {
 		}
 
 	}
-
 	
+	public void gestisciInserimento(userBean user) throws Exception{
+		if (controllaEsistenza(user.getId()))
+				doAddUser(user);
+		else
+			doUpdateUser(user);				
+	}
 
 	public userBean doCheckLogin(userBean user) throws SQLException {
 		userBean uB = new userBean();
@@ -111,9 +116,7 @@ public class userDAO  {
 	}
 	
 	public int doAddUser(userBean user) throws SQLException{
-		
-		
-		
+
 		String sql = "INSERT INTO USERS "
 				+ " (NAME, SURNAME, USERNAME, PASSWORD, EMAIL, ROLE) "
 				+ " VALUES "
@@ -130,9 +133,7 @@ public class userDAO  {
 	        statement.setString(6, "user");
 		        
 	        statement.execute();
-	        
-	         
-	        
+
 	        sqlConn.commit();
 	        statement.close();
 
@@ -171,6 +172,46 @@ public class userDAO  {
 	        statement.setString(1, user.getNewPassword());
 	        statement.setString(2, user.getUser());
 	        statement.setString(3, user.getPassword());
+
+	        statement.executeUpdate();
+	        
+	        sqlConn.commit();
+	        statement.close();
+	        releaseConn();
+        } catch (Exception e) {
+        	throw e;
+        }
+		return 0;
+		
+	}
+	
+	public int doUpdateUser(userBean user) throws Exception{
+		String sql = "UPDATE USERS "
+				+ " SET " +
+				" NAME = ?, " +
+				" SURNAME = ?, " +
+				" USERNAME = ?, " +
+				" PASSWORD = ?, " +
+				" ROLE = ?, " +
+				" EMAIL = ?, " 
+				
+				+ " WHERE "
+				+ " ID = ? ";
+		
+		try {
+			if (!doCheckPassword(user))
+				throw new Exception();
+		
+	        statement = sqlConn.prepareStatement(sql);
+	        
+	        statement.setString(1, user.getName());
+	        statement.setString(2, user.getSurname());
+	        statement.setString(3, user.getUser());
+	        statement.setString(4, user.getPassword());
+	        statement.setString(5, user.getRole());
+	        statement.setString(6, user.getEmail());
+	        
+	        statement.setInt(7, user.getId());	        
 
 	        statement.executeUpdate();
 	        
@@ -268,9 +309,33 @@ public class userDAO  {
 			
 			return uD;
 		}
+
+	}
+	
+	public boolean controllaEsistenza(int id) {
+		boolean ret = false;
+		userBean uB = new userBean();
+		
+		String sql = "SELECT * FROM USERS WHERE ID = ?";
 		
 		
-		
+		try {
+	        statement = sqlConn.prepareStatement(sql);
+	        
+	        statement.setInt(1, id);
+
+	        ResultSet rs = statement.executeQuery();
+	        
+	        if (rs.next()) 
+	        	ret = true;
+	        
+	        sqlConn.commit();
+	        statement.close();
+	        releaseConn();
+        } catch (SQLException e) {
+        	
+        }
+		return ret;
 		
 	}
 	

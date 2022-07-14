@@ -2,8 +2,6 @@ function validate(obj) {
 			var valid = true;
 			
 			var email = document.getElementsByName("email")[0];
-			console.log('Mail:');
-			console.log(email);
 			if(!checkEmail(email)) {
 				valid = false;
 				document.getElementById("errorMail").style.display = 'block';

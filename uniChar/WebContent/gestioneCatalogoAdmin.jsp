@@ -1,5 +1,10 @@
 
 <%
+String role = (String)request.getSession().getAttribute("role");
+
+if (role == null || !role.equalsIgnoreCase("admin"))
+	response.sendRedirect("index.jsp");
+
 
 Collection<?> products = (Collection<?>) request.getAttribute("catalog");
 if(products == null) {

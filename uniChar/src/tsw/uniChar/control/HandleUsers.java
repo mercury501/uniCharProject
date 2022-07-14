@@ -127,11 +127,35 @@ public class HandleUsers extends HttpServlet {
 				request.setAttribute("user", uB);
 
 			}
+			if(action.equalsIgnoreCase("insert")) {
+				userDAO uD = new userDAO();
+
+				String name = request.getParameter("name");
+				String surname = request.getParameter("surname");
+				String user = request.getParameter("username");
+				String password = request.getParameter("password");
+				String email = request.getParameter("email");
+
+				userBean uB = new userBean();
+				uB.setName(name);
+				uB.setSurname(surname);
+				uB.setUser(user);
+				uB.setPassword(password);
+				uB.setEmail(email);
+				uB.setRole("user");
+
+
+				//rimuove users, così la pagina rilegge gli utenti
+				request.removeAttribute("users");
+				
+				uD.gestisciInserimento(uB);
+
+			}
 
 
             if(!action.equalsIgnoreCase("logout")) {
 
-        	dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
+            	dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
     			dispatcher.forward(request, response);
 
             }
