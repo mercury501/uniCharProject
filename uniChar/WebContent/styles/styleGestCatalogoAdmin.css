@@ -55,12 +55,6 @@ tr:nth-child(odd){
     background-color: #edeef1;
 }
 
-tr:hover td{
-    color:#ff5700;
-    cursor: pointer;
-    border-radius: 20px;
-}
-
 ::-webkit-scrollbar{
     width: 6px;
 }
