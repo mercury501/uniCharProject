@@ -141,7 +141,6 @@ public class HandleUsers extends HttpServlet {
 				e.printStackTrace();
 			}
 
-
           }
 
 	private String loginHandler(HttpServletRequest request, HttpServletResponse response) throws SQLException {

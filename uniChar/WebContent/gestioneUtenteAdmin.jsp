@@ -3,7 +3,7 @@
 
 Collection<?> users = (Collection<?>) request.getAttribute("users");
 if(users == null) {
-	response.sendRedirect("./connection?action=users&returnto=AreaAdmin.jsp");
+	response.sendRedirect("./connection?action=users&returnto=gestioneUtenteAdmin.jsp");
 	return;
 }
 %>
@@ -67,8 +67,8 @@ if(users == null) {
 	</table>
 </div>
 
-<div class="insertProducts">
-		<form action="product?action=insert&returnto=gestioneCatalogoAdmin.jsp" method="POST" onsubmit="event.preventDefault(); validate(this) name="HandleProducts">
+<div class="insertUser">
+		<form action="connection?action=insert&returnto=gestioneUtenteAdmin.jsp" method="POST" onsubmit="event.preventDefault(); validate(this)" name="HandleUserss">
 		<label>Utente</label>
 		<input type="hidden" name="userid" value="-1">
 		<input type="text" name="name" placeholder="Inserisci nome" required maxlength="20">
@@ -82,7 +82,7 @@ if(users == null) {
 		</form>
 	</div>
 	<p id="errorMessageMailUsed">Utente presente con questa mail.</p>
-
+	<p id="errorMessageMail">Email non valida.</p>
 </body>
 <script src="scripts/scriptUserManag.js"></script>
 <script src="JavaScript/jquery-3.6.0.min.js" type="text/javascript"></script>
