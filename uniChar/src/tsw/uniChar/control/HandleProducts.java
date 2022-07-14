@@ -102,8 +102,7 @@ public class HandleProducts extends HttpServlet {
 				
 			}
 			
-			
-				else if(action.equalsIgnoreCase("product")) {
+			else if(action.equalsIgnoreCase("product")) {
 					
 					int id = 0;
 					
@@ -115,6 +114,12 @@ public class HandleProducts extends HttpServlet {
 					request.removeAttribute("product");
 					request.setAttribute("product", pB);
 			}
+			
+			else if(action.equalsIgnoreCase("getproduct")) {
+				pB = searchProduct(Integer.parseInt(((Integer)request.getAttribute("productid")))); 
+				request.removeAttribute("product");
+				request.setAttribute("product", pB);
+		}
 			
 			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
 			dispatcher.forward(request, response);
