@@ -1,6 +1,11 @@
 
 <%
 
+String role = (String)request.getSession().getAttribute("role");
+
+if (role == null || !role.equalsIgnoreCase("admin"))
+	response.sendRedirect("index.jsp");
+
 Collection<?> users = (Collection<?>) request.getAttribute("users");
 if(users == null) {
 	response.sendRedirect("./connection?action=users&returnto=gestioneUtenteAdmin.jsp");
@@ -22,15 +27,13 @@ if(users == null) {
 </head>
 
 <body>
-    
+<div id="verticalStack">
 
     <div class="search">
 
         <input class="srch"type="search" name="search" placeholder="Cerca utenti">
         <a href="#"><button class="btn-search">Search</button></a>
     </div>
-
-
    
  <div class="header_fixed"> 
     <table>
@@ -66,9 +69,10 @@ if(users == null) {
 
 	</table>
 </div>
+</div>
 
 <div class="insertUser">
-		<form action="connection?action=insert&returnto=gestioneUtenteAdmin.jsp" method="POST" onsubmit="event.preventDefault(); validate(this)" name="HandleUserss">
+		<form action="connection?action=insert&returnto=gestioneUtenteAdmin.jsp" method="POST" onsubmit="event.preventDefault(); validate(this)" name="HandleUsers">
 		<label>Utente</label>
 		<input type="hidden" name="userid" value="-1">
 		<input type="text" name="name" placeholder="Inserisci nome" required maxlength="20">

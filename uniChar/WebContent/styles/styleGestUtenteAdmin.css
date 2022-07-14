@@ -51,6 +51,17 @@ td img{
     display: none;
 }
 
+#errorMessageMail {
+	font-size: 10pt;
+	color: #ff00009a;
+	display: none;
+    padding-left: 70px;
+    
+    position: relative;
+    top: -20px;
+    
+    font-style: italic;
+}
 #errorMessageMailUsed {
 	font-size: 10pt;
 	color: #ff00009a;
@@ -63,16 +74,79 @@ td img{
     font-style: italic;
 }
 
-.insertUsers{
+.insertUser {
     width: 500px;
     height: 600px;
     background: linear-gradient(to top, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
     position: absolute;
-    top: 120px;
-    left: 870px;
+    top: 30px;
+    left: 970px;
     border-radius: 10px;
     padding: 70px 20px;
 
+}
+
+.insertUser input{
+    width: 240px;
+    height: 20px;
+    background: transparent;
+    border-bottom: 1px solid #ff7200;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: #fff;
+    font-size: 15px;
+    margin-top: 50px;
+    margin-left: 85px;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.insertUser label{
+	width: 100px;
+    font-family: sans-serif;
+    text-align: center;
+    color: #ff7200;
+    font-size: 15px;
+    background-color: white;
+    border-radius: 10px;
+    margin:2px;
+    margin-left: 75px;
+    padding: 8px;
+}
+
+.insertUser input:focus{
+    outline: none;
+}
+
+.search {
+	height: 30px;
+}
+
+.btnn{
+    width: 240px;
+    height: 40px;
+    background: #ff7200;
+    border: none;
+    margin-top: 30px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: 0.4s ease;
+    margin-left: 85px;
+}
+
+.btnn:hover{
+    background: white;
+    color:#ff7200;
+
+}
+
+.btnn a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 
 tr:nth-child(even){
