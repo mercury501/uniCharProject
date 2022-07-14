@@ -96,7 +96,7 @@ public class HandleUsers extends HttpServlet {
 			if(action.equalsIgnoreCase("users")) {
 				String role = (String)request.getSession().getAttribute("role");
 
-        		if (role == null)
+        		if (role == null || !role.equalsIgnoreCase("admin"))
         			returnTo = "index.jsp";	
 				userBean uB = new userBean();
 
@@ -132,7 +132,7 @@ public class HandleUsers extends HttpServlet {
 			if(action.equalsIgnoreCase("insert")) {
 				String role = (String)request.getSession().getAttribute("role");
 
-        		if (role == null)
+        		if (role == null || !role.equalsIgnoreCase("admin"))
         			returnTo = "index.jsp";	
 				
 				userDAO uD = new userDAO();
@@ -163,7 +163,7 @@ public class HandleUsers extends HttpServlet {
 			if(action.equalsIgnoreCase("getuser")) {
 				String role = (String)request.getSession().getAttribute("role");
 
-        		if (role == null)
+        		if (role == null || !role.equalsIgnoreCase("admin"))
         			returnTo = "index.jsp";	
         		
         		Integer userid = (Integer) request.getAttribute("userid");
@@ -173,6 +173,20 @@ public class HandleUsers extends HttpServlet {
         		
         		request.setAttribute("userdata", uB);
 				
+			}
+			
+			if(action.equalsIgnoreCase("delete")) {
+				String role = (String)request.getSession().getAttribute("role");
+				Integer usersessid = (Integer) request.getSession().getAttribute("userid");
+				Integer userid = (Integer) request.getAttribute("userid");
+				
+        		if (role == null || (!role.equalsIgnoreCase("admin") && usersessid != userid))
+        			returnTo = "index.jsp";	
+        		
+        		userDAO uD = new userDAO();
+        		
+        		uD.doDeleteUser(userid);
+        		
 			}
 
             if(!action.equalsIgnoreCase("logout")) {
