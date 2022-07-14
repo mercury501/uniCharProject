@@ -98,18 +98,8 @@ public class HandleUsers extends HttpServlet {
 
         		if (role == null || !role.equalsIgnoreCase("admin"))
         			returnTo = "index.jsp";	
-				userBean uB = new userBean();
-
-				System.out.print(uB.getRole());
-
-				userDAO uD = new userDAO();
-
-				List<userBean> listaUtenti = new ArrayList<userBean>();
-
-				listaUtenti = uD.showUsers(uB);
-
-				request.removeAttribute("users");
-				request.setAttribute("users", listaUtenti);
+				
+        		setUsers(request, response);
 
 			}
 
@@ -140,6 +130,7 @@ public class HandleUsers extends HttpServlet {
 				String password = request.getParameter("password");
 				String email = request.getParameter("email");
 				String roleUs = request.getParameter("role");
+				Integer userid = Integer.parseInt(request.getParameter("userid"));
 
 				userBean uB = new userBean();
 				uB.setName(name);
@@ -148,9 +139,7 @@ public class HandleUsers extends HttpServlet {
 				uB.setPassword(password);
 				uB.setEmail(email);
 				uB.setRole(roleUs);
-
-
-
+				uB.setId(userid);
 				//rimuove users, cos� la pagina rilegge gli utenti
 				request.removeAttribute("users");
 				
@@ -164,19 +153,24 @@ public class HandleUsers extends HttpServlet {
         		if (role == null || !role.equalsIgnoreCase("admin"))
         			returnTo = "index.jsp";	
         		
-        		Integer userid = (Integer) request.getAttribute("userid");
+        		Integer userid =  Integer.parseInt(request.getParameter("userid"));
+        		if (userid == null)
+					userid = Integer.parseInt(request.getParameter("userid"));
         		
         		userDAO uD = new userDAO();
         		userBean uB = uD.doGetUserByID(userid);
         		
+        		setUsers(request, response);
         		request.setAttribute("userdata", uB);
-				
+        		
 			}
 			
 			if(action.equalsIgnoreCase("delete")) {
 				String role = (String)request.getSession().getAttribute("role");
 				Integer usersessid = (Integer) request.getSession().getAttribute("userid");
 				Integer userid = (Integer) request.getAttribute("userid");
+				if (userid == null)
+					userid = Integer.parseInt(request.getParameter("userid"));
 				
         		if (role == null || (!role.equalsIgnoreCase("admin") && usersessid != userid))
         			returnTo = "index.jsp";	
@@ -331,6 +325,21 @@ public class HandleUsers extends HttpServlet {
 		} finally {
 			return forward;
 		}
+	}
+	
+	private void setUsers(HttpServletRequest request, HttpServletResponse response) {
+		userBean uB = new userBean();
+
+		System.out.print(uB.getRole());
+
+		userDAO uD = new userDAO();
+
+		List<userBean> listaUtenti = new ArrayList<userBean>();
+
+		listaUtenti = uD.showUsers(uB);
+
+		request.removeAttribute("users");
+		request.setAttribute("users", listaUtenti);
 	}
 
 

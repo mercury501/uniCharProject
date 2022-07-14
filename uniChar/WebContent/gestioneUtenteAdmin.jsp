@@ -11,9 +11,11 @@ if(users == null) {
 	response.sendRedirect("./connection?action=users&returnto=gestioneUtenteAdmin.jsp");
 	return;
 }
+
+userBean currentuser = (userBean) request.getAttribute("userdata");
+if (currentuser == null)
+	currentuser = new userBean();
 %>
-
-
 
 <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,tsw.uniChar.Beans.userBean"%>
 <!DOCTYPE html>
@@ -42,6 +44,7 @@ if(users == null) {
             <th>Username</th>
             <th>Email</th>
             <th>Ruolo</th>
+            <th>Azioni</th>
         </tr>
 
  <% 
@@ -50,17 +53,18 @@ if(users == null) {
 		while (it.hasNext()) {
 			userBean bean = (userBean) it.next();
 %>
-   
         <tr>
             <td><%=bean.getName() %></td>
             <td><%=bean.getSurname() %></td>
             <td><%=bean.getUser() %></td>
             <td><%=bean.getEmail()%></td>
             <td><%=bean.getRole() %></td>
+            <td>
+            	<a href="connection?action=delete&userid=<%= bean.getEmail()%>&returnto=gestioneUtenteAdmin.jsp">Rimuovi</a>
+				<a href="connection?action=getuser&userid=<%=bean.getId()%>&returnto=gestioneUtenteAdmin.jsp">Modifica</a>
+            </td>
         </tr>
     
-
-
 <%
 	}
 		}
@@ -73,13 +77,13 @@ if(users == null) {
 <div class="insertUser">
 		<form action="connection?action=insert&returnto=gestioneUtenteAdmin.jsp" method="POST" onsubmit="event.preventDefault(); validate(this)" name="HandleUsers">
 		<label>Gestione utenti</label>
-		<input type="hidden" name="userid" value="-1">
-		<input type="text" name="name" placeholder="Inserisci nome" required maxlength="20">
-		<input type="text" name="surname" placeholder="Inserisci cognome" required maxlength="20">
-		<input type="text" name="username" placeholder="Inserisci username" required maxlength="20">
-		<input type="text" name="password" placeholder="Inserisci password" required maxlength="20">
-		<input type="text" name="email" placeholder="Inserisci email" maxlength="40" required>
-		<input type="text" name="role" placeholder="Inserisci ruolo" required>
+		<input type="hidden" name="userid" value="<%= currentuser.getId() %>">
+		<input type="text" name="name" placeholder="Inserisci nome" required maxlength="20" value="<%= currentuser.getName() %>">
+		<input type="text" name="surname" placeholder="Inserisci cognome" required maxlength="20" value="<%= currentuser.getSurname() %>">
+		<input type="text" name="username" placeholder="Inserisci username" required maxlength="20" value="<%= currentuser.getUser() %>">
+		<input type="text" name="password" placeholder="Inserisci password" required maxlength="20" value="<%= currentuser.getPassword() %>">
+		<input type="text" name="email" placeholder="Inserisci email" maxlength="40" required value="<%= currentuser.getEmail() %>">
+		<input type="text" name="role" placeholder="Inserisci ruolo" required value="<%= currentuser.getRole() %>">
  
 		<button type="submit" class="btnn">Salva Utente</button>
 		<div id="errorMail" class="errors"><i> <ion-icon name="warning-outline"></ion-icon> </i></div>		

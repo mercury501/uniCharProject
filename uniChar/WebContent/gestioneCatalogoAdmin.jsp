@@ -81,8 +81,6 @@ if (product == null)
             </td>
         </tr>
     
-
-
 <%
 	}
 		}
