@@ -7,7 +7,7 @@ public class productBean implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id = 0;
+	private int id = -1;
 	private float prezzo = 0;
 	private String descrizione = "";
 	private String titolo = "";

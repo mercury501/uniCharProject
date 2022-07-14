@@ -37,11 +37,8 @@ public class HandleProducts extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		String home = "/index.jsp";
 		String admin = "/admin.jsp";
-
-
 
 		productBean pB = new productBean();
 		List<productBean> pBList = null;
@@ -60,12 +57,20 @@ public class HandleProducts extends HttpServlet {
 
 		if (action != null) {
 			if (action.equalsIgnoreCase("insert")) {
+				String role = (String)request.getSession().getAttribute("role");
+
+        		if (role == null || !role.equalsIgnoreCase("admin"))
+        			returnTo = "index.jsp";	
+        		
 				pB.setTitolo(request.getParameter("title"));
 				pB.setDescrizione(request.getParameter("desc"));
 				pB.setSviluppatore(request.getParameter("developer"));
 				pB.setPrezzo(Float.valueOf(request.getParameter("price")));
 				pB.setImageOne(request.getParameter("image"));
 				pB.setStock(Integer.parseInt(request.getParameter("stock")));
+				pB.setImageOne(request.getParameter("imageone"));
+				pB.setId(Integer.parseInt(request.getParameter("prodid")));
+				
 				insertProduct(pB);
 			}
 			else if (action.equalsIgnoreCase("search")) {
@@ -74,14 +79,16 @@ public class HandleProducts extends HttpServlet {
 				request.setAttribute("product", pB);
 			}
 			else if(action.equalsIgnoreCase("delete")) {
+				String role = (String)request.getSession().getAttribute("role");
 
+        		if (role == null || !role.equalsIgnoreCase("admin"))
+        			returnTo = "index.jsp";	
+        		
 				pB.setId(Integer.parseInt(request.getParameter("id")));
 				deleteProduct(pB.getId());
 			}
 			else if (action.equalsIgnoreCase("catalog")) {
-				pBList = getCatalog();
-				request.removeAttribute("catalog");
-				request.setAttribute("catalog", pBList);
+				setCatalog(request, response);
 
 			}
 			else if (action.equalsIgnoreCase("discountcatalog")) {
@@ -101,12 +108,9 @@ public class HandleProducts extends HttpServlet {
 			}
 
 			else if(action.equalsIgnoreCase("product")) {
-
 					int id = 0;
 
 					id = Integer.parseInt(request.getParameter("id"));
-
-
 					pB = prodDao.getProduct(id);
 
 					request.removeAttribute("product");
@@ -114,12 +118,18 @@ public class HandleProducts extends HttpServlet {
 			}
 
 			else if(action.equalsIgnoreCase("getproduct")) {
+				String role = (String)request.getSession().getAttribute("role");
 
-				Integer test = (Integer)request.getAttribute("id");
-				pB = searchProduct((Integer)request.getAttribute("productid"));
+        		if (role == null || !role.equalsIgnoreCase("admin"))
+        			returnTo = "index.jsp";	
+        		
+				Integer prodID = Integer.parseInt(request.getParameter("id"));
+				pB = searchProduct(prodID);
 
 				request.removeAttribute("product");
 				request.setAttribute("product", pB);
+				
+				setCatalog(request, response);
 			}
 
 			dispatcher = getServletContext().getRequestDispatcher("/" + returnTo);
@@ -154,6 +164,13 @@ public class HandleProducts extends HttpServlet {
 
 	private List<productBean> getDiscountedCatalog(int disc, int num){
 		return prodDao.getDiscountedProducts(num, disc);
+	}
+	
+	private void setCatalog(HttpServletRequest request, HttpServletResponse response) {
+		List<productBean> pBList = null;
+		pBList = getCatalog();
+		request.removeAttribute("catalog");
+		request.setAttribute("catalog", pBList);
 	}
 
 }

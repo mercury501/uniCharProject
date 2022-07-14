@@ -114,16 +114,13 @@ public class HandleUsers extends HttpServlet {
 			}
 
 			if(action.equalsIgnoreCase("user")) {
-
 				userBean uB = new userBean();
 				userDAO uD = new userDAO();
-
 
 				HttpSession session = request.getSession(false);
 				String email = (String) session.getAttribute("email");
 
 				uB = uD.getUser(email);
-
 
 				request.removeAttribute("user");
 				request.setAttribute("user", uB);
