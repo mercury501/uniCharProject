@@ -27,13 +27,14 @@
             <%
             cartBean carrello = (cartBean) session.getAttribute("cart");
             
-            if(carrello != null)
+            if(carrello!= null){
           for (Map.Entry<Integer, productBean> set : carrello.getProducts().entrySet()) {
               
               %>
                       
-
+	
             <td>
+            <form action="cart?action=modify&returnto=cart.jsp">
                 <div class="cart-info">
                     <img class="image"src="images/products/<%=set.getValue().getImageOne()%>">
                     <div>
@@ -44,7 +45,7 @@
                 </div>
             </td>
             
-                <td><select name="quantità" id="quantità">
+                <td><select name="quantità" id="quantità" onchange="this.form.submit()">
                         
                     <%
                         for(int i=1; i<=10; i++){
@@ -78,11 +79,16 @@
             </tr>
             <%
 }
+            }
+       
+            	
+            
 %>
+		
 
 
         </table>
-
+</form>
            
     </div>
     

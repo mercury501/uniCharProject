@@ -72,7 +72,7 @@ if(products == null) {
             <td><%=bean.getPrezzo()%></td>
             <td>
             	<a href="product?action=delete&id=<%=bean.getId()%>&returnto=gestioneCatalogoAdmin.jsp">Rimuovi</a>
-				<a href="product?action=getproduct&productid=<%=bean.getId()%>&returnto=gestioneCatalogoAdmin.jsp">Modifica</a>
+				<a href="product?action=getproduct&id=<%=bean.getId()%>&returnto=gestioneCatalogoAdmin.jsp">Modifica</a>
             </td>
         </tr>
     
