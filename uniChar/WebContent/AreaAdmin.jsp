@@ -7,6 +7,11 @@ if(nome == null){
 	return;
 }
 
+String role = (String)request.getSession().getAttribute("role");
+
+if (role == null || !role.equalsIgnoreCase("admin"))
+	response.sendRedirect("index.jsp");
+
 
 String message = "Benvenuto/a "+nome;
 %>
