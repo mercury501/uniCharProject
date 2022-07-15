@@ -224,6 +224,45 @@ public class userDAO  {
 		
 	}
 	
+	
+	public int updateUserAccount(userBean user) throws Exception{
+		String sql = "UPDATE USERS "
+				+ " SET " +
+				" NAME = ?, " +
+				" SURNAME = ?, " +
+				" USERNAME = ?, " +
+				" PASSWORD = ?, " +
+				" EMAIL = ? " 
+				
+				+ " WHERE "
+				+ " ID = ? ";
+		
+		try {
+		
+		
+	        statement = sqlConn.prepareStatement(sql);
+	        
+	        statement.setString(1, user.getName());
+	        statement.setString(2, user.getSurname());
+	        statement.setString(3, user.getUser());
+	        statement.setString(4, user.getPassword());
+	        statement.setString(5, user.getEmail());
+	        
+	        statement.setInt(6, user.getId());	        
+
+	        statement.executeUpdate();
+	        
+	        sqlConn.commit();
+	        statement.close();
+	        releaseConn();
+        } catch (SQLException e) {
+        	throw e;
+        }
+		return 0;
+		
+	}
+	
+	
 	public int doDeleteUser(int id) {
 		String sql = "DELETE FROM USERS "
 				+ " WHERE "
