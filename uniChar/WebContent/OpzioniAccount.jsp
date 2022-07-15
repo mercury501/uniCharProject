@@ -109,7 +109,7 @@
 	
 	<tr>
 		<th class="testoTabella testoValoriAccount"><div class="button">
-                 <input type="submit" value="Inserisci">
+                 <input id="button" type="submit" value="Inserisci">
        </div></th>
        
      </tr>
