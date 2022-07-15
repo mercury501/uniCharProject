@@ -165,6 +165,29 @@ public class HandleUsers extends HttpServlet {
         		
 			}
 			
+			if(action.equalsIgnoreCase("update")) {
+				
+				userDAO uD = new userDAO();
+				
+				String name = request.getParameter("name");
+				String surname = request.getParameter("surname");
+				String user = request.getParameter("username");
+				String password = request.getParameter("password");
+				String email = request.getParameter("email");
+				Integer userid = (Integer) request.getSession().getAttribute("userid");
+
+				userBean uB = new userBean();
+				uB.setName(name);
+				uB.setSurname(surname);
+				uB.setUser(user);
+				uB.setPassword(password);
+				uB.setEmail(email);
+				uB.setId(userid);
+				
+				uD.updateUserAccount(uB);
+				
+			}
+			
 			if(action.equalsIgnoreCase("delete")) {
 				String role = (String)request.getSession().getAttribute("role");
 				Integer usersessid = (Integer) request.getSession().getAttribute("userid");
