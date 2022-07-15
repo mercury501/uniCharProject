@@ -25,6 +25,10 @@ body{
  
 }
 
+.page{
+	height: 100%;
+	}
+
 .welcome {
 	text-align: center;
   color: #ff5700;
