@@ -1,5 +1,6 @@
 
     <%
+    
 	userBean utente = (userBean) request.getAttribute("user");
 	
 	if(utente == null) {
@@ -27,7 +28,7 @@
 	
 	<h1 class="TestoTabella">Modifica Account</h1>
 	
-	
+	<form action="connection?action=update&userid=<%=utente.getId()%>&returnto=OpzioniAccount.jsp" method="POST">
 	
 	<table class="tabellaOpzioni">
 
@@ -39,22 +40,9 @@
     
     <tr>
         <th class="testoTabella testoValoriAccount">
-            <input type="text" value="<%= utente.getName() %>" readonly="readonly">
+            <input type="text" name="name" value="<%= utente.getName() %>" required>
         </th>
         
-   
-    <th>
-    <button class="modificaElemento" id="modificaNome">
-                    <div>
-                        <ion-icon class="iconaModificaPulsante" name="create-outline" size="large"></ion-icon>
-                    </div>
-                    
-                    <div class="testoModificaElemento">
-                        MODIFICA
-                    </div>  
-                </button>
-    
-    </th>
     </tr>
 
     <tr>
@@ -65,22 +53,26 @@
 
     <tr>
         <th class="testoTabella testoValoriAccount">
-            <input type="text" value="<%= utente.getSurname() %>" readonly="readonly">
+            <input type="text" name="surname" value="<%= utente.getSurname() %>" required>
+            
+        </th>
+       
+        
+    </tr>
+    <tr>
+        <th class="testoTabella">
+            USERNAME
+        </th>
+    </tr>
+
+    <tr>
+        <th class="testoTabella testoValoriAccount">
+            
+            <input type="text" name="username" value="<%= utente.getUser() %>">
             
         </th>
         
-        <th>
-    <button class="modificaElemento" id="modificaNome">
-                    <div>
-                        <ion-icon class="iconaModificaPulsante" name="create-outline" size="large"></ion-icon>
-                    </div>
-                    
-                    <div class="testoModificaElemento">
-                        MODIFICA
-                    </div>  
-                </button>
-    
-    </th>
+
         
     </tr>
     <tr>
@@ -91,23 +83,10 @@
 
     <tr>
         <th class="testoTabella testoValoriAccount" style="font-size: 15pt">
-            <input type="text" value="<%= utente.getEmail() %>" disabled">
-            <button class="ok-button">OK</button>
+            <input type="text" name="email" value="<%= utente.getEmail() %>" required>
             
         </th>
-      
-       <th>
-    <button onClick="tastoModifica()" class="modificaElemento" id="modificaNome">
-                    <div>
-                        <ion-icon class="iconaModificaPulsante" name="create-outline" size="large"></ion-icon>
-                    </div>
-                    
-                    <div class="testoModificaElemento">
-                        MODIFICA
-                    </div>  
-                </button>
-    
-    </th>
+ 
       
      </tr>
 
@@ -120,27 +99,26 @@
     <tr>
         <th class="testoTabella testoValoriAccount">
             
-            <input type="text" value="******">
+            <input type="password" name="password" value="<%=utente.getPassword() %>">
             
         </th>
         
-         <th>
-    <button class="modificaElemento" id="modificaNome">
-                    <div>
-                        <ion-icon class="iconaModificaPulsante" name="create-outline" size="large"></ion-icon>
-                    </div>
-                    
-                    <div class="testoModificaElemento">
-                        MODIFICA
-                    </div>  
-                </button>
-    
-    </th>
+
         
     </tr>
-
+	
+	<tr>
+		<th class="testoTabella testoValoriAccount"><div class="button">
+                 <input type="submit" value="Inserisci">
+       </div></th>
+       
+     </tr>
 
 </table>
+
+
+</form>
+
 
 
 		
@@ -152,11 +130,5 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
      <script src="JavaScript/jquery-3.6.0.min.js" type="text/javascript"></script>	
     
-    <script>
-    	
-    function tastoModifica(){
-    	 document.getElementById("modificaNome").removeAttribute("readonly");
-    }
-    
-    </script>
+  
     

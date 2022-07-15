@@ -8,14 +8,16 @@ if(orders == null) {
 	return;
 }
 
-
+DecimalFormat formatPrice = new DecimalFormat();
+formatPrice.setMaximumFractionDigits(2);
+formatPrice.setMinimumFractionDigits(2);
 
 
 %>
 
 
 
-<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,tsw.uniChar.Beans.orderBean"%>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,tsw.uniChar.Beans.orderBean,java.text.DecimalFormat"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +61,7 @@ if(orders == null) {
 		
 			
 			<td><%=ordine.getDate() %></td>
-			<td><%=ordine.getTotale() %></td>
+			<td><%=formatPrice.format(ordine.getTotale()) %></td>
 			
 			</tr>
 	<%
