@@ -200,6 +200,35 @@ input::placeholder{
 	color: #ff7500;
 }
 
+
+
+@media screen and (max-width: 600px){
+	
+
+	
+	.navbar li a{
+	
+    	padding: 20px 30px;
+	}
+	
+	.navbar .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+    
+  }
+  
+  .navbar .search{
+  	margin:0;
+  	float:left;
+  }
+  
+  
+
+}
+	
+}
+
 	
 	
 	

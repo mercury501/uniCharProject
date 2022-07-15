@@ -45,7 +45,7 @@
                 </div>
             </td>
             
-                <td><select name="quantità" id="quantità" onchange="this.form.submit()">
+                <td><select name="quantity" id="quantity" onchange="submit()">
                         
                     <%
                         for(int i=1; i<=10; i++){
@@ -56,7 +56,7 @@
                         
                     %>
                     
-                    <option value="Quantity" selected ><%= i %></option>
+                    <option value="quantity" selected ><%= i %></option>
                        
                         <%
                         } 
@@ -64,7 +64,7 @@
                             
                         
                         %>	
-                        <option value="Quantity"><%= i %></option>
+                        <option value="quantity"><%= i %></option>
                         
                         <% 
                         }

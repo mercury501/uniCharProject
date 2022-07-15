@@ -60,7 +60,7 @@ if (currentuser == null)
             <td><%=bean.getEmail()%></td>
             <td><%=bean.getRole() %></td>
             <td>
-            	<a href="connection?action=delete&userid=<%= bean.getEmail()%>&returnto=gestioneUtenteAdmin.jsp">Rimuovi</a>
+            	<a href="connection?action=delete&userid=<%= bean.getId()%>&returnto=gestioneUtenteAdmin.jsp">Rimuovi</a>
 				<a href="connection?action=getuser&userid=<%=bean.getId()%>&returnto=gestioneUtenteAdmin.jsp">Modifica</a>
             </td>
         </tr>

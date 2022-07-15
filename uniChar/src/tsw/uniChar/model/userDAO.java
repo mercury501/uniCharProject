@@ -192,15 +192,14 @@ public class userDAO  {
 				" SURNAME = ?, " +
 				" USERNAME = ?, " +
 				" PASSWORD = ?, " +
-				" ROLE = ?, " +
-				" EMAIL = ?, " 
+				" ROLE = ?," +
+				" EMAIL = ? " 
 				
 				+ " WHERE "
 				+ " ID = ? ";
 		
 		try {
-			if (!doCheckPassword(user))
-				throw new Exception();
+		
 		
 	        statement = sqlConn.prepareStatement(sql);
 	        
@@ -218,7 +217,7 @@ public class userDAO  {
 	        sqlConn.commit();
 	        statement.close();
 	        releaseConn();
-        } catch (Exception e) {
+        } catch (SQLException e) {
         	throw e;
         }
 		return 0;
@@ -364,7 +363,8 @@ public class userDAO  {
 		
 		userBean uB = new userBean();
 		
-		String sql = "SELECT * FROM USERS WHERE EMAIL = ?";
+		String sql = "SELECT ID,NAME,SURNAME,USERNAME,PASSWORD,EMAIL"
+				+ " FROM USERS WHERE EMAIL = ?";
 		
 		
 		try {
@@ -375,7 +375,7 @@ public class userDAO  {
 	        ResultSet rs = statement.executeQuery();
 	        
 	        if (rs.next()) 
-	        	uB = newUser(rs);
+	        	uB = new userBean(rs.getInt(1), rs.getString(2), rs.getString(3),"", rs.getString(4),rs.getString(5),rs.getString(6));
 	        
 	        sqlConn.commit();
 	        statement.close();
