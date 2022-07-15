@@ -19,18 +19,18 @@ body{
 }
 
 .tabellaOpzioni {
-    margin: 0 auto;
-    width: 40%;
-    max-width: 800px;
+    margin: 20px 600px;
+    width: 100%;
 }
 
 .testoTabella {
     text-align: left;
     padding-top: 30px;
     padding-bottom: 10px;
-    font-size: 20px;
+    font-size: 25px;
     color: #ff7500;
     line-height: 10px;
+
 }
 
 .testoValoriAccount {
@@ -58,9 +58,16 @@ input[type=text]{
 }
 
 
-.ok-button{
-	display: block;
-	margin-top: 20px;
-	width: 40px;
+#button{
+	  width: 120px;
+    height: 40px;
+    background: #ff7200;
+    border: none;
+    margin-top: 30px;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: 0.4s ease;
 }
 
