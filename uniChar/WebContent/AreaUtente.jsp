@@ -41,7 +41,7 @@ String message = "Benvenuto/a "+nome;
                 </div>
             </a>
             
-            <a href="AccountControl">
+            <a href="connection?action=user&returnto=OpzioniAccount.jsp">
                 <div class="card">
                     <ion-icon class="iconFunction" name="cog-outline" size="large"></ion-icon><p>Impostazioni Account</p>
                 </div>
