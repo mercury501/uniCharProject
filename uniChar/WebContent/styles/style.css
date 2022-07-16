@@ -294,18 +294,34 @@ hr
     margin-right: auto;
 }
 
-.btn-donation{
-    width: 100px;
-    height: 40px;
-    background: #ff7200;
-    border: 2px solid #ff7200;
-    margin-top: 20px;
-    color: #EEEEEE;
-    font-size: 15px;
-    border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    
-    
+
+
+@media screen and (max-width: 800px) {
+	
+	
+	
+	body{
+	 overflow-X: hidden;
+	}
+	
+	
+	.form{
+	
+		position:relative;
+		left: 7%;
+	}
+	
+	
+	.main{
+		height: 70rem !important;
+		
+	}
+	
+	.card_container > .card{
+		position: relative;
+		left: 10%;
+		
+	}
 }
 
 

@@ -1,43 +1,51 @@
-
 <link rel="stylesheet" href="styles/navbar-style.css">
+<html>
 
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-
-
-
-<div class="navbar">
-            <div class="icon">
-                <a href="index.jsp"><h2 class="logo">UC</h2></a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="index.jsp">HOME</a></li>
-                    <li><a href="ourTeam.jsp">ABOUT</a></li>
-                    <li><a href="Catalog.jsp">PRODUCTS</a></li>
-                </ul>
-            </div>
-
-            <div class="search">
-                <input class="srch"type="search"id="queryRicerca" onkeyup="funzioneRicerca()" placeholder="Cerca prodotti">
-                <button class="btn-search" id="pulsanteRicercaResponsive">Search</button>
-                <div id="risultati">
-                </div>
-            </div>
-            
-
-            <div class="shop">
-
+<body>
+    <div class="navbar">
+        <div class="icon">
+            <a href="index.jsp">
+                <h2 class="logo">UC</h2>
+            </a>
+        </div>
+        <div class="menu">
             <ul>
-              	<li><a href="cart.jsp"><img class="shop_icon" src="images/navbar/shop.png" alt=""></a></li>
-                <li><a href="connection?action=areagestione"><ion-icon name="person-outline" class="icona"></ion-icon></a></li>
+                <li><a href="index.jsp">HOME</a></li>
+                <li><a href="ourTeam.jsp">ABOUT</a></li>
+                <li><a href="Catalog.jsp">PRODUCTS</a></li>
+                <li class="funzioni"><a href="cart.jsp">CARRELLO</a></li>
+                <li class="funzioni"><a href="connection?action=areagestione">ACCEDI</a></li>
             </ul>
-
-
+        </div>
+        <div class="search">
+            <input class="srch" type="search" id="queryRicerca" onkeyup="funzioneRicerca()"
+                placeholder="Cerca prodotti">
+            <button class="btn-search" id="pulsanteRicercaResponsive">Search</button>
+            <div id="risultati">
             </div>
+        </div>
 
+        <div class="media-nav">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
 
-
-  </div>
+        <div class="shop">
+            <ul>
+                <li><a href="cart.jsp"><img class="shop_icon" src="images/navbar/shop.png" alt=""></a></li>
+                <li><a href="connection?action=areagestione">
+                        <ion-icon name="person-outline" class="icona"></ion-icon>
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="scripts/nav.js"></script>
 
      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -51,10 +59,10 @@
 	function funzioneRicerca() {
 		
 		$("#risultati").empty();
-    	//$("#risultatiResponsive").empty();
-    	//$("#risultati").removeClass( "DivRisultati" );
-		//$("#barraRicerca").css({"border-bottom-left-radius":"20px"});
-    	//$("#barraRicerca").css({"border-bottom-right-radius":"20px"});
+    	$("#risultatiResponsive").empty();
+    	$("#risultati").removeClass( "DivRisultati" );
+		$("#barraRicerca").css({"border-bottom-left-radius":"20px"});
+    	$("#barraRicerca").css({"border-bottom-right-radius":"20px"});
 		
 		console.log("Inizia la funzione di ricerca")
 		var stringaParziale;
