@@ -16,7 +16,7 @@ a:active { text-decoration: none; }
 }
 
 body{
-  background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url(../images/foto-body.jpg);
+  background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(54,40,72,0.8)), url(../images/foto-body.jpg);
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -106,7 +106,13 @@ body{
 }
 
 @media (min-width: 400px) {
-  .cards { grid-template-columns: repeat(2, 1fr); }
+  .cards { 
+  display: flex;
+  flex-direction:column;
+	margin: 50px 20px;
+   }
+   
+   
   .card{
   	width: 100px;
   	height: 100px;
@@ -114,6 +120,11 @@ body{
   .cardLogout{
   	width: 100px;
   	height: 100px;
+  }
+  
+  
+  .page{
+  	height: 80rem;
   }
 }
 

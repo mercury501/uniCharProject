@@ -71,3 +71,11 @@ input[type=text]{
     transition: 0.4s ease;
 }
 
+@media screen and (max-width: 800px){
+	
+	.tabellaOpzioni{
+	
+	margin: 10px 150px;
+	}
+}
+
