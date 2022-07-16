@@ -11,6 +11,8 @@ public class paymentBean implements Serializable {
 	private String IntestatarioCarta;
 	private String CVV;
 	private String Scadenza;
+	private int orderid = 0;
+	private int userid = 0;
 	  
 	public paymentBean() {
 		
@@ -21,6 +23,32 @@ public class paymentBean implements Serializable {
 		Scadenza = "";
 		
 	}
+	
+	
+
+	public int getUserid() {
+		return userid;
+	}
+
+
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+
+
+	public int getOrderid() {
+		return orderid;
+	}
+
+
+
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
+	}
+
+
 
 	public String getNumeroCarta() {
 		return NumeroCarta;
