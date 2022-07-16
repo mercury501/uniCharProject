@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import tsw.uniChar.Beans.cartBean;
 import tsw.uniChar.Beans.orderBean;
+import tsw.uniChar.Beans.paymentBean;
 import tsw.uniChar.Beans.productBean;
 import tsw.uniChar.model.orderDAO;
+import tsw.uniChar.model.paymentDAO;
 
 /**
  * Servlet implementation class HandleOrders
@@ -63,9 +65,13 @@ public class HandleOrders extends HttpServlet {
 			order.setCart(cart);
 			order.setUserID(userID);
 			
+			
+			
 			try {
 				
 				orderID = oD.insertOrder(order);
+				
+				savePayment(request, response, orderID);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -105,6 +111,37 @@ public class HandleOrders extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private void savePayment(HttpServletRequest request, HttpServletResponse response, Integer orderid) {
+		
+		paymentBean pB = new paymentBean();
+		
+		pB.setOrderid(orderid);
+		String cardNumber = request.getParameter("cardNumber");
+		pB.setNumeroCarta(padLeftZeros(cardNumber, 16));
+		pB.setCVV(request.getParameter("cvv"));
+		pB.setIntestatarioCarta(request.getParameter("name"));
+		pB.setScadenza(request.getParameter("expiry"));
+		pB.setUserid((Integer)request.getSession().getAttribute("userid"));
+		
+		paymentDAO pD = new paymentDAO();
+		
+		pD.insertPayment(pB);
+		
+	}
+	
+	public String padLeftZeros(String inputString, int length) {
+	    if (inputString.length() >= length) {
+	        return inputString;
+	    }
+	    StringBuilder sb = new StringBuilder();
+	    while (sb.length() < length - inputString.length()) {
+	        sb.append('0');
+	    }
+	    sb.append(inputString);
+
+	    return sb.toString();
 	}
 
 }
