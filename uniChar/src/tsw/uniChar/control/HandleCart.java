@@ -45,7 +45,7 @@ public class HandleCart extends HttpServlet {
 			return;
 		}*/
 			
-		
+		//dall'url
 		String action = (String)request.getParameter("action");
 		
 		if (action == null)
@@ -56,23 +56,30 @@ public class HandleCart extends HttpServlet {
 		if (carrello == null) 
 			carrello = new cartBean();
 		try {
-		id = Integer.parseInt(request.getParameter("id"));
-		quantity = Integer.parseInt(request.getParameter("quantity"));
-		} catch (Exception e) {
+			id = Integer.parseInt(request.getParameter("id"));
 		
+		} catch (Exception e) {
+			id = (Integer) request.getAttribute("id");
+		}
+		
+		try {
+			quantity = Integer.parseInt(request.getParameter("quantity"));
+		} catch (Exception e) {
+			quantity = (Integer) request.getAttribute("quantity");
 		}
 		try {
-			if (action.equals("remove")) {
+			if (action == null ) {
+				carrello.setQuantity(id, quantity);
+			}
+			
+			else if (action.equals("remove")) {
 				carrello.remove(id);
 			}
-			if (action.equals("add")) {
+			else if (action.equals("add")) {
 				if (pDAO.getStock(id) > quantity)
 					carrello.addProduct(id, quantity);
 			}
-			if (action.equals("modify")) {
-				carrello.setQuantity(id, quantity);
-			}
-			if (action.equals("order")) {
+			else if (action.equals("order")) {
 				orderDAO oD = new orderDAO();
 				orderBean oB = new orderBean();
 				
