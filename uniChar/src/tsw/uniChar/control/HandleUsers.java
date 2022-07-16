@@ -186,6 +186,14 @@ public class HandleUsers extends HttpServlet {
 				
 				uD.updateUserAccount(uB);
 				
+				HttpSession currentSession = request.getSession();
+				
+				currentSession.setAttribute("user", uB.getName());
+				currentSession.setAttribute("userid", uB.getId());
+				currentSession.setAttribute("name", uB.getName());
+				currentSession.setAttribute("email", uB.getEmail());
+				currentSession.setAttribute("role", uB.getRole());
+				
 			}
 			
 			if(action.equalsIgnoreCase("delete")) {
