@@ -36,49 +36,29 @@ public class HandleCart extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "/cart.jsp";
 		
-		Integer id=-1, quantity=-1;
-		
-		/*
-		//trappiamo gli utenti non loggati
-		if (request.getSession().getAttribute("user") == null) {
-			response.sendRedirect("/loginPage.jsp");
-			return;
-		}*/
-			
-		
-		String action = (String)request.getParameter("action");
-		
-		if (action == null)
-			action = (String)request.getAttribute("action");
-		
-		cartBean carrello = (cartBean) request.getSession().getAttribute("cart");
-		
-		if (carrello == null) 
-			carrello = new cartBean();
+		Integer id = getID(request, response);
+	    Integer quantity = getQuantity(request, response);
+	    String action = getAction(request, response);
+	    cartBean carrello = getCart(request, response);
+	
 		try {
-		id = Integer.parseInt(request.getParameter("id"));
-		quantity = Integer.parseInt(request.getParameter("quantity"));
-		} catch (Exception e) {
-		
-		}
-		try {
-			if (action.equals("remove")) {
+			if (action == "modify" ) {
+				carrello.setQuantity(id, quantity);
+			}
+			else if (action.equals("remove")) {
 				carrello.remove(id);
 			}
-			if (action.equals("add")) {
+			else if (action.equals("add")) {
 				if (pDAO.getStock(id) > quantity)
 					carrello.addProduct(id, quantity);
 			}
-			if (action.equals("modify")) {
-				carrello.setQuantity(id, quantity);
-			}
-			if (action.equals("order")) {
+			else if (action.equals("order")) {
 				orderDAO oD = new orderDAO();
 				orderBean oB = new orderBean();
 				
 				oB.setCart(carrello);
-
 				oB.setUserID(1); 
+				
 				oD.insertOrder(oB);
 				
 				carrello = new cartBean();
@@ -101,6 +81,51 @@ public class HandleCart extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+	}
+	
+	private String getAction(HttpServletRequest request, HttpServletResponse response) {
+		//dall'url
+		String action = (String)request.getParameter("action");
+		
+		if (action == null)
+			action = (String)request.getAttribute("action");
+		if (action == null)
+			action = "modify";
+		
+		return action;
+	}
+	
+	private cartBean getCart(HttpServletRequest request, HttpServletResponse response) {
+		cartBean carrello = (cartBean) request.getSession().getAttribute("cart");
+		
+		if (carrello == null) 
+			carrello = new cartBean();
+		
+		return carrello;
+	}
+			
+	private Integer getID(HttpServletRequest request, HttpServletResponse response) {
+		Integer id;	
+		try {
+				id = Integer.parseInt(request.getParameter("id"));
+			
+			} catch (Exception e) {
+				id = (Integer) request.getAttribute("id");
+			}
+		
+		return id;
+			
+	}
+	
+	private Integer getQuantity(HttpServletRequest request, HttpServletResponse response) {
+		Integer quantity;	
+		try {
+				quantity = Integer.parseInt(request.getParameter("quantity"));
+			} catch (Exception e) {
+				quantity = (Integer) request.getAttribute("quantity");
+			}
+		
+		return quantity;
 	}
 
 }

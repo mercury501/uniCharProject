@@ -24,9 +24,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 
 import tsw.uniChar.Beans.orderBean;
+import tsw.uniChar.Beans.paymentBean;
 import tsw.uniChar.Beans.productBean;
 import tsw.uniChar.Beans.userBean;
 import tsw.uniChar.model.orderDAO;
+import tsw.uniChar.model.paymentDAO;
 import tsw.uniChar.model.userDAO;
 
 /**
@@ -37,6 +39,7 @@ public class HandleInvoices extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private userDAO uD = null;
 	private orderDAO oD = null;
+	private paymentDAO pD = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -46,6 +49,7 @@ public class HandleInvoices extends HttpServlet {
         super();
         uD = new userDAO();
         oD = new orderDAO();
+        pD = new paymentDAO();
         // TODO Auto-generated constructor stub
     }
 
@@ -91,6 +95,11 @@ public class HandleInvoices extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		paymentBean payment = pD.getPayment(id);
+		
+		String numeroCarta = payment.getNumeroCarta();
+		String numeroCartaCensored = "****-****-****-" +numeroCarta.substring(12);
+		
 		try {
 			Document doc = new Document();
 			
@@ -101,13 +110,14 @@ public class HandleInvoices extends HttpServlet {
 			Font font = new Font(Font.FontFamily.HELVETICA, 20, Font.BOLD);
 			
 			Image uniCharLogo = Image.getInstance(getServletContext().getRealPath("/images/logoPDF.png"));
-			uniCharLogo.scalePercent(30);
-			
+			uniCharLogo.scalePercent(30);			
 			
 			PdfPTable head = new PdfPTable(2);
 			PdfPCell logo = new PdfPCell(uniCharLogo);
 			PdfPCell utente = new PdfPCell(new Phrase(user.toString() + "\n" 
-			+ "Data: " + order.getDate() + "\nNumero ordine: " + order.getOrderID()));
+			+ "Data: " + order.getDate() + "\nNumero ordine: " + order.getOrderID() + 
+			"\nCarta: " + numeroCartaCensored
+					));
 			utente.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			
 			logo.setBorder(Rectangle.NO_BORDER);
@@ -185,7 +195,7 @@ public class HandleInvoices extends HttpServlet {
 			PdfPCell donationAmountCell = new PdfPCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale * 0.05f), font));
 			donationAmountCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			donationTable.addCell(donationAmountCell);
-			//donationTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale * 0.05f)));
+			//donationTable.addCell(new Phrase(euro + formatPrice.format(prezzoIvatoTotale * 0.05f)));			
 			
 			doc.add(prodottiPdfTable);
 			doc.add(totaleTable);
