@@ -43,7 +43,7 @@
 <title>Pagamento</title>
 </head>
 <body>
-
+	<%@ include file="navbar.jsp" %>
 	<div class="container mt-5 px-5">
 
 		<div class="mb-4">
@@ -141,6 +141,6 @@
 
 	</div>
 
-
+	<%@ include file="footer.html" %>
 </body>
 </html>
