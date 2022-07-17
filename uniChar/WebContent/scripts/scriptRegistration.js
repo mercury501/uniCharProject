@@ -43,10 +43,10 @@
 			if(!checkEmail(email)) {
 				valid = false;
 				document.getElementById("errorMail").style.display = 'block';
-				document.getElementById("errorMessageMail").style.display = 'block';
+	
 			} else {
 				document.getElementById("errorMail").style.display = 'none';
-				document.getElementById("errorMessageMail").style.display = 'none';
+
 				
 				var emailTestPass = document.getElementsByName("email")[0].value;
 				console.log(emailTestPass);
@@ -64,7 +64,6 @@
 		            	} else {
 		            		valid = false;
 		            		document.getElementById("errorMail").style.display = 'block';
-		            		document.getElementById("errorMessageMailUsed").style.display = 'block';
 		            	}
 		            },
 		            error: function(jqXHR, textStatus, errorThrown){
@@ -77,20 +76,20 @@
 			if(!checkNamesurname(name)) {
 				valid = false;
 				document.getElementById("errorName").style.display = 'block';
-				document.getElementById("errorMessageName").style.display = 'block';
+				
 			} else {
 				document.getElementById("errorName").style.display = 'none';
-				document.getElementById("errorMessageName").style.display = 'none';
+			
 			}
 			
 			var surname = document.getElementsByName("surname")[0];
 			if(!checkNamesurname(surname)) {
 				valid = false;
 				document.getElementById("errorSurname").style.display = 'block';
-				document.getElementById("errorMessageSurname").style.display = 'block';
+
 			} else {
 				document.getElementById("errorSurname").style.display = 'none';
-				document.getElementById("errorMessageSurname").style.display = 'none';
+	
 			}	
 			
 			var pass1 = document.getElementById("password");
@@ -98,21 +97,21 @@
 			
 			if( checkPassword(pass1) ){
 				document.getElementById("errorPassword").style.display = 'none';
-				document.getElementById("errorMessagePassword").style.display = 'none';
+
 			} else {
 				valid = false;
 				document.getElementById("errorPassword").style.display = 'block';
-				document.getElementById("errorMessagePassword").style.display = 'block';
+
 			}
 			if( pass1.value === pass2.value ) {
 				console.log('Le password coincidono');
 				document.getElementById("errorPasswordDifferent").style.display = 'none';
-				document.getElementById("errorMessagePasswordDifferent").style.display = 'none';
+
 			} else {
 				valid = false;
 				console.log('Le password non coincidono');
 				document.getElementById("errorPasswordDifferent").style.display = 'block';
-				document.getElementById("errorMessagePasswordDifferent").style.display = 'block';
+				
 			}
 				
 			

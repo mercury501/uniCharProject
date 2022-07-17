@@ -26,7 +26,7 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+    <title>Registrati</title>
     <link rel="stylesheet" href="styles/style-registration.css">
     
 </head>
@@ -35,8 +35,9 @@
 
 
 <body>
+
     <div class="container">
-         <div class="title">Registration</div>
+         <div class="title">Registrazione</div>
          <form method="post" action="connection?action=register" name="HandleUsers" onsubmit="event.preventDefault(); validate(this)">
              <div class="user-details">
                  <div class="input-box">
@@ -61,7 +62,7 @@
                     <input type="text" name="email" id="email"placeholder="Email" required>
                     <div id="errorMail" class="errors"><i> <ion-icon name="warning-outline"></ion-icon> </i></div>
                 </div>
-                <p id="errorMessageMail">Email non valida.</p>
+               
            	 	<p id="errorMessageMailUsed">Utente presente con questa mail.</p>
                 <div class="input-box">
                     <span class="details">Password</span>
@@ -79,10 +80,11 @@
              </div>
              
              <div class="button">
-                 <input type="submit" value="Register">
+                 <input type="submit" value="Registrati">
              </div>
          </form>
     </div>
+     
 </body>
 
 <script src="scripts/scriptRegistration.js"></script>
