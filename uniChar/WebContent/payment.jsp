@@ -73,7 +73,7 @@
 						<div class="col-md-6">
 
 							<div class="inputbox mt-3 mr-2">
-								<input type="number" maxlength="16" minlength="16" name="cardNumber"
+								<input type="number" name="cardNumber"
 									class="form-control" required="required"> <i
 									class="fa fa-credit-card"></i> <span>Numero della carta</span>
 
@@ -87,7 +87,7 @@
 
 
 								<div class="inputbox mt-3 mr-2">
-									<input type="number" maxlength="4" minlength="4" name="expiry"
+									<input type="text" maxlength="5" minlength="5" name="expiry"
 										class="form-control" required="required"> <span>Data
 										di scadenza</span>
 								</div>

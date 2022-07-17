@@ -261,3 +261,12 @@ hr
 }
 
 
+@media screen and (max-width: 800px){
+	
+	.card_container > .card{
+  		position:relative;
+  		left:10%;
+  }
+}
+
+

@@ -192,7 +192,7 @@ public class HandleUsers extends HttpServlet {
 				currentSession.setAttribute("userid", uB.getId());
 				currentSession.setAttribute("name", uB.getName());
 				currentSession.setAttribute("email", uB.getEmail());
-				currentSession.setAttribute("role", uB.getRole());
+
 				
 			}
 			

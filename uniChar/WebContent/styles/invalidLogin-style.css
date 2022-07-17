@@ -37,3 +37,12 @@ a{
 }
 
 
+@media screen and (max-width: 800px){
+	
+	.bottone{
+		position:relative;
+		right:90%;
+	}
+}
+
+
