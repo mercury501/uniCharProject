@@ -1,6 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"
-	import="java.util.*,tsw.uniChar.Beans.*"%>
+	import="java.util.*,tsw.uniChar.Beans.*, java.text.DecimalFormat"%>
 <%
+	DecimalFormat formatPrice = new DecimalFormat();
+	formatPrice.setMaximumFractionDigits(2);
+	formatPrice.setMinimumFractionDigits(2);
+
 	cartBean cart = (cartBean) session.getAttribute("cart");
 	Integer user = (Integer) session.getAttribute("userid");
 
@@ -16,12 +20,10 @@
 
 	}
 
+	totale += totale * 0.22f;
 	totale += totale * 0.05f;
-
-	int totaleIntero = Integer.valueOf(totale.toString().substring(0, totale.toString().indexOf('.')));
-	Float ftotaleDopoVirgola = totale - totaleIntero;
-	int totaleDopoVirgola = Integer
-			.valueOf(ftotaleDopoVirgola.toString().substring(0, ftotaleDopoVirgola.toString().indexOf('.')));
+	
+	String totaleStr = formatPrice.format(totale);
 %>
 
 <!DOCTYPE html>
@@ -112,8 +114,8 @@
 					<div class="d-flex flex-row align-items-end mb-3">
 						<h1 class="mb-0 yellow">
 							€
-							<%=totaleIntero%></h1>
-						<span><%=totaleDopoVirgola%> &euro;</span>
+							<%=totaleStr%></h1>
+						
 					</div>
 
 
@@ -125,7 +127,7 @@
 						<button class="btn btn-outline-warning  px-3"
 							onclick="validate(this);">
 							Pay €
-							<%=totale%></button>
+							<%=totaleStr%></button>
 					</div>
 
 				</div>
