@@ -43,7 +43,7 @@
 <title>Pagamento</title>
 </head>
 <body>
-
+	<%@ include file="navbar.jsp" %>
 	<div class="container mt-5 px-5">
 
 		<div class="mb-4">
@@ -57,7 +57,6 @@
 		<div class="row">
 <form method="post" action="HandleOrders?action=createorder" name="HandleOrder" onsubmit="event.preventDefault(); validate(this)">
 			<div class="col-md-8">
-
 
 				<div class="card p-3">
 
@@ -108,7 +107,7 @@
 			<div class="col-md-4">
 
 				<div class="card card-blue p-3 text-white mb-3">
-<p id="errorMessage">Il nome deve contenere solo lettere</p>
+		<p id="errorMessage">Il nome deve contenere solo lettere</p>
 					<span>Devi pagare</span>
 					<div class="d-flex flex-row align-items-end mb-3">
 						<h1 class="mb-0 yellow">
@@ -142,6 +141,6 @@
 
 	</div>
 
-
+	<%@ include file="footer.html" %>
 </body>
 </html>

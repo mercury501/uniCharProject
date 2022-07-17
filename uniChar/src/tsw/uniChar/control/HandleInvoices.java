@@ -98,7 +98,7 @@ public class HandleInvoices extends HttpServlet {
 		paymentBean payment = pD.getPayment(id);
 		
 		String numeroCarta = payment.getNumeroCarta();
-		String numeroCartaCensored = "****-****-****-" +numeroCarta.substring(12);
+		String numeroCartaCensored = "****-****-****-" + numeroCarta.substring(numeroCarta.length() - 4);
 		
 		try {
 			Document doc = new Document();
