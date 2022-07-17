@@ -91,6 +91,8 @@ if (currentuser == null)
 	</div>
 	<p id="errorMessageMailUsed">Utente presente con questa mail.</p>
 	<p id="errorMessageMail">Email non valida.</p>
+	    <%@ include file="footer.html" %>
+	
 </body>
  <%@ include file="footer.html" %>
 <script src="scripts/scriptUserManag.js"></script>
