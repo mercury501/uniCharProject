@@ -188,11 +188,16 @@ a{
 }
 
 
-@media and screen(max-width: 800px){
+@media screen and (max-width: 800px){
 	
-	.header-fixed{
-	
-		position:relative;
-		left:0;
+	body{
+		overflow-x: hidden;
 	}
+	
+	.insertProducts{
+		position:relative;
+		left:0%;
+		top:0;
+	}
+	
 }

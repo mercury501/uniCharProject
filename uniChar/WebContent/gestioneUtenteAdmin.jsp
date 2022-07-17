@@ -94,6 +94,7 @@ if (currentuser == null)
 	    <%@ include file="footer.html" %>
 	
 </body>
+ <%@ include file="footer.html" %>
 <script src="scripts/scriptUserManag.js"></script>
 <script src="JavaScript/jquery-3.6.0.min.js" type="text/javascript"></script>
 

@@ -81,14 +81,13 @@
 				</table>
 			</div>
 	
+	<a href="payment.jsp"><button class="btn-pay">Vai al pagamento</button></a>
 
 	</div>
 
-	<a href="payment.jsp"><button>Vai al pagamento</button></a>
 
 
-	</div>
-
+	<%@ include file="footer.html" %>
 
     <%@ include file="footer.html" %>
 

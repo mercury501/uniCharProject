@@ -192,7 +192,7 @@ public class HandleUsers extends HttpServlet {
 				currentSession.setAttribute("userid", uB.getId());
 				currentSession.setAttribute("name", uB.getName());
 				currentSession.setAttribute("email", uB.getEmail());
-				currentSession.setAttribute("role", uB.getRole());
+
 				
 			}
 			
@@ -232,11 +232,12 @@ public class HandleUsers extends HttpServlet {
 		String adminPage = "AreaAdmin.jsp";
 
 		userDAO uDs = new userDAO();
-		String user = request.getParameter("username");
+		
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
 		try {
-			userBean uB = uDs.doCheckLogin(new userBean(user, password));
+			userBean uB = uDs.doCheckLogin(email, password);
 			if (uB.getId() != -1) {
 
 				// recupero la sessione
@@ -250,7 +251,7 @@ public class HandleUsers extends HttpServlet {
 				HttpSession currentSession = request.getSession(); // creo una nuova connessione
 				if (cart != null)
 					currentSession.setAttribute("cart", cart);
-				currentSession.setAttribute("user", user);
+				currentSession.setAttribute("user", email);
 				currentSession.setAttribute("userid", uB.getId());
 				currentSession.setAttribute("name", uB.getName());
 				currentSession.setAttribute("email", uB.getEmail());

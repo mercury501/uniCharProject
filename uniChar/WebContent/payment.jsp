@@ -72,7 +72,7 @@
 						<div class="col-md-6">
 
 							<div class="inputbox mt-3 mr-2">
-								<input type="number" maxlength="16" minlength="16" name="cardNumber"
+								<input type="number" name="cardNumber"
 									class="form-control" required="required"> <i
 									class="fa fa-credit-card"></i> <span>Numero della carta</span>
 

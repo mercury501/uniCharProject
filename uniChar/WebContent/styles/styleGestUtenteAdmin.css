@@ -154,6 +154,7 @@ tr:nth-child(even){
 tr:nth-child(odd){
     background-color: #edeef1;
 }
+
 /*::-webkit-scrollbar{
     width: 6px;
 }
@@ -164,4 +165,6 @@ tr:nth-child(odd){
 
 ::-webkit-scrollbar-thumb{
     -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,0.807);
+
 }*/
+
