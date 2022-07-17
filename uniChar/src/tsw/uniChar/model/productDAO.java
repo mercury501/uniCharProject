@@ -174,7 +174,7 @@ public class productDAO {
 	}
 
 	public boolean deleteProduct(int id) {
-		String sql = "DELETE FROM PRODUCTS  WHERE ID = ?";
+		String sql = "UPDATE PRODUCTS SET VISIBILITY = 0  WHERE ID = ?";
 		try {
 			statement = sqlConn.prepareStatement(sql);
 
@@ -196,7 +196,7 @@ public class productDAO {
 	public productBean getProduct(int id) {
 		productBean pB = null;
 
-		String sql = sqlSelect + " WHERE ID = ? ";
+		String sql = sqlSelect + " WHERE ID = ? AND VISIBILITY = 1 ";
 
 		try {
 			statement = sqlConn.prepareStatement(sql);
@@ -222,7 +222,7 @@ public class productDAO {
 		List<productBean> pB = null;
 		int count = 0;
 
-		String sql = sqlSelect;
+		String sql = sqlSelect + " WHERE VISIBILITY = 1 ";
 
 		String sqlCount = "SELECT COUNT (*) FROM (" + sql + ")";
 
@@ -269,7 +269,7 @@ public class productDAO {
 
 		String sql = sqlSelect;
 
-		sql = sql + " WHERE DISCOUNT_PERC > ? LIMIT ? ";
+		sql = sql + " WHERE DISCOUNT_PERC > ?  AND VISIBILITY = 1  LIMIT ? ";
 
 		try {
 			statement = sqlConn.prepareStatement(sql);
@@ -303,7 +303,7 @@ public class productDAO {
 		List<productBean> pB = null;
 		int count = 0;
 
-		String sql = sqlSelect + " LIMIT ? ";
+		String sql = sqlSelect + "  WHERE VISIBILITY = 1 LIMIT ? ";
 
 		String sqlCount = "SELECT COUNT (*) FROM (" + sql + ")";
 
@@ -351,7 +351,7 @@ public class productDAO {
 		List<productBean> products = new ArrayList<>();
 
 		try {
-			String sql = "SELECT * FROM PRODUCTS";
+			String sql = "SELECT * FROM PRODUCTS  WHERE VISIBILITY = 1 ";
 			statement = sqlConn.prepareStatement(sql);
 			ResultSet resultset = statement.executeQuery(sql);
 
@@ -386,7 +386,7 @@ public class productDAO {
 		List<productBean> products = new ArrayList<>();
 
 		try {
-			String sql = "SELECT * FROM PRODUCTS" + " WHERE TITLE LIKE ? ";
+			String sql = "SELECT * FROM PRODUCTS" + " WHERE TITLE LIKE ?  AND VISIBILITY = 1  ";
 
 			statement = sqlConn.prepareStatement(sql);
 
@@ -423,7 +423,7 @@ public class productDAO {
 	public int getStock(int id) {
 		int result = 0;
 
-		String sql = "SELECT STOCK " + " FROM PRODUCTS WHERE ID = ?";
+		String sql = "SELECT STOCK " + " FROM PRODUCTS WHERE ID = ? ";
 
 		try {
 			statement = sqlConn.prepareStatement(sql);
@@ -450,7 +450,7 @@ public class productDAO {
 		
 		productBean bean = new productBean();
 		
-		String sql = "SELECT * FROM PRODUCTS WHERE TITLE LIKE ?";
+		String sql = "SELECT * FROM PRODUCTS WHERE TITLE LIKE ?  AND VISIBILITY = 1 ";
 		
 		Collection<productBean> products = new LinkedList<productBean>();
 		
