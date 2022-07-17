@@ -139,7 +139,7 @@ section::after{
 }
 
 @media screen and (max-width: 800px){
-	
+		
 	
 	body{
 		overflow-X: hidden;
@@ -150,6 +150,13 @@ section::after{
 		flex-direction: column;
 		align-items: flex-start;
 		margin: 17px 80px;
+	}
+	
+	.footer{
+		position:relative;
+		width:45%;
+		
+		
 	}
 	
 	
