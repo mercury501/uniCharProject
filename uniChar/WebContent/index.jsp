@@ -57,7 +57,7 @@
 			<form method="post" action="connection?action=login" name="HandleUsers">
 
                 <h2>Login</h2>
-                <input type="text"  name="username"placeholder="Username" required>
+                <input type="text"  name="email"placeholder="Email" required>
                 <input type="password" name ="password" placeholder="Password" required>
                 <button type="submit" class="btnn">Login</button>
 			</form>

@@ -61,17 +61,17 @@ public class userDAO  {
 			doUpdateUser(user);				
 	}
 
-	public userBean doCheckLogin(userBean user) throws SQLException {
+	public userBean doCheckLogin(String email, String password) throws SQLException {
 		userBean uB = new userBean();
 		String sql = "SELECT ID, NAME, SURNAME, ROLE, EMAIL"
 				+ " FROM USERS "
-				+ "WHERE BINARY USERNAME = ? AND BINARY PASSWORD = ?";
+				+ "WHERE BINARY EMAIL = ? AND BINARY PASSWORD = ?";
 		
         try {
 	        statement = sqlConn.prepareStatement(sql);
 	        
-	        statement.setString(1, user.getUser());
-	        statement.setString(2, user.getPassword());
+	        statement.setString(1, email);
+	        statement.setString(2, password);
 	        
 	        ResultSet rs = statement.executeQuery();
         
