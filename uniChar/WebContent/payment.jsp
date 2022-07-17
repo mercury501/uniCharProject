@@ -58,7 +58,6 @@
 <form method="post" action="HandleOrders?action=createorder" name="HandleOrder" onsubmit="event.preventDefault(); validate(this)">
 			<div class="col-md-8">
 
-
 				<div class="card p-3">
 
 					<h6 class="text-uppercase white">Dettagli del Pagamento</h6>
@@ -87,7 +86,7 @@
 
 
 								<div class="inputbox mt-3 mr-2">
-									<input type="number" maxlength="4" minlength="4" name="expiry"
+									<input type="text" maxlength="5" minlength="5" name="expiry"
 										class="form-control" required="required"> <span>Data
 										di scadenza</span>
 								</div>
@@ -108,7 +107,7 @@
 			<div class="col-md-4">
 
 				<div class="card card-blue p-3 text-white mb-3">
-<p id="errorMessage">Il nome deve contenere solo lettere</p>
+		<p id="errorMessage">Il nome deve contenere solo lettere</p>
 					<span>Devi pagare</span>
 					<div class="d-flex flex-row align-items-end mb-3">
 						<h1 class="mb-0 yellow">
