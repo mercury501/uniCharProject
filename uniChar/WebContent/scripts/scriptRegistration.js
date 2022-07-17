@@ -58,10 +58,8 @@
 		            dataType: "json",        
 		            
 		            success: function(data, textStatus, jqXHR) {  
-		            	console.log("username libero: " + data);
 		            	var contenutoJSON = JSON.parse(data);
 		            	if(contenutoJSON){
-		            		console.log("L'username e' libero");
 		            		document.getElementById("errorMessageMailUsed").style.display = 'none';
 		            	} else {
 		            		valid = false;
